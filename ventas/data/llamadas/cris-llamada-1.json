@@ -1,0 +1,122 @@
+{
+  "id": "cris-llamada-1",
+  "fecha": "2026-10-30T21:04:59.194Z",
+  "modelo": "gemini-3.8-flash",
+  "audio": "data/audio/cris-llamada-1.mp4",
+  "sintetico": false,
+  "aviso": "Cris reading the test script aloud, playing the seller. The script and the store are made up for testing; not a real customer call.",
+  "negocio": "Role-play: Cris reading the test script",
+  "transcripcion": [
+    {
+      "t": "0:00",
+      "quien": "Seller",
+      "texto": "How do customer questions reach you today?"
+    },
+    {
+      "t": "0:02",
+      "quien": "Buyer",
+      "texto": "Mostly email and Instagram DMs. It's me and one part-time person, Jordan. Honestly, half my mornings go to \"where is my order?\""
+    },
+    {
+      "t": "0:12",
+      "quien": "Seller",
+      "texto": "Half your mornings. Roughly, how many messages a day is that?"
+    },
+    {
+      "t": "0:16",
+      "quien": "Buyer",
+      "texto": "Around 40 on a normal day, way more after a launch."
+    },
+    {
+      "t": "0:20",
+      "quien": "Seller",
+      "texto": "And which questions come up the most?"
+    },
+    {
+      "t": "0:22",
+      "quien": "Buyer",
+      "texto": "Shipping times, whether the candles are safe around pets, and returns when a jar arrives cracked."
+    },
+    {
+      "t": "0:29",
+      "quien": "Seller",
+      "texto": "Got it. If those three got answered automatically, with the hard ones still coming to you, what would that be worth?"
+    },
+    {
+      "t": "0:35",
+      "quien": "Buyer",
+      "texto": "If it gave me my mornings back, I could see spending $3 to $500 a month. More than that, I'd need to see it working first."
+    },
+    {
+      "t": "0:43",
+      "quien": "Seller",
+      "texto": "Fair. Who else would be a part of the decision?"
+    },
+    {
+      "t": "0:46",
+      "quien": "Buyer",
+      "texto": "Just me. My business partner Sam signs off on anything over 500."
+    },
+    {
+      "t": "0:50",
+      "quien": "Seller",
+      "texto": "Understood. And timing?"
+    },
+    {
+      "t": "0:52",
+      "quien": "Buyer",
+      "texto": "Before Black Friday, so ideally set up by mid-November."
+    },
+    {
+      "t": "0:56",
+      "quien": "Seller",
+      "texto": "Okay. Here's what I suggest. I'll send you a short proposal by Friday, and we book 30 minutes next Tuesday to walk through it with Sam."
+    },
+    {
+      "t": "1:05",
+      "quien": "Buyer",
+      "texto": "Tuesday works. Send it over."
+    }
+  ],
+  "resumen": "The buyer and their part-time assistant handle customer queries via email and Instagram DMs, spending half their mornings on recurring questions. The seller offered automated resolution for common questions. The buyer expressed interest within a $300-$500 monthly budget and wants implementation before Black Friday. The seller will send a proposal by Friday and meet next Tuesday with the buyer and business partner Sam.",
+  "dolor": {
+    "valor": "Spends half of mornings answering repetitive customer questions",
+    "cita": "Honestly, half my mornings go to \"where is my order?\""
+  },
+  "presupuesto": {
+    "valor": "$300 to $500 per month",
+    "cita": "I could see spending $3 to $500 a month."
+  },
+  "decide": {
+    "valor": "Buyer decides for amounts up to $500; partner Sam signs off on anything over $500",
+    "cita": "Just me. My business partner Sam signs off on anything over 500."
+  },
+  "plazo": {
+    "valor": "Before Black Friday, ideally by mid-November",
+    "cita": "Before Black Friday, so ideally set up by mid-November."
+  },
+  "presupuesto_usd_mes": {
+    "min": 300,
+    "max": 500
+  },
+  "proximos_pasos": [
+    {
+      "quien": "Seller",
+      "que": "Send a short proposal",
+      "cuando": "By Friday",
+      "cita": "I'll send you a short proposal by Friday"
+    },
+    {
+      "quien": "Seller and Buyer",
+      "que": "Hold a 30-minute meeting to walk through the proposal with Sam",
+      "cuando": "Next Tuesday",
+      "cita": "Tuesday works. Send it over."
+    }
+  ],
+  "etapa": "Proposal",
+  "motivo_etapa": {
+    "valor": "The seller agreed to send a proposal by Friday and the buyer agreed to review it",
+    "cita": "I'll send you a short proposal by Friday, and we book 30 minutes next Tuesday to walk through it with Sam."
+  },
+  "leido": true
+}

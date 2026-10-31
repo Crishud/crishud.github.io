@@ -1,0 +1,8 @@
+{
+  "sintetico": true,
+  "aviso": "Synthetic test call: AI voices reading a role-play script. The store, Maya, Jordan and Sam are invented for testing.",
+  "negocio": "Role-play: a candle store (test call)",
+  "modelo_voz": "gemini-3.8-flash-tts",
+  "fecha": "2026-10-29T15:02:59.696Z",
+  "guion": "Cris: Hi Maya, thanks for making time. Before I show anything, how do customer questions reach you today?\nMaya: Mostly email and Instagram DMs. It's me and one part-time person, Jordan. Honestly, half my mornings go to \"where is my order\".\nCris: Half your mornings. Roughly how many messages a day is that?\nMaya: Around forty on a normal day, way more after a launch.\nCris: And which questions come up the most?\nMaya: Shipping times, whether the candles are safe around pets, and returns when a jar arrives cracked.\nCris: Got it. If those three got answered automatically, with the hard ones still coming to you, what would that be worth?\nMaya: If it gave me my mornings back, I could see spending three to five hundred a month. More than that, I'd need to see it working first.\nCris: Fair. Who else would be part of the decision?\nMaya: Just me. My business partner, Sam, signs off on anything over five hundred.\nCris: Understood. And timing?\nMaya: Before Black Friday. So ideally set up by mid November.\nCris: Okay. Here's what I suggest: I'll send you a short proposal by Friday, and we book thirty minutes next Tuesday to walk through it with Sam.\nMaya: Tuesday works. Send it over."
+}

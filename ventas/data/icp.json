@@ -1,0 +1,48 @@
+{
+  "nombre": "Avasory · a Shopify store that could save hours with automation",
+  "descripcion": "A small or mid-size DTC brand on Shopify selling in the US, with a manageable catalog and customers who ask the same things again and again (shipping, returns, sizing, product use).",
+  "criterios": [
+    {
+      "id": "shopify",
+      "peso": 20,
+      "tipo": "regla",
+      "nombre": "Sells on Shopify",
+      "como": "/products.json returns products"
+    },
+    {
+      "id": "catalogo",
+      "peso": 15,
+      "tipo": "regla",
+      "nombre": "Manageable catalog (10–249 products)",
+      "como": "number of products in /products.json?limit=250"
+    },
+    {
+      "id": "eeuu",
+      "peso": 15,
+      "tipo": "ia",
+      "nombre": "Sells and ships in the US",
+      "como": "the quote itself mentions shipping to the US or the United States, or prices in USD"
+    },
+    {
+      "id": "preguntas",
+      "peso": 25,
+      "tipo": "regla",
+      "nombre": "FAQ with many customer questions",
+      "como": "questions (lines ending in ?) on the FAQ and policy pages: 10 or more is yes, 4 to 9 is partly"
+    },
+    {
+      "id": "equipo",
+      "peso": 15,
+      "tipo": "ia",
+      "nombre": "Small team or founder-led",
+      "como": "the pages say the founder still runs the company or that the team is small (a founding story alone is not enough)"
+    },
+    {
+      "id": "email",
+      "peso": 10,
+      "tipo": "ia",
+      "nombre": "Already does email marketing",
+      "como": "invites visitors to sign up for emails, a newsletter or a first-order discount"
+    }
+  ]
+}

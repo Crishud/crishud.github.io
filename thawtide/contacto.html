@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>Contact · Thawtide</title>
+<meta name="description" content="Contact Thawtide: email us or send a message. We usually reply within 1–2 business days.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#DCEEFC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&display=swap">
+<link rel="stylesheet" href="paginas.css">
+<body><a href="../work/thawtide.html" target="_parent" style="position:fixed;z-index:2147483647;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:#15191e;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
+
+<header class="hdr" id="hdr"><div class="hrow"><span class="hl" aria-hidden="true"></span><a class="logo" href="prototipo-hero.html" style="color:inherit;text-decoration:none">thawtide</a><div class="hr"><a class="ib" href="pendiente.html#cuenta" aria-label="Sign in or create account"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a><button class="ib cart" id="abreCarrito" aria-label="Cart, 0 items" aria-controls="carrito" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 4h2.5l2.2 11h10.6l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.6" fill="currentColor"/><circle cx="17" cy="19.5" r="1.6" fill="currentColor"/></svg><span class="badge" id="cuenta">0</span></button><button class="ib" id="abreMenu" aria-label="Menu" aria-controls="menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div></header>
+<div class="velo" id="velo" hidden></div>
+<aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="tCarrito" hidden>
+  <div class="cj-cab"><h2 id="tCarrito">Your cart</h2><button class="cj-x" type="button" data-cierra aria-label="Close cart">×</button></div>
+  <div class="cj-vacio"><img data-ia="1" src="fotos/pie-copo-frio.webp" alt="" width="242" height="700"><p>Your cart is empty.</p><a class="cj-ir" href="producto.html" data-cierra>Shop hand warmers</a></div>
+</aside>
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <div class="mn-cab"><span class="mn-logo">thawtide</span><button class="cj-x" type="button" data-cierra aria-label="Close menu">×</button></div>
+  <div class="mv-b">
+    <div class="mt-grid">
+      <a class="mt mt-shop" href="producto.html"><img src="producto/negro-delante.webp" alt="" width="60" height="84"><b>Shop</b><small>Hand warmer · $29.99</small></a>
+      <a class="mt" href="prototipo-hero.html#part3"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>How it works</b></a>
+      <a class="mt" href="faq.html"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5V14M12 17h.01" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linecap="round"/></svg><b>FAQ</b></a>
+      <a class="mt" href="contacto.html" aria-current="page"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M3 7l9 6 9-6" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>Contact</b></a>
+      <a class="mt" href="producto.html#ficha"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M3 8l9-5 9 5-9 5-9-5z M3 8v8l9 5 9-5V8 M12 13v8" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>What it&#39;s made of</b></a>
+    </div>
+  </div>
+  <div class="s7-redes mn-redes"><a class="s7-rond" href="#" aria-label="Thawtide on Instagram"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#0d1117" stroke="none"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on TikTok"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#0d1117"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on X"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#0d1117"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></span></a></div>
+  <ul class="mn-legal"><li><a href="politicas.html#shipping">Shipping</a></li><li><a href="politicas.html#returns">Returns</a></li><li><a href="politicas.html#privacy">Privacy</a></li><li><a href="politicas.html#terms">Terms</a></li></ul>
+</nav>
+<main class="pg">
+  <header class="pg-cab">
+    <h1 class="pg-tit">Contact</h1>
+    <p class="pg-sub">We usually reply within 1–2 business days.</p>
+  </header>
+  <div class="pg-contacto">
+    <form class="pg-form" id="fContacto" novalidate>
+      <h2>Send us a message</h2>
+      <label class="pg-campo">Name<input type="text" name="contact[name]" autocomplete="name" maxlength="80" required></label>
+      <label class="pg-campo">Email<input type="email" name="contact[email]" autocomplete="email" inputmode="email" spellcheck="false" autocapitalize="off" maxlength="254" required></label>
+      <label class="pg-campo"><span>Order number <small>(optional)</small></span><input type="text" name="contact[order]" inputmode="text" autocomplete="off" maxlength="20"></label>
+      <label class="pg-campo">Message<textarea name="contact[body]" rows="6" maxlength="2000" required></textarea></label>
+      <div class="tt-trampa" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><input type="text" name="tt_extra" value="" tabindex="-1" autocomplete="off"></div>
+      <p class="pg-aviso" id="fAviso" role="status" hidden></p>
+      <button class="pg-boton" type="submit">Send message</button>
+      <span class="pend">Mockup: this form sends nothing. In the real store, Shopify's contact form sends this to the store's email.</span>
+    </form>
+    <div class="pg-lado">
+      <div class="pg-caja menta">
+        <h2>Email us</h2>
+        <a class="pg-correo" href="#fContacto" data-correo="moc.liamg@atadefas.zib">Use the form on this page</a>
+        <p>We usually reply within 1–2 business days.</p>
+      </div>
+      <a class="pg-caja" href="faq.html">
+        <h2>Quick answers</h2>
+        <p>Shipping, returns and the battery, answered.</p>
+        <span class="pg-ir">Read the FAQ →</span>
+      </a>
+      <div class="pg-caja">
+        <h2>Policies</h2>
+        <ul><li><a href="politicas.html#shipping">Shipping</a></li><li><a href="politicas.html#returns">Returns</a></li><li><a href="politicas.html#privacy">Privacy</a></li><li><a href="politicas.html#terms">Terms</a></li></ul>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="foot p8" id="p8">
+  <div class="mark">thawtide</div>
+  <nav class="p8-legal" aria-label="Legal"><a href="politicas.html#shipping">Shipping</a><a href="politicas.html#returns">Returns</a><a href="politicas.html#terms">Terms</a><a href="politicas.html#privacy">Privacy</a><a href="contacto.html" aria-current="page">Contact</a><a href="faq.html">FAQ</a><a class="p8-optout" href="politicas.html#privacy">Your Privacy Choices</a><button class="p8-cookies" type="button" hidden>Cookie preferences</button></nav>
+  <div class="p8-base"><span>© 2026 Thawtide</span><a href="pendiente.html#creditos">Credits</a></div>
+  <script>(() => { const b = document.currentScript.parentElement.querySelector('.p8-cookies'); if (!b) return; let n = 0; const mira = () => { const p = window.privacyBanner; if (!p || typeof p.showPreferences !== 'function') return false; b.hidden = false; b.onclick = () => p.showPreferences(); return true; }; if (mira()) return; const t = setInterval(() => { if (mira() || ++n > 60) clearInterval(t); }, 500); })();</script>
+</footer>
+<script src="paginas.js"></script>
+<script src="trampa.js"></script>
+</body>
+</html>

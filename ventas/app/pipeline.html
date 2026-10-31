@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Pipeline · Sales desk demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<main class="main">
+  <div class="cabeza"><h1>Pipeline</h1><span class="meta" id="meta"></span></div>
+  <div class="pestanas"><span class="on">Deals</span><span class="gris">Values appear only when a buyer said a budget on a call</span></div>
+  <div class="cuerpo"><div class="kanban" id="kanban"></div></div>
+</main>
+<script type="module">
+import { marco, datos, esc, avatar, fecha, error, dinero, claseEtapa, icono } from './app.js';
+marco('pipeline.html');
+try {
+  const d = await datos('pipeline.json');
+  document.getElementById('meta').textContent = `Updated ${fecha(d.fecha)}`;
+  document.getElementById('kanban').innerHTML = d.columnas.map((c) => `
+    <section aria-label="${esc(c.etapa)}"${c.tarjetas.length ? '' : ' class="sin"'}>
+      <div class="col-cab"><span class="pildora ${claseEtapa(c.etapa)}">${esc(c.etapa)}</span><span class="n">${c.n}</span><span class="total">${c.total_usd_mes ? dinero(c.total_usd_mes) : ''}</span></div>
+      ${c.tarjetas.length ? c.tarjetas.map((t) => `
+        <a class="deal" href="${esc(t.enlace)}">
+          <div class="t">${t.tipo === 'prospecto' ? `${avatar(t.nombre)}` : icono('llamada')}${esc(t.nombre)}</div>
+          ${t.tipo === 'prospecto' ? `<div class="fila">${icono('perfil')}ICP ${t.puntuacion}</div>` : ''}
+          <div class="fila">${icono('estado')}${esc(t.motivo)}</div>
+          ${t.valor ? `<div class="fila">${icono('dolar')}${dinero(t.valor)}</div>` : ''}
+          ${t.sintetico ? '<div class="fila">' + icono('llamada') + 'Synthetic test call</div>' : ''}
+          ${t.leido ? '<div class="fila">' + icono('llamada') + 'Test script read by Cris</div>' : ''}
+          ${t.siguiente ? `<div class="pie"><b></b>Next: ${esc(t.siguiente.que)} · ${esc(t.siguiente.cuando)}</div>` : ''}
+        </a>`).join('') : '<div class="vacia">No deals</div>'}
+    </section>`).join('');
+} catch (e) { error(e); }
+</script>
+</body>
+</html>

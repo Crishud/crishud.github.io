@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Credit Repair CRM · Team</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Design: the approved mockup "Path A · Desk" from the credit project (docs/maquetas/001-ficha/camino-a.html), made interactive and translated.
+   It is a single light look on purpose, like the real CRM, so every color is set explicitly. */
+html, body { margin: 0; height: 100% }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); color-scheme: light }
+body { background: #f5f6f8; color: #1b2230 }
+[hidden] { display: none !important }
+.demobar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: #0f1522; color: #e6eaf2; font: 600 13px/1 "IBM Plex Sans", system-ui, sans-serif }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: #0f1522 }
+.demobar .in { display: flex; justify-content: space-between; gap: 12px; padding-block: 9px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.demobar a { color: inherit; text-decoration: none }
+.demobar span { opacity: .75; font-weight: 500 }
+.app { container-type: inline-size; container-name: app; font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif; font-size: 14px; line-height: 1.45; color: #1b2230; background: #f5f6f8 }
+.app * { box-sizing: border-box }
+.app a { color: #2851b8 }
+.app button { font: inherit }
+.app :focus-visible { outline: 3px solid #2851b8; outline-offset: 2px }
+.app .ico { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none }
+.app .pantalla { display: grid; grid-template-columns: 232px minmax(0, 1fr); min-height: calc(100vh - 34px) }
+.app .lateral { background: #1d2638; color: #c9d1df; padding: 20px 14px; display: flex; flex-direction: column; gap: 22px; padding-left: max(14px, env(safe-area-inset-left, 0px)) }
+.app .marca { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 15px; padding: 0 8px }
+.app .marca-sello { width: 28px; height: 28px; border-radius: 6px; background: #2851b8; display: grid; place-items: center; color: #fff; font-size: 12px; font-weight: 700 }
+.app .menu { display: flex; flex-direction: column; gap: 2px }
+.app .menu a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 6px; color: #c9d1df; text-decoration: none; font-weight: 500 }
+.app .menu a.activo { background: #2b3650; color: #fff }
+.app .menu .pronto { margin-left: auto; font-size: 11px; color: #8d98ac }
+.app .lateral-pie { margin-top: auto; padding: 10px 8px 0; border-top: 1px solid #2e3a52; font-size: 13px; color: #aeb8c9 }
+.app .contenido { padding: 28px 32px 40px; display: flex; flex-direction: column; gap: 20px; min-width: 0; padding-right: max(32px, env(safe-area-inset-right, 0px)) }
+.app .boton-menu { display: none }
+.app .cabecera { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap }
+.app h1 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.2px; text-wrap: balance }
+.app h2 { margin: 0; font-size: 15px; font-weight: 600 }
+.app .boton { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid #cfd5df; background: #fff; color: #1b2230; font-weight: 500; cursor: pointer; white-space: nowrap }
+.app .boton.primario { background: #2851b8; border-color: #2851b8; color: #fff }
+.app .boton:disabled { opacity: .5; cursor: not-allowed }
+.app .pestanas { display: flex; gap: 4px; border-bottom: 1px solid #dfe3ea; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin }
+.app .pestanas button { appearance: none; background: none; border: 0; padding: 10px 14px; color: #5b6576; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; cursor: pointer }
+.app .pestanas button.activo { color: #1b2230; border-bottom-color: #2851b8 }
+.app .pestanas .apagada { padding: 10px 14px; color: #9aa3b2; white-space: nowrap }
+.app .contadores { display: flex; gap: 8px; flex-wrap: wrap }
+.app .contador { appearance: none; display: flex; align-items: baseline; gap: 6px; padding: 6px 12px; border: 1px solid #dfe3ea; border-radius: 999px; background: #fff; color: #5b6576; font-size: 13px; cursor: pointer }
+.app .contador strong { color: #1b2230; font-size: 14px }
+.app .contador.activo { border-color: #2851b8; color: #2851b8 }
+.app .barra-lista { display: flex; gap: 12px; align-items: center; flex-wrap: wrap }
+.app .buscador { display: flex; align-items: center; gap: 8px; flex: 1 1 260px; max-width: 420px; height: 40px; padding: 0 12px; border: 1px solid #cfd5df; border-radius: 6px; background: #fff; color: #5b6576 }
+.app .buscador input { border: 0; outline: 0; font: inherit; flex: 1; background: transparent; color: #1b2230; min-width: 0 }
+.app .tabla { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #dfe3ea; border-radius: 8px; overflow: hidden }
+.app .tabla th { text-align: left; font-size: 12px; font-weight: 600; color: #5b6576; text-transform: uppercase; letter-spacing: .4px; padding: 10px 14px; border-bottom: 1px solid #dfe3ea; background: #fafbfc }
+.app .tabla td { padding: 0 14px; height: 48px; border-bottom: 1px solid #eef0f4; vertical-align: middle }
+.app .tabla tr:last-child td { border-bottom: 0 }
+.app .tabla .nombre a { font-weight: 600; text-decoration: none; color: #1b2230 }
+.app .tenue { color: #5b6576 }
+.app .estado { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap }
+.app .estado.lead { background: #eef1f6; color: #3d4757 } .app .estado.prospect { background: #e7eefc; color: #1f449c } .app .estado.perdido { background: #f3f3f3; color: #5b6576 }
+.app .estado.cliente { background: #e3f3ea; color: #1e7a4b } .app .estado.pausa { background: #fff7ec; color: #7a4a06 }
+.app .siguiente { display: inline-flex; align-items: center; gap: 6px; color: #7a4a06; font-weight: 500 }
+.app .tarjetas-lista { display: none }
+.app .volver { display: inline-flex; align-items: center; gap: 6px; color: #5b6576; text-decoration: none; font-weight: 500 }
+.app .ficha-titulo { display: flex; flex-direction: column; gap: 6px }
+.app .ficha-titulo .fila { display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+.app .meta { display: flex; gap: 14px; flex-wrap: wrap; color: #5b6576; font-size: 13px }
+.app .acciones { display: flex; gap: 8px; flex-wrap: wrap }
+.app .pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #fff; border: 1px solid #dfe3ea; border-radius: 8px }
+.app .paso { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-right: 1px solid #eef0f4 }
+.app .paso:last-child { border-right: 0 }
+.app .paso .num { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 600; flex: none; border: 1.5px solid #c3cad6; color: #5b6576 }
+.app .paso.hecho .num { background: #1e7a4b; border-color: #1e7a4b; color: #fff }
+.app .paso.actual { background: #f2f6ff }
+.app .paso.actual .num { border-color: #2851b8; color: #2851b8 }
+.app .paso .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.app .paso .txt span { font-size: 12.5px; color: #5b6576 }
+.app .candado { display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 8px; background: #fff7ec; border: 1px solid #f1d9b5; color: #7a4a06; font-size: 13.5px }
+.app .candado.abierto { background: #e3f3ea; border-color: #b9e0c8; color: #1e7a4b }
+.app .columnas { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 20px; align-items: start }
+.app .columna { display: flex; flex-direction: column; gap: 20px; min-width: 0 }
+.app .tarjeta { background: #fff; border: 1px solid #dfe3ea; border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0 }
+.app .tarjeta-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px }
+.app .datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; margin: 0 }
+.app .datos div { display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.app .datos dt { font-size: 12px; color: #5b6576 }
+.app .datos dd { margin: 0; font-weight: 500; overflow-wrap: anywhere }
+.app .docs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column }
+.app .docs li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #eef0f4 }
+.app .docs li:last-child { border-bottom: 0 }
+.app .marca-doc { font-size: 12.5px; font-weight: 600 }
+.app .marca-doc.esta { color: #1e7a4b } .app .marca-doc.falta { color: #a15c07 } .app .marca-doc.pendiente { color: #5b6576 }
+.app .nota { background: #fafbfc; border: 1px solid #eef0f4; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 6px }
+.app .nota small { color: #5b6576 }
+.app .historial { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px }
+.app .historial li { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 10px; font-size: 13px }
+.app .historial time { color: #5b6576 }
+.app .prefs { display: flex; gap: 8px; flex-wrap: wrap }
+.app .pref { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid #dfe3ea; color: #3d4757 }
+.app .pref.no { border-color: #f1d9b5; color: #7a4a06; background: #fff7ec }
+.app .aviso { padding: 10px 12px; border-radius: 6px; background: #f2f6ff; border: 1px solid #d5e0fb; color: #1f449c; font-size: 13px }
+.app .campo { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #5b6576 }
+.app .campo input, .app .campo select, .app .campo textarea { height: 40px; padding: 0 10px; border: 1px solid #cfd5df; border-radius: 6px; font: inherit; color: #1b2230; background: #fff; width: 100% }
+.app .campo textarea { height: 72px; padding: 8px 10px }
+.app .rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px }
+.app .carta { background: #fff; border: 1px solid #dfe3ea; border-radius: 4px; padding: 26px; max-width: 62ch; position: relative; font-size: 13.5px; line-height: 1.6 }
+.app .borrador { position: absolute; top: 12px; right: 12px; font-weight: 700; font-size: 11px; color: #b3261e; border: 1px solid #b3261e; padding: 3px 6px; transform: rotate(3deg) }
+.app .demo-nota { font-size: 12.5px; color: #5b6576 }
+@container app (max-width: 760px) {
+  .app .pantalla { grid-template-columns: minmax(0, 1fr); min-height: 0 }
+  .app .lateral { flex-direction: row; align-items: center; padding: 12px 16px; gap: 12px; flex-wrap: wrap }
+  .app .menu, .app .lateral-pie { display: none }
+  .app .lateral.abierto .menu { display: flex; flex-basis: 100% }
+  .app .boton-menu { display: inline-flex; margin-left: auto; height: 44px; padding: 0 14px; border-radius: 6px; border: 1px solid #3a4763; background: transparent; color: #fff; font-weight: 500; align-items: center; gap: 8px; cursor: pointer }
+  .app .contenido { padding: 18px 16px 28px; gap: 16px }
+  .app h1 { font-size: 21px }
+  .app .cabecera .boton { width: 100%; justify-content: center; height: 44px }
+  .app .tabla { display: none }
+  .app .tarjetas-lista { display: flex; flex-direction: column; gap: 10px }
+  .app .tarjeta-cliente { background: #fff; border: 1px solid #dfe3ea; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: #1b2230 }
+  .app .tarjeta-cliente .fila { display: flex; justify-content: space-between; align-items: center; gap: 8px }
+  .app .pasos { grid-template-columns: minmax(0, 1fr) }
+  .app .paso { border-right: 0; border-bottom: 1px solid #eef0f4 }
+  .app .paso:last-child { border-bottom: 0 }
+  .app .columnas, .app .datos, .app .rejilla { grid-template-columns: minmax(0, 1fr) }
+  .app .acciones .boton { flex: 1 1 auto; justify-content: center; height: 44px }
+  .app .historial li { grid-template-columns: minmax(0, 1fr); gap: 2px }
+}
+@media (prefers-reduced-motion: no-preference) { .app .contenido > * { animation: up .25s ease-out both } @keyframes up { from { transform: translateY(4px) } to { transform: none } } }
+</style>
+<body>
+<div class="demobar"><div class="in"><a href="crm.html#site">← Credit-repair demo</a><span>Team CRM · approved design “Path A”, made interactive · sample data</span></div></div>
+<div class="app">
+  <section class="pantalla">
+    <nav class="lateral" id="lateral" aria-label="Menu">
+      <div class="marca"><span class="marca-sello">CRM</span><span>CRM</span></div>
+      <button type="button" class="boton-menu" id="botonMenu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <div class="menu" id="menu">
+        <a href="#clients" data-m="clients"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.6-1.6-4.8-4-5.6"></path></svg>Leads and clients</a>
+        <a href="#letters" data-m="letters"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg>Letters</a>
+        <a href="#tasks" data-m="tasks"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>Tasks<span class="pronto">planned</span></a>
+        <a href="#settings" data-m="settings"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"></path></svg>Settings</a>
+      </div>
+      <div class="lateral-pie">SAMPLE · Owner</div>
+    </nav>
+    <main class="contenido" id="main" aria-live="polite"></main>
+  </section>
+</div>
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const main = $('#main');
+  const now = () => { const d = new Date(); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' · ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); };
+  const ICO = { lock: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>', back: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>', plus: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>', search: '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.2-4.2"></path></svg>' };
+
+  // Sample people from the mockup (all marked SAMPLE). Steps: notices, contract, cancel window, documents (0..3 received)
+  let nextId = 8;
+  const P = [
+    { id: 1, first: 'María', middle: 'Elena', last: 'Torres', status: 'Prospect', svc: 'Personal credit', st: 'NY', phone: '(212) 555-0142', email: 'maria.torres@example.com', since: 'Sep 28', notices: true, contract: false, window: false, docs: [true, false, false], poaApproved: false, prefs: [1, 0, 1], notes: [['Screening call done: lives in New York and has no active lawsuit.', 'Owner · Sep 28, 4:10 PM']], hist: [['Sep 30 · 10:12 AM', 'Signed the New York notice (portal)'], ['Sep 30 · 10:09 AM', 'Signed the federal notice (portal)'], ['Sep 29 · 6:02 PM', 'Owner sent the portal link'], ['Sep 28 · 4:15 PM', 'Owner: status Lead → Prospect'], ['Sep 28 · 3:40 PM', 'Owner added María']] },
+    { id: 2, first: 'Luis', last: 'Ramírez', status: 'Lead', svc: 'Personal credit', st: 'NY', phone: '(718) 555-0187', email: 'luis.r@example.com', since: 'Sep 29', next: 'Make the call' },
+    { id: 3, first: 'Ana', last: 'Núñez', status: 'Lead', svc: 'Business credit', st: 'NJ', phone: '(201) 555-0110', email: 'ana.n@example.com', since: 'Sep 30', next: 'Make the call' },
+    { id: 4, first: 'Carlos', last: 'Díaz', status: 'Prospect', svc: 'Personal credit', st: 'NY', phone: '(347) 555-0163', email: 'carlos.d@example.com', since: 'Sep 22', next: 'Sign the notices' },
+    { id: 5, first: 'Rosa', last: 'Méndez', status: 'Lost', svc: 'Other', st: 'NY', phone: '(646) 555-0175', email: 'rosa.m@example.com', since: 'Sep 15', next: 'Did not follow up' },
+    { id: 6, first: 'Kevin', last: 'Ortiz', status: 'Client', svc: 'Personal credit', st: 'NY', phone: '(917) 555-0129', email: 'kevin.o@example.com', since: 'Sep 8', notices: true, contract: true, window: true, docs: [true, true, true], poaApproved: true,
+      items: [['SAMPLE Bank Card', 'Client says it was paid on time', ['In dispute', 'Updated', 'In dispute']], ['SAMPLE Auto Loan', 'Balance reported is wrong', ['Verified', 'In dispute', 'Repaired']]] },
+    { id: 7, first: 'Grace', last: 'Lee', status: 'Client', svc: 'Business credit', st: 'TX', phone: '(512) 555-0158', email: 'grace.l@example.com', since: 'Oct 1', notices: true, contract: true, window: false, docs: [false, false, false], poaApproved: false },
+  ];
+  P.forEach((p) => { p.notes ||= []; p.hist ||= [[p.since, 'Owner added ' + p.first]]; p.prefs ||= [1, 1, 1]; p.docs ||= [false, false, false]; p.archived = false; });
+  const name = (p) => `SAMPLE · ${p.first} ${p.last}`;
+  const cls = { Lead: 'lead', Prospect: 'prospect', Lost: 'perdido', Client: 'cliente', Paused: 'pausa', Inactive: 'perdido' };
+  const DOCS = ['Photo ID', 'Proof of address', 'SSN verification'];
+  const missing = (p) => { const m = []; if (!p.notices) m.push('the prior notices'); if (!p.contract) m.push('the signed contract'); if (!p.window) m.push('the cancel window to pass'); if (p.docs.some((d) => !d)) m.push('documents'); return m; };
+  const nextStep = (p) => p.next && !p.notices ? p.next : !p.notices ? 'Sign the notices' : !p.contract ? 'Sign the contract' : !p.window ? 'Wait out the cancel window' : p.docs.some((d) => !d) ? 'Collect documents' : 'Work can start';
+  const log = (p, t) => p.hist.unshift([now(), t]);
+
+  let list = { tab: 'leads', filter: 'All', q: '' }, open = null, ftab = 'Summary';
+
+  function setMenu(m) { $$('.menu a').forEach((a) => a.classList.toggle('activo', a.dataset.m === m)); $('#lateral').classList.remove('abierto'); $('#botonMenu').setAttribute('aria-expanded', 'false'); }
+  $('#botonMenu').onclick = () => { const o = $('#lateral').classList.toggle('abierto'); $('#botonMenu').setAttribute('aria-expanded', String(o)); };
+
+  function route() {
+    const h = location.hash.slice(1) || 'clients';
+    const m = h.match(/^client-(\d+)$/);
+    if (m) { open = P.find((p) => p.id === +m[1]); if (open) { setMenu('clients'); return drawFile(); } }
+    if (h === 'new') { setMenu('clients'); return drawNew(); }
+    if (h === 'letters') { setMenu('letters'); return drawLetters(); }
+    if (h === 'tasks') { setMenu('tasks'); return drawTasks(); }
+    if (h === 'settings') { setMenu('settings'); return drawSettings(); }
+    setMenu('clients'); drawList();
+  }
+  addEventListener('hashchange', () => { route(); scrollTo(0, 0); });
+
+  // ---------- List ----------
+  function drawList() {
+    const isLead = (p) => ['Lead', 'Prospect', 'Lost'].includes(p.status);
+    const base = P.filter((p) => !p.archived && (list.tab === 'leads' ? isLead(p) : !isLead(p)));
+    const counts = list.tab === 'leads' ? [['All', base.length], ['Prospects', base.filter((p) => p.status === 'Prospect').length], ['Lost', base.filter((p) => p.status === 'Lost').length], ['Archived', P.filter((p) => p.archived).length]] : [['All', base.length], ['Work locked', base.filter((p) => missing(p).length).length], ['Work open', base.filter((p) => !missing(p).length).length]];
+    let rows = list.filter === 'Archived' ? P.filter((p) => p.archived) : base.filter((p) => list.filter === 'All' || (list.filter === 'Prospects' && p.status === 'Prospect') || (list.filter === 'Lost' && p.status === 'Lost') || (list.filter === 'Work locked' && missing(p).length) || (list.filter === 'Work open' && !missing(p).length));
+    const q = list.q.trim().toLowerCase(); if (q) rows = rows.filter((p) => (name(p) + p.phone + p.email).toLowerCase().includes(q));
+    const nLeads = P.filter((p) => !p.archived && isLead(p)).length, nClients = P.filter((p) => !p.archived && !isLead(p)).length;
+    main.innerHTML = `<div class="cabecera"><h1>Leads and clients</h1><a class="boton primario" href="#new">${ICO.plus}New lead</a></div>
+      <div class="pestanas" role="tablist" aria-label="Lists"><button role="tab" class="${list.tab === 'leads' ? 'activo' : ''}" aria-selected="${list.tab === 'leads'}" data-tab="leads">Leads (${nLeads})</button><button role="tab" class="${list.tab === 'clients' ? 'activo' : ''}" aria-selected="${list.tab === 'clients'}" data-tab="clients">Clients (${nClients})</button></div>
+      <div class="contadores">${counts.map(([k, n]) => `<button class="contador ${list.filter === k ? 'activo' : ''}" data-f="${k}">${k} <strong>${n}</strong></button>`).join('')}</div>
+      <div class="barra-lista"><label class="buscador">${ICO.search}<input id="q" type="search" placeholder="Name, phone or email" aria-label="Search" value="${esc(list.q)}"></label></div>
+      <table class="tabla"><thead><tr><th>Name</th><th>Status</th><th>Service</th><th>Phone</th><th>Added</th><th>Next step</th></tr></thead><tbody>
+      ${rows.map((p) => `<tr><td class="nombre"><a href="#client-${p.id}">${esc(name(p))}</a></td><td><span class="estado ${cls[p.status]}">${p.status}</span></td><td class="tenue">${esc(p.svc)} · ${p.st}</td><td class="tenue">${p.phone}</td><td class="tenue">${p.since}</td><td><span class="siguiente">${esc(nextStep(p))}</span></td></tr>`).join('') || '<tr><td colspan="6" class="tenue">Nobody matches.</td></tr>'}
+      </tbody></table>
+      <div class="tarjetas-lista">${rows.map((p) => `<a href="#client-${p.id}" class="tarjeta-cliente"><span class="fila"><strong>${esc(name(p))}</strong><span class="estado ${cls[p.status]}">${p.status}</span></span><span class="tenue">${esc(p.svc)} · ${p.st} · ${p.phone}</span><span class="siguiente">Next: ${esc(nextStep(p).toLowerCase())}</span></a>`).join('') || '<p class="tenue">Nobody matches.</p>'}</div>`;
+    $$('[data-tab]', main).forEach((b) => b.onclick = () => { list.tab = b.dataset.tab; list.filter = 'All'; drawList(); });
+    $$('[data-f]', main).forEach((b) => b.onclick = () => { list.filter = b.dataset.f; drawList(); });
+    const qi = $('#q'); qi.oninput = () => { list.q = qi.value; const pos = qi.selectionStart; drawList(); const n = $('#q'); n.focus(); n.setSelectionRange(pos, pos); };
+  }
+
+  // ---------- New lead ----------
+  function drawNew() {
+    main.innerHTML = `<a href="#clients" class="volver">${ICO.back}Leads and clients</a><h1>New lead</h1>
+      <form class="tarjeta" id="nf" novalidate><div class="rejilla">
+      <label class="campo">First name<input id="nFirst" autocomplete="off"></label><label class="campo">Last name<input id="nLast" autocomplete="off"></label>
+      <label class="campo">Mobile<input id="nPhone" inputmode="tel" autocomplete="off" placeholder="(555) 010-0000"></label><label class="campo">Email<input id="nMail" type="email" autocomplete="off"></label>
+      <label class="campo">Service<select id="nSvc"><option>Personal credit</option><option>Business credit</option><option>Other</option></select></label>
+      <label class="campo">State<select id="nSt">${['NY', 'NJ', 'CT', 'PA', 'FL', 'TX', 'GA', 'CA'].map((s) => `<option>${s}</option>`).join('')}</select></label></div>
+      <div id="gate" aria-live="polite"></div><div class="acciones"><button class="boton primario" id="nSave" type="submit">Save lead</button><a class="boton" href="#clients">Cancel</a></div>
+      <p class="demo-nota">Sample data only. Nothing is saved outside this page.</p></form>`;
+    const gate = () => { const s = $('#nSt').value, v = $('#nSvc').value, ok = v === 'Business credit' ? s !== 'GA' : s === 'NY'; $('#gate').innerHTML = ok ? '' : `<div class="candado">${ICO.lock}${v === 'Business credit' ? 'Business credit is not offered in Georgia.' : 'Personal credit and other services are only offered in New York.'} The lead can be saved but not taken on.</div>`; };
+    $('#nSvc').onchange = gate; $('#nSt').onchange = gate;
+    $('#nf').onsubmit = (e) => { e.preventDefault(); const f = $('#nFirst').value.trim(), l = $('#nLast').value.trim(); if (!f || !l) { $('#gate').innerHTML = '<div class="aviso">Add a first and last name.</div>'; return; }
+      const p = { id: nextId++, first: f, last: l, status: 'Lead', svc: $('#nSvc').value, st: $('#nSt').value, phone: $('#nPhone').value || '—', email: $('#nMail').value || '—', since: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }), next: 'Make the call', notes: [], hist: [], prefs: [1, 1, 1], docs: [false, false, false], archived: false };
+      log(p, 'Owner added ' + f); P.unshift(p); list = { tab: 'leads', filter: 'All', q: '' }; location.hash = 'client-' + p.id; };
+  }
+
+  // ---------- Client file ----------
+  function drawFile() {
+    const p = open, m = missing(p), isClient = p.status === 'Client';
+    const steps = [
+      ['Prior notices', p.notices ? 'Both signed' : 'Not signed yet', p.notices],
+      ['Contract', p.contract ? 'Signed' : p.notices ? `Waiting for ${p.first} to sign` : 'After the notices', p.contract],
+      ['Cancel window', p.window ? 'Passed' : '3 business days after signing', p.window],
+      ['Documents', `${p.docs.filter(Boolean).length} of 3 received`, p.docs.every(Boolean)],
+    ];
+    const cur = steps.findIndex((s) => !s[2]);
+    const TABS = ['Summary', 'Contract', 'Documents', 'Notes', 'History'].concat(isClient ? ['Disputes'] : []);
+    main.innerHTML = `<a href="#clients" class="volver">${ICO.back}Leads and clients</a>
+      <div class="cabecera"><div class="ficha-titulo"><div class="fila"><h1>${esc(name(p))}</h1><span class="estado ${cls[p.status]}">${p.status}</span>${p.archived ? '<span class="estado perdido">Archived</span>' : ''}</div>
+        <div class="meta"><span>${esc(p.svc)} · ${p.st}</span><span>${esc(p.email)}</span><span>${esc(p.phone)}</span><span>Added: ${p.since}</span></div></div>
+        <div class="acciones"><button type="button" class="boton primario" id="aLink">Get portal link</button>
+        <label class="boton" style="padding:0 10px">Status <select id="aStatus" style="border:0;font:inherit;background:transparent;color:inherit">${['Lead', 'Prospect', 'Client', 'Paused', 'Lost', 'Inactive'].map((s) => `<option ${s === p.status ? 'selected' : ''}>${s}</option>`).join('')}</select></label>
+        <button type="button" class="boton" id="aArch">${p.archived ? 'Unarchive' : 'Archive'}</button></div></div>
+      <div id="aMsg"></div>
+      <ol class="pasos" aria-label="Onboarding steps">${steps.map((s, i) => `<li class="paso ${s[2] ? 'hecho' : i === cur ? 'actual' : ''}"><span class="num" aria-hidden="true">${s[2] ? '✓' : i + 1}</span><span class="txt"><strong>${s[0]}</strong><span>${esc(s[1])}</span></span></li>`).join('')}</ol>
+      <div class="candado ${m.length ? '' : 'abierto'}" role="status">${ICO.lock}${m.length ? 'Work cannot start yet. Missing: ' + m.join(', ') + '.' : 'Work can start: notices and contract signed on approved texts, and the time to cancel has passed.'}</div>
+      <div class="pestanas" role="tablist" aria-label="File sections">${TABS.map((t) => `<button role="tab" class="${t === ftab ? 'activo' : ''}" aria-selected="${t === ftab}" data-ft="${t}">${t}</button>`).join('')}${isClient ? '' : '<span class="apagada">Disputes · once a client</span>'}<span class="apagada">Payments · planned</span></div>
+      <div id="fbody"></div>`;
+    $('#aLink').onclick = () => { log(p, 'Owner got the portal link'); $('#aMsg').innerHTML = `<div class="aviso">One-time portal link for ${esc(p.first)} (demo): <code>portal.example.com/enter/demo-${p.id}x7</code>. In the real CRM it opens the client's portal once.</div>`; if (ftab === 'History') drawTab(); };
+    $('#aStatus').onchange = (e) => { const o = p.status; p.status = e.target.value; log(p, `Owner: status ${o} → ${p.status}`); if (p.status !== 'Client' && ftab === 'Disputes') ftab = 'Summary'; drawFile(); };
+    $('#aArch').onclick = () => { p.archived = !p.archived; log(p, p.archived ? 'Owner archived the file' : 'Owner unarchived the file'); drawFile(); };
+    $$('[data-ft]', main).forEach((b) => b.onclick = () => { ftab = b.dataset.ft; drawFile(); });
+    if (!TABS.includes(ftab)) ftab = 'Summary';
+    drawTab();
+  }
+  function drawTab() {
+    const p = open, b = $('#fbody');
+    const docsCard = `<section class="tarjeta"><div class="tarjeta-cab"><h2>Documents</h2><span class="tenue">${p.docs.filter(Boolean).length} of 3</span></div><ul class="docs">${DOCS.map((d, i) => `<li><span>${d}</span>${p.docs[i] ? '<span class="marca-doc esta">Received</span>' : `<span class="row"><span class="marca-doc falta">Missing</span> <button class="boton" style="height:32px;padding:0 10px" data-doc="${i}">Mark received</button></span>`}</li>`).join('')}<li><span>Limited power of attorney (POA)</span><span class="marca-doc ${p.poaApproved ? 'esta' : 'pendiente'}">${p.poaApproved ? 'Received' : "Waiting on the lawyer's text"}</span></li></ul></section>`;
+    const notesCard = `<section class="tarjeta"><div class="tarjeta-cab"><h2>Internal notes</h2></div><form id="noteF" class="campo"><textarea id="noteT" placeholder="Add a note for the team" aria-label="New note"></textarea><button class="boton" type="submit" style="align-self:flex-start">Add note</button></form>${p.notes.map(([t, w]) => `<div class="nota"><span>${esc(t)}</span><small>${esc(w)}</small></div>`).join('')}</section>`;
+    const histCard = (all) => `<section class="tarjeta"><div class="tarjeta-cab"><h2>History</h2>${all ? '' : '<button class="boton" style="height:32px;padding:0 10px" data-ft2="History">See all</button>'}</div><ul class="historial">${(all ? p.hist : p.hist.slice(0, 5)).map(([t, x]) => `<li><time>${esc(t)}</time><span>${esc(x)}</span></li>`).join('')}</ul></section>`;
+    const prefs = ['Email', 'SMS', 'Calls'];
+    if (ftab === 'Summary') {
+      b.innerHTML = `<div class="columnas"><div class="columna"><section class="tarjeta"><div class="tarjeta-cab"><h2>Details</h2></div><dl class="datos">
+        <div><dt>First name</dt><dd>${esc(p.first)}</dd></div><div><dt>Middle name</dt><dd>${esc(p.middle || '—')}</dd></div><div><dt>Last name</dt><dd>${esc(p.last)}</dd></div><div><dt>Email</dt><dd>${esc(p.email)}</dd></div>
+        <div><dt>Mobile</dt><dd>${esc(p.phone)}</dd></div><div><dt>Home phone</dt><dd>—</dd></div><div><dt>SSN</dt><dd>***-**-${String(6789 - p.id * 111).padStart(4, '0')}</dd></div><div><dt>Date of birth</dt><dd>${p.contract ? '05/17/1990' : '—'}</dd></div>
+        <div><dt>Current address</dt><dd>SAMPLE · 45 Sample Ave, ${p.st}</dd></div><div><dt>Previous address</dt><dd>—</dd></div></dl></section>${docsCard}</div>
+        <div class="columna">${notesCard}<section class="tarjeta"><div class="tarjeta-cab"><h2>How to reach ${esc(p.first)}</h2></div><div class="prefs">${prefs.map((k, i) => `<button class="pref ${p.prefs[i] ? '' : 'no'}" data-pref="${i}" style="cursor:pointer;background:${p.prefs[i] ? '#fff' : '#fff7ec'}">${k}: ${p.prefs[i] ? 'yes' : 'do not contact'}</button>`).join('')}</div></section>${histCard(false)}</div></div>`;
+    } else if (ftab === 'Contract') {
+      const st = [['Prior notices (federal and state)', p.notices, 'notices', 'Demo: client signs the notices in the portal'], ['Written contract', p.contract, 'contract', 'Demo: client signs the contract'], ['3 business days to cancel', p.window, 'window', 'Demo: skip 3 business days']];
+      const can = (k) => k === 'notices' || (k === 'contract' && p.notices) || (k === 'window' && p.contract);
+      b.innerHTML = `<section class="tarjeta"><div class="tarjeta-cab"><h2>Contract steps</h2></div><ul class="docs">${st.map(([t, ok, k, act]) => `<li><span>${t}</span>${ok ? '<span class="marca-doc esta">Done</span>' : `<button class="boton" style="height:32px;padding:0 10px" data-sign="${k}" ${can(k) ? '' : 'disabled'}>${act}</button>`}</li>`).join('')}</ul>
+        <p class="demo-nota">Order is enforced: the contract can't be signed before the notices, and the cancel window starts only after the contract. Texts must be approved by the lawyer before use.</p></section>`;
+      $$('[data-sign]', b).forEach((x) => x.onclick = () => { const k = x.dataset.sign; p[k] = true; log(p, k === 'notices' ? 'Signed the federal and state notices (portal)' : k === 'contract' ? 'Signed the contract (portal)' : 'Cancel window passed'); drawFile(); });
+    } else if (ftab === 'Documents') {
+      b.innerHTML = `<div class="columnas"><div class="columna">${docsCard}</div><div class="columna"><section class="tarjeta"><h2>How documents arrive</h2><p class="demo-nota">The client uploads them in the portal. The team checks each one and marks it received.</p></section></div></div>`;
+    } else if (ftab === 'Notes') { b.innerHTML = notesCard; }
+    else if (ftab === 'History') { b.innerHTML = histCard(true); }
+    else if (ftab === 'Disputes') {
+      const BUR = ['Equifax', 'Experian', 'TransUnion']; const it = p.items || [];
+      b.innerHTML = missing(p).length ? `<div class="candado">${ICO.lock}Disputes open once work can start.</div>` : `<section class="tarjeta"><div class="tarjeta-cab"><h2>Items in dispute</h2><span class="tenue">${it.length}</span></div>${it.length ? `<div style="overflow-x:auto"><table class="tabla"><thead><tr><th>Creditor</th><th>Reason</th>${BUR.map((x) => `<th>${x}</th>`).join('')}</tr></thead><tbody>${it.map(([c, r, s]) => `<tr><td>${esc(c)}</td><td class="tenue">${esc(r)}</td>${s.map((x) => `<td><span class="estado ${/Repaired|Updated/.test(x) ? 'cliente' : /dispute/.test(x) ? 'pausa' : 'lead'}">${x}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '<p class="tenue">No items yet. They are added after the client goes over the report with the team.</p>'}</section>`;
+    }
+    $$('[data-doc]', b).forEach((x) => x.onclick = () => { p.docs[+x.dataset.doc] = true; log(p, `${DOCS[+x.dataset.doc]} received`); drawFile(); });
+    $$('[data-pref]', b).forEach((x) => x.onclick = () => { const i = +x.dataset.pref; p.prefs[i] = p.prefs[i] ? 0 : 1; log(p, `${prefs[i]}: ${p.prefs[i] ? 'can contact' : 'do not contact'}`); drawTab(); });
+    $$('[data-ft2]', b).forEach((x) => x.onclick = () => { ftab = 'History'; drawFile(); });
+    const nf = $('#noteF', b); if (nf) nf.onsubmit = (e) => { e.preventDefault(); const t = $('#noteT', b).value.trim(); if (!t) return; p.notes.unshift([t, 'Owner · ' + now()]); log(p, 'Owner added a note'); drawTab(); };
+  }
+
+  // ---------- Letters ----------
+  const LET = [
+    { c: 'Kevin Ortiz', r: 1, to: 'Equifax', type: 'Round 1', st: 'Sent', track: '9407 1000 0000 0000 0001' },
+    { c: 'Kevin Ortiz', r: 1, to: 'Experian', type: 'Round 1', st: 'Sent', track: '9407 1000 0000 0000 0002' },
+    { c: 'Kevin Ortiz', r: 2, to: 'TransUnion', type: 'Method of verification', st: 'To print' },
+    { c: 'Kevin Ortiz', r: 2, to: 'SAMPLE Bank Card', type: 'Debt validation', st: 'To print', draft: true },
+  ];
+  let lsel = null, lmode = null;
+  function drawLetters() {
+    const pc = { Sent: 'cliente', 'To print': 'pausa' };
+    main.innerHTML = `<div class="cabecera"><h1>Letters</h1></div><p class="tenue">Preview shows each letter as it prints. The CRM sends nothing: a person prints the letters, takes them to certified mail and logs the tracking number.</p>
+      <table class="tabla"><thead><tr><th>Client</th><th>Round</th><th>To</th><th>Type</th><th>Status</th><th></th></tr></thead><tbody>${LET.map((l, i) => `<tr><td class="nombre">SAMPLE · ${esc(l.c)}</td><td>Round ${l.r}</td><td>${esc(l.to)}</td><td class="tenue">${esc(l.type)}</td><td><span class="estado ${pc[l.st]}">${l.st}</span></td><td style="white-space:nowrap"><button class="boton" style="height:32px;padding:0 10px" data-lp="${i}">Preview</button> ${l.st === 'To print' ? `<button class="boton" style="height:32px;padding:0 10px" data-ls="${i}">Mark sent</button>` : `<span class="tenue">${esc(l.track)}</span>`}</td></tr>`).join('')}</tbody></table>
+      <div class="tarjetas-lista">${LET.map((l, i) => `<div class="tarjeta-cliente"><span class="fila"><strong>${esc(l.to)} · Round ${l.r}</strong><span class="estado ${pc[l.st]}">${l.st}</span></span><span class="tenue">SAMPLE · ${esc(l.c)} · ${esc(l.type)}</span><span class="acciones"><button class="boton" data-lp="${i}">Preview</button>${l.st === 'To print' ? `<button class="boton" data-ls="${i}">Mark sent</button>` : ''}</span></div>`).join('')}</div>
+      <div id="lbox"></div>`;
+    $$('[data-lp]', main).forEach((x) => x.onclick = () => { lsel = +x.dataset.lp; lmode = 'p'; box(); });
+    $$('[data-ls]', main).forEach((x) => x.onclick = () => { lsel = +x.dataset.ls; lmode = 's'; box(); });
+    box();
+  }
+  function box() {
+    const bx = $('#lbox'); if (!bx || lsel === null) return; const l = LET[lsel];
+    if (lmode === 'p') { bx.innerHTML = `<div class="carta">${l.draft ? '<span class="borrador">DRAFT — DO NOT MAIL</span>' : ''}<p>SAMPLE · ${esc(l.c)}<br>45 Sample Ave, New York, NY</p><p>${esc(l.to)}<br>Dispute department</p><p><b>Re: ${esc(l.type)} · Round ${l.r}</b></p><p>Sample letter body. The real templates are approved by a lawyer before they can be printed. A template that is not approved prints with a DRAFT mark.</p></div>`; return; }
+    bx.innerHTML = `<form class="tarjeta" id="sf" style="max-width:520px"><h2>Mark as sent · ${esc(l.to)}</h2><div class="rejilla"><label class="campo">Date mailed<input id="sd" type="date"></label><label class="campo">Certified mail tracking number<input id="stk" autocomplete="off" placeholder="10 to 34 characters"></label></div><div id="se"></div><div class="acciones"><button class="boton primario" type="submit">Save</button></div></form>`;
+    $('#sd').valueAsDate = new Date();
+    $('#sf').onsubmit = (e) => { e.preventDefault(); const t = $('#stk').value.replace(/\s/g, ''); if (t.length < 10 || t.length > 34) { $('#se').innerHTML = '<div class="candado">The tracking number must be 10 to 34 characters.</div>'; return; } if (l.draft) { $('#se').innerHTML = `<div class="candado">${ICO.lock}This letter uses a template that is not approved yet, so it can't be marked as sent.</div>`; return; } l.st = 'Sent'; l.track = $('#stk').value; lsel = null; drawLetters(); $('#lbox').innerHTML = '<div class="aviso">Saved as sent.</div>'; };
+  }
+
+  function drawTasks() { main.innerHTML = `<h1>Tasks</h1><div class="aviso">Planned for a later stage of the real CRM. Not built yet, so this demo doesn't show it.</div>`; }
+  function drawSettings() {
+    main.innerHTML = `<h1>Settings</h1><section class="tarjeta"><div class="tarjeta-cab"><h2>Legal templates</h2></div><ul class="docs">
+      ${[['Federal notice (Consumer Credit File Rights)', 1], ['New York notice', 1], ['Written contract', 1], ['Limited power of attorney (POA)', 0], ['Round 1 letter', 1], ['Debt validation letter', 0]].map(([t, ok]) => `<li><span>${t}</span><span class="marca-doc ${ok ? 'esta' : 'pendiente'}">${ok ? 'Approved (sample)' : 'Waiting on the lawyer'}</span></li>`).join('')}</ul>
+      <p class="demo-nota">Work can't start on a template that isn't approved. Letters from unapproved templates print as DRAFT.</p></section>`;
+  }
+  route();
+})();
+</script>
+</body>
+</html>

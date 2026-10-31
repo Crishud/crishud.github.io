@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Credit-repair CRM · Cristian Sánchez</title>
+<meta name="description" content="A booking page and a CRM of its own for a credit-repair business in New York.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header id="header">
+  <div class="row">
+    <a class="logo" href="../index.html" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
+    <button class="icon-nav" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <div id="menu"><div><ul id="nav"><li><a href="../about.html">about</a></li><li><a href="../learn.html">learn</a></li><li><a href="../portfolio.html" aria-current="page">portfolio</a></li><li><a href="../contact.html">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li></ul></li></ul></div></div>
+  </div>
+</header>
+<div class="content">
+
+<section class="main nopad-b">
+  <div class="row">
+    <div class="col col-5 text-main rise">
+      <span class="uppercase">Services · CRM</span>
+      <h1 class="draw">credit-repair CRM.</h1>
+      <p class="intro">A booking page and a CRM of its own for a credit-repair business in New York.</p>
+      <p>My first CRM was built before I really knew what a CRM needs. So I studied the tools this industry uses and started over, with the law deciding the order of every step.</p>
+      <ul class="stack" aria-label="What I used"><li>Next.js</li><li>React</li><li>TypeScript</li><li>Prisma</li><li>SQLite (libSQL)</li><li>Tailwind CSS</li><li>Zod</li><li>Resend</li><li>Vitest</li><li>Playwright</li></ul>
+      <div class="buttons"><a class="button" href="#demo">Try the demo</a><a class="button secondary" href="../portfolio.html">All projects</a></div>
+    </div>
+    <div class="col col-7 img-main rise"><div class="marco"><img src="../img/shots/crm-team-m.png" alt="" loading="lazy"></div></div>
+  </div>
+</section>
+<section class="dark">
+  <div class="split-list">
+    <div class="rise"><h2>What I set out to do</h2><p>One app for the public page and the CRM, personal credit in New York only. Notices before booking, a written contract, three business days to cancel, and no work until each step is done. The app enforces that order so nobody can skip it.</p></div>
+    <div class="rise"><h2>Decisions I made</h2><ul class="facts"><li><b>One app for the page and the CRM,</b> on a host that can run its own server and database.</li><li><b>No AI writes the dispute letters.</b> Only templates the lawyer approves.</li><li><b>Clients upload their report as a PDF.</b> I never store anyone’s third-party passwords.</li><li><b>Work starts after the cancel period,</b> and payment comes when the package is done (both waiting on the lawyer’s yes).</li><li><b>Letters go out on paper, by certified mail,</b> in English, since they go to US companies.</li><li><b>A saved letter is never edited by hand.</b> If it changes, it’s archived and redone.</li></ul></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="sub-head rise"><h2>How it works</h2><p>One Next.js app serves the public page, the client portal and the team CRM, on a host that can run its own server and database.</p></div>
+  <div class="rise"><div class="arch" role="img" aria-label="Client portal → Next.js app → Database → Team CRM"><div class="node">Client portal<small>notices, contract, documents</small></div><span class="wire" style="--i:1"></span><div class="node">Next.js app<small>React + TypeScript, on Render</small></div><span class="wire" style="--i:2"></span><div class="node">Database<small>Prisma over SQLite (libSQL)</small></div><span class="wire" style="--i:3"></span><div class="node">Team CRM<small>leads, files, letters</small></div></div></div>
+  <div class="sub-head rise"><h3>The work lock</h3><p>The law sets the order, so the app does too. Work stays locked until every earlier step is done.</p></div>
+  <div class="rise"><ol class="flow-steps"><li style="--i:0;--n:7">Lead</li><li style="--i:1;--n:7" class="lock">Notices signed</li><li style="--i:2;--n:7" class="lock">Contract signed</li><li style="--i:3;--n:7" class="lock">Cancel period passes<small>three business days</small></li><li style="--i:4;--n:7" class="unlock">Work unlocks</li><li style="--i:5;--n:7">Letters<small>from approved templates</small></li><li style="--i:6;--n:7">Certified mail<small>printed, on paper</small></li></ol></div>
+</section>
+
+<section class="dark">
+  <div class="sub-head rise"><h2>Under the hood</h2><p>What I used, and why.</p></div>
+  <div class="tech rise"><div><b>Next.js, React and TypeScript</b><span>One codebase for the public site, the client portal and the team’s CRM.</span></div><div><b>Prisma with SQLite (libSQL)</b><span>Typed database access, so a wrong field name fails before it ships.</span></div><div><b>Zod</b><span>Validation for the data clients and the team send in.</span></div><div><b>Steps that gate the work</b><span>Notices, contract and cancel period come first. A client file can’t skip ahead.</span></div><div><b>Vitest and Playwright</b><span>Unit tests for the rules, browser tests for the flows a client and the team go through.</span></div><div><b>Render</b><span>Picked because the app needs its own server and a disk, which a static host can’t give it.</span></div></div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>The plan, and where it stands</h2><ol class="steps"><li><span class="st done">Done</span><span>Mockups, the database, leads and the client file.</span></li><li><span class="st done">Done</span><span>Notices, contract, client portal and the work lock.</span></li><li><span class="st now">In progress</span><span>Credit report, disputed items, letters and printing.</span></li><li><span class="st ">Pending</span><span>Results, billing, roles, tasks and reminders.</span></li><li><span class="st ">Pending</span><span>Legal texts: waiting on the lawyer. Nothing goes to real clients before that.</span></li></ol></div></div>
+</section>
+<section class="dark"><div class="row wide"><h2 class="rise">Plans &amp; screens</h2></div><div class="figs rise"><figure><a href="../work/img/crm-a.png"><img src="../work/img/crm-a.png" alt="Mockup route A, the one I chose (Spanish)." loading="lazy"></a><figcaption>Mockup route A, the one I chose (Spanish).</figcaption></figure><figure><a href="../work/img/crm-b.png"><img src="../work/img/crm-b.png" alt="Route B (Spanish)." loading="lazy"></a><figcaption>Route B (Spanish).</figcaption></figure><figure><a href="../work/img/crm-c.png"><img src="../work/img/crm-c.png" alt="Route C (Spanish)." loading="lazy"></a><figcaption>Route C (Spanish).</figcaption></figure><figure><a href="../work/img/crm-app-ficha.png"><img src="../work/img/crm-app-ficha.png" alt="The working app with test data: a client file (Spanish)." loading="lazy"></a><figcaption>The working app with test data: a client file (Spanish).</figcaption></figure><figure><a href="../work/img/crm-app-cartas.png"><img src="../work/img/crm-app-cartas.png" alt="Letters waiting to print (Spanish)." loading="lazy"></a><figcaption>Letters waiting to print (Spanish).</figcaption></figure><figure><a href="../work/img/crm-app-portal-movil.png"><img src="../work/img/crm-app-portal-movil.png" alt="The client portal on a phone (Spanish)." loading="lazy" class="contain"></a><figcaption>The client portal on a phone (Spanish).</figcaption></figure></div></section>
+
+<section class="light" id="demo">
+  <div class="row"><div class="col col-12 rise"><h2>The team CRM</h2><p>The team side: leads and clients, a client file with its steps and lock, letters and settings. I made the approved mockup clickable with sample data; the real app needs its server, so its link goes here once it’s online.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../crm-team.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../crm-team.html" title="The team CRM, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../crm-team.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../crm-team.html" title="The team CRM, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light" id="client">
+  <div class="row"><div class="col col-12 rise"><h2>The client side</h2><p>The client side: the public page, booking a call with the notices first, and the client portal. Sample data.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../crm.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../crm.html" title="The client side, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../crm.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../crm.html" title="The client side, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>What I can’t claim yet</h2><p>No clients, no results and no promises yet: no “we remove items”, no score claims. The legal texts are still with the lawyer, and every screen here uses test data.</p></div></div>
+</section>
+<section class="dark">
+  <nav class="pager" aria-label="More projects"><a href="links.html"><small>← Previous</small><b>Creator links page</b></a><a href="thawtide.html" style="text-align:right"><small>Next →</small><b>Thawtide store</b></a></nav>
+</section>
+</div>
+<footer id="footer">
+  <a class="top" href="#header" aria-label="Back to top">↑</a>
+  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="../about.html">about</a><a href="../learn.html">learn</a><a href="../portfolio.html">portfolio</a><a href="../contact.html">contact</a></nav></div>
+</footer>
+<script src="../app.js"></script>
+</body>
+</html>

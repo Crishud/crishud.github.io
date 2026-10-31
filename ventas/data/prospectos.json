@@ -1,0 +1,1184 @@
+{
+ "fecha": "2026-10-29T10:26:54.648Z",
+ "modelo": "gemini-3.8-flash",
+ "icp": "Avasory · a Shopify store that could save hours with automation",
+ "empresas": [
+  {
+   "dominio": "brightland.co",
+   "shopify": true,
+   "nombre": "Brightland",
+   "que_vende": "Olive oils, vinegars, and honey",
+   "productos": 45,
+   "puntuacion": 100,
+   "etiqueta": "fit",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 45 products",
+     "url": "https://brightland.co/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "45 products listed",
+     "url": "https://brightland.co/products.json",
+     "cita": ""
+    },
+    {
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "Brightland sells in USD and provides US shipping options.",
+     "url": "https://brightland.co/",
+     "cita": "Enjoy Free US Shipping on Orders $90+."
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "41 customer questions on the FAQ page",
+     "url": "https://brightland.co/pages/faqs-olive-oil",
+     "cita": "When will my order ship?",
+     "ejemplos": [
+      "When will my order ship?",
+      "Can I update my shipping address, cancel, or edit my order after it is placed?",
+      "I have a general question/inquiry, who do I email?",
+      "What is your return and exchange policy?",
+      "Can I add a gift note?"
+     ],
+     "todas": [
+      "When will my order ship?",
+      "Can I update my shipping address, cancel, or edit my order after it is placed?",
+      "I have a general question/inquiry, who do I email?",
+      "What is your return and exchange policy?",
+      "Can I add a gift note?",
+      "Do you offer gift wrapping?",
+      "How can I ensure there is no pricing/receipt in the box?",
+      "How do I know that the gift has arrived?",
+      "Can I place a bulk order for corporate gifting?",
+      "How do you ship?",
+      "How will I know my order has shipped?",
+      "Do you deliver to P.O. boxes?",
+      "Do you offer international shipping?",
+      "What is Carbon Offset or Checkout+ Shipping Protection?",
+      "Can you hold my order for a later ship date?",
+      "How do I start a Brightland Subscription?",
+      "How do I update my subscription details?",
+      "What if I want to cancel my subscription?",
+      "When is Brightland olive oil best by?",
+      "Is Brightland certified organic?",
+      "What is the best way to store my oil?",
+      "I feel a sharp, peppery sensation at the back of my throat after I swallow the Brightland oil – what does this mean?",
+      "My olive oil tastes bitter. What does this mean?",
+      "Where is Brightland extra virgin olive oil produced?",
+      "Are the white bottles recyclable?",
+      "What is the smoke point for Brightland extra virgin olive oil?",
+      "How can I use Brightland in my beauty/wellness routine?",
+      "How should Brightland vinegars be stored?",
+      "Where are Brightland’s vinegars made?",
+      "Are the vinegars organic?",
+      "Why is sugar added to the vinegars?",
+      "What is a California balsamic?",
+      "Are the vinegar bottles recyclable?",
+      "How should Brightland honey be stored?",
+      "When does my honey expire?",
+      "Are the honeys vegan?",
+      "Is Brightland honey certified organic?",
+      "Where is Brightland honey made?",
+      "What is Brightland’s allergen statement?",
+      "Do you have stockists?",
+      "Where did the name Brightland come from?"
+     ],
+     "faqs": [
+      "https://brightland.co/pages/faqs-olive-oil"
+     ]
+    },
+    {
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The About page features a note from the founder, [name removed].",
+     "url": "https://brightland.co/pages/about-brightland-olive-oil",
+     "cita": "[name removed], Founder"
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The website collects email addresses for product launches and recipes.",
+     "url": "https://brightland.co/policies/shipping-policy",
+     "cita": "Brighten your inbox — sign up for product launches, seasonal recipes and more."
+    }
+   ],
+   "gancho": {
+    "hecho": "Brightland packages its olive oils in signature white bottles to protect them from exposure to light.",
+    "url": "https://brightland.co/pages/faqs-olive-oil",
+    "cita": "Our signature white bottles protect against exposure to light, keeping your olive oil fresher, longer."
+   },
+   "correo": {
+    "asunto": "Customer questions on Brightland",
+    "cuerpo": "Hi there, I noticed Brightland uses signature white bottles designed specifically to protect olive oil from light exposure and maintain freshness. With detailed guidance across your FAQ—from subscription changes and order shipping timelines to proper oil storage—your team handles a wide range of product and ordering inquiries. At Avasory, we help DTC stores automate answers to routine customer questions like shipping, returns, order edits, and product use, directly on your site. Would you be open to a brief walkthrough to see how this could handle everyday inquiries automatically? Cris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://brightland.co/",
+     "texto": ""
+    },
+    {
+     "url": "https://brightland.co/pages/about-brightland-olive-oil",
+     "texto": ""
+    },
+    {
+     "url": "https://brightland.co/pages/faqs-olive-oil",
+     "texto": ""
+    },
+    {
+     "url": "https://brightland.co/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://brightland.co/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "beardbrand.com",
+   "shopify": true,
+   "nombre": "Beardbrand",
+   "que_vende": "Men's grooming and personal care products including beard oils, balms, washes, colognes, styling sprays, and grooming tools.",
+   "productos": 67,
+   "puntuacion": 75,
+   "etiqueta": "fit",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 67 products",
+     "url": "https://beardbrand.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "67 products listed",
+     "url": "https://beardbrand.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The store explicitly outlines domestic shipping rates within the US and offers free luxury shipping for orders over $75.",
+     "url": "https://www.beardbrand.com/policies/shipping-policy",
+     "cita": "Free Luxury Shipping on US domestic orders over $75"
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "19 customer questions on the FAQ page",
+     "url": "https://www.beardbrand.com/pages/faqs",
+     "cita": "What is your exchange and return policy?",
+     "ejemplos": [
+      "What is your exchange and return policy?",
+      "How Can I Get Better Shipping Rates?",
+      "What do your fragrances smell like?",
+      "My tracking information says that my order was delivered. How is that possible?",
+      "How do I know my order has been shipped?"
+     ],
+     "todas": [
+      "What is your exchange and return policy?",
+      "How Can I Get Better Shipping Rates?",
+      "What do your fragrances smell like?",
+      "My tracking information says that my order was delivered. How is that possible?",
+      "How do I know my order has been shipped?",
+      "How soon before you ship my order?",
+      "Are duties or custom fees included in the sales price?",
+      "Do you ship to international countries?",
+      "How do I remove curls in my beard?",
+      "How many times a week should I wash my beard?",
+      "How do I grow a thick and full beard?",
+      "Is Beardbrand No Longer Sold in Target?",
+      "Why are Amazon Line Products Less Expensive?",
+      "What is the difference between Styling Paste and Utility Balm?",
+      "What is the difference between Beard Oil and Utility Balm?",
+      "Can I modify the frequency on my subscription?",
+      "Can I modify the billing and shipping addresses on my subscription?",
+      "Can I cancel my subscription?",
+      "What payment methods do you accept?"
+     ],
+     "faqs": [
+      "https://www.beardbrand.com/pages/faqs"
+     ]
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t show the founder runs it or the team is small today",
+     "url": "",
+     "cita": "",
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "Beardbrand was founded to help yo u be the person that you want to be—beard or no beard.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The company was founded by [name removed] and highlights being a bootstrapped, independent business.",
+      "url": "https://www.beardbrand.com/pages/about-us",
+      "cita": "Beardbrand was founded to help yo u be the person that you want to be—beard or no beard."
+     }
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    }
+   ],
+   "gancho": {
+    "hecho": "Beardbrand packages orders in protective honeycomb paper to ensure safe delivery while reducing waste.",
+    "url": "https://www.beardbrand.com/pages/faqs",
+    "cita": "Luxury shipping includes all products being carefully wrapped in protective honeycomb paper for safe delivery and less waste."
+   },
+   "correo": {
+    "asunto": "Handling Beardbrand customer inquiries",
+    "cuerpo": "Hi there,\n\nI noticed Beardbrand wraps orders in protective honeycomb paper for safe delivery with less waste.\n\nYour website includes a detailed FAQ covering shipping timelines, complimentary return labels, and beard care routines.\n\nAt Avasory, we help e-commerce brands answer repeated customer questions—such as shipping status, returns, and product use—automatically.\n\nWould you be open to a quick conversation to see how this works?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.beardbrand.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.beardbrand.com/pages/about-us",
+     "texto": ""
+    },
+    {
+     "url": "https://www.beardbrand.com/pages/faqs",
+     "texto": ""
+    },
+    {
+     "url": "https://www.beardbrand.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.beardbrand.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "graza.co",
+   "shopify": true,
+   "nombre": "Graza",
+   "que_vende": "Olive oils (finishing, cooking, and high-heat oils), mayos, and olive oil snacks",
+   "productos": 81,
+   "puntuacion": 75,
+   "etiqueta": "fit",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 81 products",
+     "url": "https://graza.co/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "81 products listed",
+     "url": "https://graza.co/products.json",
+     "cita": ""
+    },
+    {
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The company states in its FAQ that it ships orders within the United States.",
+     "url": "https://www.graza.co/pages/faqs",
+     "cita": "Right now, we only ship within the United States, but we hope to bring Graza to the world eventually."
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "27 customer questions on the FAQ page",
+     "url": "https://www.graza.co/pages/faqs",
+     "cita": "Where is your product made?",
+     "ejemplos": [
+      "Where is your product made?",
+      "Why the plastic bottle, glass, AND cans??",
+      "Is your packaging recyclable?",
+      "Is your olive oil Single Varietal?",
+      "Why is my oil green? Why isn’t my oil green?"
+     ],
+     "todas": [
+      "Where is your product made?",
+      "Why the plastic bottle, glass, AND cans??",
+      "Is your packaging recyclable?",
+      "Is your olive oil Single Varietal?",
+      "Why is my oil green? Why isn’t my oil green?",
+      "Is your oil organic? GMO-free? Gluten-free?",
+      "How is Frizzle different than Sizzle?",
+      "Olive oil in a beer can?? Why??",
+      "Which kitchen funnel do you recommend for refilling?",
+      "I placed an order, but noticed that I entered the wrong shipping address. What can I do?!",
+      "How long will it take for my Graza to arrive?",
+      "Do you ship outside the U.S.?",
+      "Do you offer returns/exchanges?",
+      "I’m interested in subscription - what are the benefits? How is it different than a one-time purchase?",
+      "I'm a subscriber! How do I switch from squeeze bottles to refill cans?",
+      "Are you hiring? How can I get involved?",
+      "What’s the difference between Original Mayo, Fancy Mayo, and Garlic Aioli?",
+      "What makes Graza mayo different from regular mayo?",
+      "What should I do if I see some separation after opening?",
+      "Is it healthier than traditional mayo?",
+      "How should I store the mayo after opening?",
+      "Can I freeze the mayo?",
+      "Which format is better for cooking vs. everyday use?",
+      "Where can I buy Graza mayo?",
+      "Is the mayo limited-edition?",
+      "The mayo looks thicker than expected — is that normal?",
+      "Where can I find recipes using Graza mayo?"
+     ],
+     "faqs": [
+      "https://www.graza.co/pages/faqs"
+     ]
+    },
+    {
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    }
+   ],
+   "gancho": {
+    "hecho": "Graza packages its refill oil in nitrogen-sealed aluminum cans to shield it from light and prevent oxidation.",
+    "url": "https://www.graza.co/pages/faqs",
+    "cita": "Our \"beer can\" refills are nitrogen-sealed and fully opaque to protect your light-sensitive olive oil & prevent against oxidation."
+   },
+   "correo": {
+    "asunto": "Olive oil refills and FAQ automation",
+    "cuerpo": "Hi team, \n\nI saw on your site that Graza uses nitrogen-sealed, opaque cans to protect refill olive oil from oxidation.\n\nYour FAQ also addresses numerous details around shipping windows, subscription management, product usage, and policies for perishable items.\n\nAt Avasory, we help DTC brands answer repetitive customer questions about shipping, returns, and product use automatically right on the store.\n\nWould you be open to seeing how an automated setup could handle these inquiries around the clock?\n\nBest,\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.graza.co/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.graza.co/pages/about-us",
+     "texto": ""
+    },
+    {
+     "url": "https://www.graza.co/pages/faqs",
+     "texto": ""
+    },
+    {
+     "url": "https://www.graza.co/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.graza.co/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "kettleandfire.com",
+   "shopify": true,
+   "nombre": "Kettle & Fire",
+   "que_vende": "Slow-simmered bone broths, cooking broths, keto broths, and beef tallow.",
+   "productos": 97,
+   "puntuacion": 70,
+   "etiqueta": "fit",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 97 products",
+     "url": "https://kettleandfire.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "97 products listed",
+     "url": "https://kettleandfire.com/products.json",
+     "cita": ""
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t mention selling or shipping in the US",
+     "url": "",
+     "cita": "",
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "Risk-free money back guarantee valid for up to $100.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The refund policy specifies pricing and guarantee limits in US dollars ($100).",
+      "url": "https://www.kettleandfire.com/policies/refund-policy",
+      "cita": "Risk-free money back guarantee valid for up to $100."
+     }
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "11 customer questions on the FAQ page",
+     "url": "https://www.kettleandfire.com/pages/faq",
+     "cita": "Why Bone Broth?",
+     "ejemplos": [
+      "Why Bone Broth?",
+      "How do you make your bone broth?",
+      "What are bone broth's health benefits?",
+      "How is Kettle & Fire different from broth and stock at the grocery store?",
+      "Why doesn't your bone broth need to be frozen?"
+     ],
+     "todas": [
+      "Why Bone Broth?",
+      "How do you make your bone broth?",
+      "What are bone broth's health benefits?",
+      "How is Kettle & Fire different from broth and stock at the grocery store?",
+      "Why doesn't your bone broth need to be frozen?",
+      "What is your bone broth made of?",
+      "Why is bone broth good for gut health?",
+      "How should I consume bone broth?",
+      "How much Bone Broth is in your new Soups?",
+      "What if I don't like it?",
+      "What is the subscription option?"
+     ],
+     "faqs": [
+      "https://www.kettleandfire.com/pages/faq"
+     ]
+    },
+    {
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "They offer a 10% discount on the first order in exchange for an email newsletter subscription.",
+     "url": "https://www.kettleandfire.com/",
+     "cita": "By subscribing, you’ll also receive recipes, product updates, and special offers."
+    }
+   ],
+   "gancho": {
+    "hecho": "Kettle & Fire slow-simmers organic or grass-fed bones for over 24 hours on low heat with organic vegetables and spices.",
+    "url": "https://www.kettleandfire.com/pages/faq",
+    "cita": "We slow-simmer our organic or 100% grass-fed bones for 24+ hours on low heat, along with organic vegetables and a few spices."
+   },
+   "correo": {
+    "asunto": "Answering Kettle & Fire customer questions automatically",
+    "cuerpo": "Hi Kettle & Fire team,\n\nI saw that you slow-simmer your bones for 24+ hours on low heat with organic vegetables and spices.\n\nYour site already outlines detailed guidance across your FAQ and refund policy, covering storage after opening, subscription details, and refunds up to $100.\n\nAt Avasory, we help brands answer repetitive questions about product use, shipping, and returns automatically across support channels.\n\nWould you be open to seeing a brief preview of how repeated customer inquiries could be answered automatically for Kettle & Fire?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.kettleandfire.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.kettleandfire.com/pages/about-us",
+     "texto": ""
+    },
+    {
+     "url": "https://www.kettleandfire.com/pages/faq",
+     "texto": ""
+    },
+    {
+     "url": "https://www.kettleandfire.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.kettleandfire.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "deathwishcoffee.com",
+   "shopify": true,
+   "nombre": "Death Wish Coffee",
+   "que_vende": "Organic and Fair Trade coffee in whole bean, ground, single-serve pods, canned lattes, and branded merchandise.",
+   "productos": 158,
+   "puntuacion": 58,
+   "etiqueta": "maybe",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 158 products",
+     "url": "https://deathwishcoffee.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "158 products listed",
+     "url": "https://deathwishcoffee.com/products.json",
+     "cita": ""
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t mention selling or shipping in the US",
+     "url": "",
+     "cita": "",
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "We're headquartered in downtown Saratoga Springs with manufacturing down the road in Round Lake, New York.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The company states its headquarters and manufacturing facilities are based in New York.",
+      "url": "https://www.deathwishcoffee.com/pages/about",
+      "cita": "We're headquartered in downtown Saratoga Springs with manufacturing down the road in Round Lake, New York."
+     }
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "en_parte",
+     "razon": "8 customer questions on the FAQ page",
+     "url": "https://www.deathwishcoffee.com/pages/help",
+     "cita": "WHAT IS YOUR PRIVACY POLICY?",
+     "ejemplos": [
+      "WHAT IS YOUR PRIVACY POLICY?",
+      "HOW SAFE IS IT TO ORDER ONLINE?",
+      "HOW CAN I GET DEATH WISH COFFEE FOR MY OFFICE?",
+      "DO YOU HAVE A WHOLESALE CATALOG OR PROGRAM?",
+      "Do you offer a military discount?"
+     ],
+     "todas": [
+      "WHAT IS YOUR PRIVACY POLICY?",
+      "HOW SAFE IS IT TO ORDER ONLINE?",
+      "HOW CAN I GET DEATH WISH COFFEE FOR MY OFFICE?",
+      "DO YOU HAVE A WHOLESALE CATALOG OR PROGRAM?",
+      "Do you offer a military discount?",
+      "Can you ship to an APO/FPO address?",
+      "Do you charge additional fees to ship to APO/FPO’s?",
+      "How long will it take for my package to reach my Military Post Office?"
+     ],
+     "faqs": [
+      "https://www.deathwishcoffee.com/pages/help"
+     ]
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t show the founder runs it or the team is small today",
+     "url": "",
+     "cita": "",
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "[name removed] brings his idea for Death Wish Coffee to life, creating the recipe and roasting process.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The about page highlights the founder [name removed] creating the brand recipe and roasting process.",
+      "url": "https://www.deathwishcoffee.com/pages/about",
+      "cita": "[name removed] brings his idea for Death Wish Coffee to life, creating the recipe and roasting process."
+     }
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The website offers a 20% discount on first orders in exchange for signing up.",
+     "url": "https://www.deathwishcoffee.com/",
+     "cita": "STAY BOLD, STAY CAFFEINATED. SIGN UP AND SAVE 20% OFF YOUR FIRST ORDER"
+    }
+   ],
+   "gancho": {
+    "hecho": "Death Wish Coffee partnered with NASA Food Labs to develop an instant coffee blend for astronauts aboard the International Space Station.",
+    "url": "https://www.deathwishcoffee.com/pages/about",
+    "cita": "With the help of NASA Food Labs, Death Wish Coffee developed an instant freeze-dried blend of our coffee to fuel astronauts on the International Space Station."
+   },
+   "correo": {
+    "asunto": "Space station brew & customer support",
+    "cuerpo": "Hi Death Wish Coffee team,\n\nDeveloping an instant blend with NASA Food Labs to fuel astronauts on the International Space Station is an incredible milestone.\n\nYour site outlines a 60-day money-back guarantee alongside subscriptions and multiple brew formats.\n\nAt Avasory, we help online brands automatically answer repetitive customer questions regarding shipping, returns, and product use.\n\nWould you be open to seeing a quick demo of how routine customer questions can be answered automatically?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.deathwishcoffee.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.deathwishcoffee.com/pages/about",
+     "texto": ""
+    },
+    {
+     "url": "https://www.deathwishcoffee.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.deathwishcoffee.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "brooklinen.com",
+   "shopify": true,
+   "nombre": "Brooklinen",
+   "que_vende": "Luxury bedding, sheets, comforters, pillows, and bath towels",
+   "productos": 250,
+   "puntuacion": 53,
+   "etiqueta": "maybe",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 250+ products",
+     "url": "https://brooklinen.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "en_parte",
+     "razon": "250+ products: a large catalog",
+     "url": "https://brooklinen.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The store offers free ground shipping on orders over $100 to the contiguous United States.",
+     "url": "https://www.brooklinen.com/",
+     "cita": "We offer free ground shipping on all orders over $100 shipping to the contiguous (lower 48) United States."
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "sin_dato",
+     "razon": "The FAQ page was read but its HTML has no questions (they may load later with JavaScript)",
+     "url": "https://www.brooklinen.com/pages/faq",
+     "cita": "",
+     "ejemplos": []
+    },
+    {
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The website collects email addresses for product launches, company news, and offers.",
+     "url": "https://www.brooklinen.com/",
+     "cita": "Please keep me up to date with Brooklinen news and offers by email. I can unsubscribe at any time."
+    }
+   ],
+   "gancho": {
+    "hecho": "Brooklinen partners with Good360 to donate returned products across the country.",
+    "url": "https://www.brooklinen.com/pages/about",
+    "cita": "We partner with Good360 to distribute any returned product to donation centers across the country."
+   },
+   "correo": {
+    "asunto": "Quick question regarding Brooklinen",
+    "cuerpo": "Hi Brooklinen team,\n\nI noticed that you partner with Good360 to donate returned products across the country, which is a great initiative.\n\nYour site outlines specific policies around orders, shipping thresholds, and your 365-day return process. At Avasory, we help e-commerce stores handle routine inquiries automatically—giving shoppers instant answers on shipping timeframes, return rules, and product care guidelines without tying up your support channels.\n\nWould you be open to a quick walkthrough showing how this works?\n\nBest,\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.brooklinen.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.brooklinen.com/pages/about",
+     "texto": ""
+    },
+    {
+     "url": "https://www.brooklinen.com/pages/faq",
+     "texto": ""
+    },
+    {
+     "url": "https://www.brooklinen.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.brooklinen.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "tentree.com",
+   "shopify": true,
+   "nombre": "tentree",
+   "que_vende": "Sustainable apparel and outdoor accessories including sweaters, hoodies, joggers, pants, and hats.",
+   "productos": 250,
+   "puntuacion": 53,
+   "etiqueta": "maybe",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 250+ products",
+     "url": "https://tentree.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "en_parte",
+     "razon": "250+ products: a large catalog",
+     "url": "https://tentree.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The store offers shipping across the US with set thresholds in USD.",
+     "url": "https://www.tentree.com/policies/shipping-policy",
+     "cita": "Free U.S. shipping on all orders over $100."
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "sin_dato",
+     "razon": "No FAQ or help page could be read",
+     "url": "",
+     "cita": "",
+     "ejemplos": []
+    },
+    {
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "cumple": "sin_dato",
+     "razon": "Not found on the pages read",
+     "url": "",
+     "cita": ""
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The site invites visitors to join their email list in exchange for a discount.",
+     "url": "https://www.tentree.com/",
+     "cita": "Join tentree's Email & Text lists to get 15% off!"
+    }
+   ],
+   "gancho": {
+    "hecho": "Tentree plants trees for every single item purchased to regenerate ecosystems and create planting jobs worldwide.",
+    "url": "https://www.tentree.com/pages/about",
+    "cita": "For every item purchased we plant trees, in an effort to regenerate ecosystems, capture carbon and provide planting jobs in communities around the world."
+   },
+   "correo": {
+    "asunto": "Customer support automation for tentree",
+    "cuerpo": "Hi team,\n\nI saw that tentree plants trees for every item purchased to help regenerate ecosystems worldwide.\n\nYour website outlines policies for free US shipping over $100 and $10 returns, alongside final sale rules for items discounted 30% or more. We help e-commerce stores handle routine questions about shipping thresholds, return conditions, and product details using AI automation.\n\nWould you be open to a brief walkthrough to see how repeated customer inquiries could be answered automatically?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.tentree.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.tentree.com/pages/about",
+     "texto": ""
+    },
+    {
+     "url": "https://tentree.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.tentree.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.tentree.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "allbirds.com",
+   "shopify": true,
+   "nombre": "Allbirds",
+   "que_vende": "Comfortable and sustainable footwear, clothing, and accessories made from natural materials.",
+   "productos": 250,
+   "puntuacion": 50,
+   "etiqueta": "maybe",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 250+ products",
+     "url": "https://allbirds.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "en_parte",
+     "razon": "250+ products: a large catalog",
+     "url": "https://allbirds.com/products.json",
+     "cita": ""
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t mention selling or shipping in the US",
+     "url": "",
+     "cita": "",
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "ALL CALIFORNIA RESIDENTS WILL INCUR SALES TAX AS SET BY THE STATE OF CALIFORNIA AND/OR THE COUNTY TO WHICH YOUR DELIVERY WILL BE SHIPPED.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The store displays prices in USD and outlines state sales tax rules for shipments delivered to California residents.",
+      "url": "https://www.allbirds.com/policies/shipping-policy",
+      "cita": "ALL CALIFORNIA RESIDENTS WILL INCUR SALES TAX AS SET BY THE STATE OF CALIFORNIA AND/OR THE COUNTY TO WHICH YOUR DELIVERY WILL BE SHIPPED."
+     }
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "en_parte",
+     "razon": "4 customer questions on the FAQ page",
+     "url": "https://www.allbirds.com/pages/help",
+     "cita": "What is your return policy?",
+     "ejemplos": [
+      "What is your return policy?",
+      "How do I return a gift?",
+      "What items are final sale? Can I return them?",
+      "How do I send back my return?"
+     ],
+     "todas": [
+      "What is your return policy?",
+      "How do I return a gift?",
+      "What items are final sale? Can I return them?",
+      "How do I send back my return?"
+     ],
+     "faqs": [
+      "https://www.allbirds.com/pages/help"
+     ]
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t show the founder runs it or the team is small today",
+     "url": "",
+     "cita": "",
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "Our story began in New Zealand in 2007, the passion project of former professional footballer [name removed].",
+     "ia": {
+      "cumple": "si",
+      "razon": "The Our Story page highlights the founders and how the brand started as a passion project.",
+      "url": "https://www.allbirds.com/pages/our-story",
+      "cita": "Our story began in New Zealand in 2007, the passion project of former professional footballer [name removed]."
+     }
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The website provides a sign-up form inviting visitors to subscribe to marketing emails.",
+     "url": "https://www.allbirds.com/pages/our-story",
+     "cita": "Subscribe to our emails"
+    }
+   ],
+   "gancho": {
+    "hecho": "Allbirds allows customers to opt in for return coverage at checkout so that return shipping labels are included.",
+    "url": "https://www.allbirds.com/policies/refund-policy",
+    "cita": "When you opt-in for coverage at checkout, your return shipping label is included"
+   },
+   "correo": {
+    "asunto": "Answering recurring customer questions for Allbirds",
+    "cuerpo": "Hi Allbirds team,\n\nI noticed on your store that customers can opt in for return coverage at checkout so their return shipping label is included.\n\nYour website sets out clear policies around 30-day returns, item conditions, and delivery processing times. At Avasory, we help brands automatically handle repetitive customer questions regarding shipping updates, returns, and shoe care based on their published documentation.\n\nWould you be open to seeing a brief demonstration of how this works?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://www.allbirds.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://www.allbirds.com/pages/our-story",
+     "texto": ""
+    },
+    {
+     "url": "https://www.allbirds.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://www.allbirds.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "bokksu.com",
+   "shopify": true,
+   "nombre": "Bokksu",
+   "que_vende": "Japanese snack and candy subscription boxes, specialty gifts, and Asian groceries",
+   "productos": 11,
+   "puntuacion": 45,
+   "etiqueta": "maybe",
+   "criterios": [
+    {
+     "id": "shopify",
+     "nombre": "Sells on Shopify",
+     "peso": 20,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "/products.json returns 11 products",
+     "url": "https://bokksu.com/products.json",
+     "cita": ""
+    },
+    {
+     "id": "catalogo",
+     "nombre": "Manageable catalog (10–249 products)",
+     "peso": 15,
+     "tipo": "regla",
+     "cumple": "si",
+     "razon": "11 products listed",
+     "url": "https://bokksu.com/products.json",
+     "cita": ""
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t mention selling or shipping in the US",
+     "url": "",
+     "cita": "",
+     "id": "eeuu",
+     "nombre": "Sells and ships in the US",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "Total plus shipping fee calculated at checkout. All prices in USD",
+     "ia": {
+      "cumple": "si",
+      "razon": "The store lists pricing in USD and notes US-specific text support on its website.",
+      "url": "https://bokksu.com/",
+      "cita": "Total plus shipping fee calculated at checkout. All prices in USD"
+     }
+    },
+    {
+     "id": "preguntas",
+     "nombre": "FAQ with many customer questions",
+     "peso": 25,
+     "tipo": "regla",
+     "cumple": "sin_dato",
+     "razon": "The FAQ page was read but its HTML has no questions (they may load later with JavaScript)",
+     "url": "https://bokksu.com/pages/faq",
+     "cita": "",
+     "ejemplos": []
+    },
+    {
+     "cumple": "sin_dato",
+     "razon": "Not counted: the quote doesn’t show the founder runs it or the team is small today",
+     "url": "",
+     "cita": "",
+     "id": "equipo",
+     "nombre": "Small team or founder-led",
+     "peso": 15,
+     "tipo": "ia",
+     "rechazada": "After living in Japan, founder [name removed] Taing fell in love with the delicious local snacks he had discovered.",
+     "ia": {
+      "cumple": "si",
+      "razon": "The About page details founder [name removed] Taing and the company's beginnings packing boxes in his living room.",
+      "url": "https://bokksu.com/pages/about",
+      "cita": "After living in Japan, founder [name removed] Taing fell in love with the delicious local snacks he had discovered."
+     }
+    },
+    {
+     "id": "email",
+     "nombre": "Already does email marketing",
+     "peso": 10,
+     "tipo": "ia",
+     "cumple": "si",
+     "razon": "The site collects emails offering a $5 discount on the first order.",
+     "url": "https://bokksu.com/",
+     "cita": "Sign up & get $5 off your first order + exclusive deals!"
+    }
+   ],
+   "gancho": {
+    "hecho": "Each Bokksu box includes an extensive culture guide detailing product origins, flavor profiles, and allergens.",
+    "url": "https://bokksu.com/",
+    "cita": "You’ll also find a 20-24 page Culture Guide detailing each product’s origin, flavor notes, and common allergens."
+   },
+   "correo": {
+    "asunto": "Bokksu snack guide and customer questions",
+    "cuerpo": "Hi there,\n\nI noticed that each Bokksu box comes with a 20 to 24-page Culture Guide detailing snack origins, flavor notes, and allergens.\n\nYour site also outlines that boxes ship directly from Japan and items are final sale. When visitors have inquiries regarding international delivery timelines, policies, or product details, handling them can take time.\n\nAt Avasory, we help brands automate answers to repeated customer questions about shipping, returns, and product use.\n\nWould you be open to seeing how this could work for Bokksu?\n\nCris · Avasory",
+    "estado": "draft, never sent"
+   },
+   "nota": "",
+   "paginas": [
+    {
+     "url": "https://bokksu.com/",
+     "texto": ""
+    },
+    {
+     "url": "https://bokksu.com/pages/about",
+     "texto": ""
+    },
+    {
+     "url": "https://bokksu.com/pages/faq",
+     "texto": ""
+    },
+    {
+     "url": "https://bokksu.com/policies/shipping-policy",
+     "texto": ""
+    },
+    {
+     "url": "https://bokksu.com/policies/refund-policy",
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "dominio": "ruggable.com",
+   "shopify": false,
+   "puntuacion": 0,
+   "etiqueta": "no fit",
+   "nota": "/products.json does not respond, so it can’t be confirmed as a Shopify store",
+   "paginas": []
+  }
+ ],
+ "repuntuado": "2026-10-30T20:38:23.085Z"
+}

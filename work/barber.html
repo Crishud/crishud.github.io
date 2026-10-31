@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Barbershop booking · Cristian Sánchez</title>
+<meta name="description" content="A booking product for US barbershops, still in planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header id="header">
+  <div class="row">
+    <a class="logo" href="../index.html" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
+    <button class="icon-nav" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <div id="menu"><div><ul id="nav"><li><a href="../about.html">about</a></li><li><a href="../learn.html">learn</a></li><li><a href="../portfolio.html" aria-current="page">portfolio</a></li><li><a href="../contact.html">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li></ul></li></ul></div></div>
+  </div>
+</header>
+<div class="content">
+
+<section class="main nopad-b">
+  <div class="row">
+    <div class="col col-5 text-main rise">
+      <span class="uppercase">Product in planning</span>
+      <h1 class="draw">barbershop booking.</h1>
+      <p class="intro">A booking product for US barbershops, still in planning.</p>
+      <p>My bet: the hard part isn’t using a booking app, it’s filling it. So a shop should be live the day it signs up, with its price list already written.</p>
+      <ul class="stack" aria-label="What I used"><li>Competitor research</li><li>Screen-by-screen sketches</li><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li></ul>
+      <div class="buttons"><a class="button" href="#demo">Try the demo</a><a class="button secondary" href="../portfolio.html">All projects</a></div>
+    </div>
+    <div class="col col-7 img-main rise"><div class="marco"><img src="../img/shots/barber-m.png" alt="" loading="lazy"></div></div>
+  </div>
+</section>
+<section class="dark">
+  <div class="split-list">
+    <div class="rise"><h2>What I set out to do</h2><p>A shop signs up and takes its first real booking the same day. The client books with a name and a phone number, no account. Before deciding anything, I went through the main competitors screen by screen and read what owners and clients complain about.</p></div>
+    <div class="rise"><h2>Decisions I made</h2><ul class="facts"><li><b>Book without an account:</b> name and phone, and the phone is the key.</li><li><b>The app never recommends another shop</b> to someone who didn’t ask. A shop’s clients stay its clients.</li><li><b>A full price list, visible,</b> with no hidden fees. Fees were the top complaint in the reviews I read.</li><li><b>Big buttons:</b> 48px minimum, 56px for “Book”.</li><li><b>Review requests go to every client,</b> never only to the happy ones.</li><li><b>Self-service:</b> nobody sets a shop up by hand.</li></ul></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="sub-head rise"><h2>How it works</h2><p>Three pieces, all still planned: the owner’s app, a public booking page per shop, and the client’s phone.</p></div>
+  <div class="rise"><div class="arch" role="img" aria-label="Owner’s app → Booking page → Client’s phone"><div class="node planned">Owner’s app<small>set up, day, clients</small></div><span class="wire" style="--i:1"></span><div class="node planned">Booking page<small>one link per shop</small></div><span class="wire" style="--i:2"></span><div class="node planned">Client’s phone<small>name + phone, no account</small></div></div></div>
+  <div class="sub-head rise"><h3>The bet</h3><p>Booking apps are easy to use. The hard part is filling them, so the shop should be ready on day one.</p></div>
+  <div class="rise"><ol class="flow-steps"><li style="--i:0;--n:5">Shop signs up</li><li style="--i:1;--n:5">Price list already written<small>for that type of shop</small></li><li style="--i:2;--n:5">Shares its link</li><li style="--i:3;--n:5">Client books<small>name and phone</small></li><li style="--i:4;--n:5">First booking same day<small>the goal, not a result</small></li></ol></div>
+</section>
+
+<section class="dark">
+  <div class="sub-head rise"><h2>Under the hood</h2><p>What I used, and why.</p></div>
+  <div class="tech rise"><div><b>Competitor research</b><span>I went through the main booking apps screen by screen before deciding anything.</span></div><div><b>Reviews as data</b><span>I read what owners and clients complain about. Fees and commissions came up the most.</span></div><div><b>Sketches first</b><span>The owner app was sketched screen by screen from that research before any code.</span></div><div><b>A clickable prototype</b><span>Plain HTML and JavaScript, to test the flows with test data before building the real thing.</span></div></div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>The plan, and where it stands</h2><ol class="steps"><li><span class="st done">Done</span><span>Competitor research: flows, settings and reviews.</span></li><li><span class="st done">Done</span><span>The owner app, sketched from that research, and a clickable prototype of it.</span></li><li><span class="st ">Pending</span><span>The build plan, then the first real code.</span></li><li><span class="st ">Pending</span><span>Name, price, payments and no-show rules.</span></li></ol></div></div>
+</section>
+<section class="dark"><div class="row wide"><h2 class="rise">Plans &amp; screens</h2></div><div class="figs rise"><figure><a href="../originales/barberia-propuesta.svg"><img src="../originales/barberia-propuesta.svg" alt="My proposal sketch for the owner app (Spanish)." loading="lazy" class="contain"></a><figcaption>My proposal sketch for the owner app (Spanish).</figcaption></figure></div></section>
+
+<section class="light" id="demo">
+  <div class="row"><div class="col col-12 rise"><h2>The prototype</h2><p>The planned flows: the owner sets up the shop, a client books, and the owner’s phone app. I made the sketch clickable with test data; there’s no real code yet.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../barber.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../barber.html" title="The prototype, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../barber.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../barber.html" title="The prototype, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>What I can’t claim yet</h2><p>No launch date, no price and no final name. “Live the same day” is the goal, not a result.</p></div></div>
+</section>
+<section class="dark">
+  <nav class="pager" aria-label="More projects"><a href="hub.html"><small>← Previous</small><b>My AI agent hub</b></a><a href="ventas.html" style="text-align:right"><small>Next →</small><b>AI sales desk</b></a></nav>
+</section>
+</div>
+<footer id="footer">
+  <a class="top" href="#header" aria-label="Back to top">↑</a>
+  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="../about.html">about</a><a href="../learn.html">learn</a><a href="../portfolio.html">portfolio</a><a href="../contact.html">contact</a></nav></div>
+</footer>
+<script src="../app.js"></script>
+</body>
+</html>

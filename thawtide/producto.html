@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>Thawtide Rechargeable Hand Warmer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#DCEEFC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&display=swap">
+<style>
+
+:root{--bg:#DCEEFC;--fg:#0d1117;--mute:#4a5a70;--line:#bcd6ee;--ice:#3d8fd6;--mag:#fb2298;--menta:#7df2d8;--hero:#DCEEFC;--btn-bg:#fff;--btn-fg:#0d1117;--btn-edge:#0d1117}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Archivo,system-ui,sans-serif}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:9;color:#fff;padding:8px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));transition:color .3s .3s;pointer-events:none}
+.hdr a,.hdr button{pointer-events:auto}
+.hdr .promo{font-size:11px;font-weight:600;text-align:center;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;opacity:.85}
+.hdr .hrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:10px 0}
+.hdr .hl{display:flex;gap:20px;font-weight:600;font-size:15px}
+.hdr .hl a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+.hdr .logo{font-weight:900;font-size:clamp(28.5px,3.8vw,45.6px);text-shadow:0 1px 3px rgba(13,17,23,.3);letter-spacing:-.05em;line-height:1;text-align:center}
+.hdr .ib{position:relative;width:58px;height:58px;border-radius:50%;border:2px solid #fff;background:#fff;color:#0d1117;box-shadow:0 2px 8px rgba(13,17,23,.12);display:grid;place-items:center;cursor:pointer;transition:background .2s,color .2s}
+.hdr .ib:active{transform:scale(.94)}
+
+body[data-btn="a"] .hdr .ib,body[data-btn="b"] .hdr .ib{border:2px solid #0d1117;box-shadow:0 4px 0 #0d1117;transition:transform .1s,box-shadow .1s,background .2s}
+body[data-btn="a"] .hdr .ib:active,body[data-btn="b"] .hdr .ib:active{transform:translateY(4px);box-shadow:0 0 0 #0d1117}
+body[data-btn="b"] .hdr .ib{background:#fb2298}
+body[data-btn="b"] .hdr .badge{background:#fff;border:1.5px solid #0d1117}
+body[data-btn="a"] .hdr .badge{border:1.5px solid #0d1117}
+body[data-btn="c"] .hdr .ib{border:4px solid #fff;background:#f3f8ff;box-shadow:inset 0 -6px 10px rgba(13,17,23,.10),0 6px 14px rgba(13,17,23,.18);border-radius:46% 54% 50% 50%/52% 48% 52% 48%}
+body[data-btn="c"] .hdr .ib:active{transform:scale(.9)}
+.hdr .badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:999px;background:#fb2298;color:#0d1117;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px}
+.hdr .hr{display:flex;gap:8px;justify-content:flex-end}
+.hdr .hb{font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;border:2px solid currentColor;background:transparent;color:inherit;cursor:pointer}
+.hdr .hb.fill{background:currentColor}
+.hdr .hb.fill span{color:var(--hero);transition:color .3s .3s}
+.hdr.past{color:var(--fg)}
+.hdr.past .promo{display:none}
+.hdr.past .hb.fill span{color:var(--bg)}
+@media(max-width:600px){.hdr .hl{display:none}.hdr .hrow{grid-template-columns:auto 1fr}.hdr .logo{text-align:left;font-size:30.4px}.hdr .ib{width:52px;height:52px}.hdr .hr{gap:6px}}
+.hdr{color:var(--fg);background:var(--bg);box-shadow:0 1px 0 rgba(13,17,23,.08)}   /* en esta página la cabecera lleva fondo: si no, se monta sobre el contenido */
+@media(min-width:768px){summary{font-size:22px;min-height:76px}details .dentro{font-size:19px}}
+.hdr .logo{transition:opacity .35s,transform .35s}
+.hdr.sinlogo .logo{opacity:0;transform:translateY(-12px);pointer-events:none}
+/* carrito (panel por la derecha) y menú (pantalla completa) */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(13,17,23,.45);opacity:0;transition:opacity .3s}
+.velo.on{opacity:1}
+.carrito{position:fixed;top:0;right:0;bottom:0;z-index:41;width:min(100vw,420px);background:#fff;color:#0d1117;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 24px 20px;transform:translateX(100%);transition:transform .38s cubic-bezier(.3,.9,.3,1);box-shadow:-10px 0 40px rgba(13,17,23,.18)}
+.carrito.on{transform:none}
+.cj-cab,.mn-cab{display:flex;align-items:center;justify-content:space-between}
+.cj-cab h2{margin:0;font-weight:400;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.cj-x{width:52px;height:52px;border-radius:50%;border:2px solid #0d1117;background:#fff;color:#0d1117;font-size:30px;line-height:1;cursor:pointer}
+.cj-vacio{flex:1;display:grid;place-content:center;justify-items:center;gap:14px;text-align:center}
+.cj-vacio[hidden]{display:none}   /* juez 20 oct: display:grid pisaba [hidden] */
+.cj-vacio img{height:180px;width:auto}
+.cj-vacio p{margin:0;font-size:18px}
+.cj-ir{display:inline-block;padding:16px 26px;border-radius:999px;background:#fb2298;border:1px solid #0d1117;color:#0d1117;font-weight:700;text-decoration:none;box-shadow:0 5px 0 #0d1117}
+.menu{position:fixed;inset:0;z-index:41;background:#7df2d8;color:#0d1117;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 28px max(20px,env(safe-area-inset-left,0px));clip-path:circle(0 at calc(100% - 46px) 46px);transition:clip-path .5s cubic-bezier(.6,0,.3,1)}
+.menu.on{clip-path:circle(150% at calc(100% - 46px) 46px)}
+.mn-logo{font-weight:900;font-size:30px;letter-spacing:-.05em}
+.mn-links{list-style:none;margin:auto 0;padding:0;display:grid;gap:6px}
+.mn-links a{display:block;color:#0d1117;text-decoration:none;font-weight:300;text-transform:uppercase;font-size:min(13vw,96px);line-height:1;letter-spacing:-.02em}
+.mn-links a:hover,.mn-links a:focus-visible{color:#fb2298}
+.mn-redes{justify-content:flex-start;margin-top:18px}
+.mn-pend{margin:14px 0 0;font-size:12px;color:#9c3010}
+.cj-x:focus-visible,.cj-ir:focus-visible,.mn-links a:focus-visible{outline:3px solid #0d1117;outline-offset:4px}
+body.cajon{overflow:hidden}
+.carrito[hidden],.menu[hidden],.velo[hidden]{display:none}
+.s7-rond{position:relative;display:block;width:60px;height:60px;border-radius:50%}
+.s7-rond::after{content:"";position:absolute;inset:0;border-radius:50%;background:#0d1117;transform:translateY(5px)}
+.s7-rond span{position:relative;z-index:1;display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#fb2298;border:1px solid #0d1117;transition:transform .1s}
+.s7-rond:active span{transform:translateY(5px)}
+.s7-rond:focus-visible{outline:3px solid #0d1117;outline-offset:6px}
+.s7-rond{width:72px;height:72px}
+.s7-redes{display:flex;justify-content:center;gap:18px;margin-top:30px}
+.pp{max-width:1100px;margin:0 auto;padding:96px 0 40px}
+/* galería */
+.gal{position:relative;margin:16px 16px 0;aspect-ratio:1;border-radius:24px;overflow:hidden;background:#d4d7e0}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.gal img.on{opacity:1}
+.flecha{position:absolute;top:50%;width:52px;height:52px;margin-top:-26px;border-radius:50%;border:0;background:#fff;color:var(--fg);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(13,17,23,.15);z-index:2}
+.flecha.izq{left:12px}.flecha.der{right:12px}
+.puntos{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px;z-index:2}
+.puntos i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.5}.puntos i.on{opacity:1}
+.ia{position:absolute;left:12px;top:12px;z-index:2;padding:2px 8px;border-radius:999px;background:rgba(13,17,23,.6);color:#fff;font-size:11px}
+/* bloque de compra */
+.compra{padding:20px 16px 0;display:grid;gap:14px;text-align:center}
+.titulo{margin:0;font-weight:300;text-transform:uppercase;font-size:44px;line-height:.95;letter-spacing:-.01em}
+.precio{display:flex;justify-content:center;gap:12px;align-items:baseline;font-size:20px}
+.precio span{font-size:15px;color:#4a5a70}
+.desc{margin:0 auto;max-width:32ch;font-size:16px;line-height:1.35}
+.fila{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--fg);border-radius:999px;overflow:hidden;min-height:56px}
+.colores{display:flex;align-items:center;justify-content:center;gap:10px;border-right:1.5px solid var(--fg)}
+.sw{width:44px;height:44px;border-radius:50%;border:2px solid transparent;padding:6px;background:none;cursor:pointer}
+.sw i{display:block;width:100%;height:100%;border-radius:50%}
+.sw[aria-pressed="true"]{border-color:var(--fg)}
+.nombreColor{font-size:14px}
+.cant{display:flex;align-items:center;justify-content:space-between;padding:0 10px}
+.cant button{width:44px;height:44px;border:0;background:none;font-size:24px;cursor:pointer;color:var(--fg)}
+.cant output{font-size:18px}
+.add{position:relative;display:block;width:100%;border:0;padding:0;background:none;font:inherit;cursor:pointer}
+.add::after{content:"";position:absolute;inset:0;border-radius:2em;background:var(--fg);transform:translateY(5px)}
+.add span{position:relative;z-index:1;display:block;line-height:62px;border-radius:2em;background:var(--mag);border:1px solid var(--fg);color:var(--fg);font-size:21px;font-weight:700;transition:transform .1s}
+.add:active span{transform:translateY(5px)}
+.hechos{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hechos li{display:grid;justify-items:center;gap:6px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;line-height:1.1}
+.hechos svg{width:34px;height:34px}
+.envio{font-size:13px}
+.pend{display:inline-block;padding:4px 10px;border:1px dashed #d9481a;border-radius:6px;color:#9c3010;background:#fff3e6;font-size:12px}
+.ok{min-height:1.3em;font-size:14px;font-weight:700}
+.ok:empty{position:absolute;width:1px;height:1px;min-height:0;margin:0;overflow:hidden;clip:rect(0 0 0 0)}   
+button:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+/* C: el 3D que se arrastra + miniaturas */
+.c .gal{background:radial-gradient(circle at 50% 45%,#ffffff,#cfe3f6)}
+.c canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:grab}   
+.gal,.gal *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}   
+.minis{display:flex;gap:8px;margin:10px 16px 0;overflow-x:auto;scrollbar-width:none}
+.minis button{flex:0 0 64px;height:64px;border-radius:14px;border:2px solid transparent;padding:0;overflow:hidden;background:#d4d7e0;cursor:pointer}
+.minis button[aria-pressed="true"]{border-color:var(--fg)}
+.minis img{width:100%;height:100%;object-fit:cover;display:block}
+.minis .t3d{font-weight:700;font-size:14px;color:var(--fg);background:#fff}
+
+.c .gal{background:radial-gradient(circle at 50% 45%,#ffffff,#cfe3f6)}
+/* carrito con artículos */
+.cj-lista{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px;flex:1;align-content:start}
+.cj-lista li{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center}
+.cj-lista img{width:72px;height:72px;object-fit:cover;border-radius:14px;background:#d4d7e0}
+.cj-lista b{display:block;font-size:16px}.cj-lista small{color:var(--mute)}
+.cj-total{display:flex;justify-content:space-between;font-size:18px;padding:16px 0;border-top:1.5px solid var(--fg)}
+.cj-pagar{display:block;width:100%;padding:18px;border-radius:999px;background:var(--mag);border:1px solid var(--fg);box-shadow:0 5px 0 var(--fg);font:inherit;font-weight:700;font-size:18px;color:var(--fg);cursor:pointer}
+.cj-pend{margin:12px 0 0;font-size:12px;color:#9c3010;text-align:center}
+@media(min-width:768px){
+  .pp-uno{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;padding:0 32px}
+  .pp-uno .gal{margin:0} .pp-uno .minis{margin:12px 0 0}
+  .pp-uno .compra{text-align:left;padding:30px 0 0} .pp-uno .precio{justify-content:flex-start} .pp-uno .desc{margin:0}
+  .titulo{font-size:72px}
+}
+/* sección 2 */
+.pp-dos{max-width:760px;margin:56px auto 0;padding:0 16px}
+details{border-top:1.5px solid var(--fg)}
+details:last-of-type{border-bottom:1.5px solid var(--fg)}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:64px;cursor:pointer;text-transform:uppercase;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary .mas{width:36px;height:36px;border-radius:50%;background:var(--mag);border:1px solid var(--fg);display:grid;place-items:center;font-size:22px;transition:transform .25s}
+details[open] summary .mas{transform:rotate(45deg)}
+details .dentro{padding:0 0 18px;font-size:16px;line-height:1.4}
+details .dentro p{margin:0 0 10px}details .dentro a{color:var(--fg);text-underline-offset:3px;display:inline-block;min-height:44px;padding:12px 0;margin-right:18px;line-height:20px}   /* 22 oct: enlaces del desplegable de envíos, sin puntos entre ellos */
+details ul{margin:0;padding-left:18px}
+summary:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+/* sección 3 */
+.pp-tres{--hero:#7FBFF5;--ptext:#0d1117;max-width:430px;margin:64px auto 0;padding:0 16px;overflow:hidden;position:relative}
+/* tarjetas (las de la portada) */
+.card{position:relative;background:var(--hero);color:var(--ptext);border-radius:26px;padding:20px 18px 18px;aspect-ratio:3/4.3;width:100%;display:grid;grid-template-rows:auto 1fr auto;gap:10px;box-shadow:0 8px 24px rgba(13,17,23,.18)}
+.card .big{font-weight:900;font-size:44px;line-height:.86;letter-spacing:-.02em;text-transform:uppercase;font-stretch:85%}
+.card .ill.foto{position:relative;min-height:0}
+.card .ill.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 0}
+.card .ill .v-noche{display:none}
+.card .ill.icono{display:grid;place-items:start center;min-height:0;--reuse:#00715F}
+.card .ill.icono svg{width:100%;height:auto;max-height:100%}
+.card h3{margin:0;font-size:17px;line-height:1.2}
+
+.rueda{position:relative;height:470px;margin-top:6px}
+.pp-tres{-webkit-mask-image:linear-gradient(#000 calc(100% - 80px),transparent calc(100% - 10px));mask-image:linear-gradient(#000 calc(100% - 80px),transparent calc(100% - 10px))}   /* juez 20 oct: las de los lados se desvanecen abajo en vez de cortarse en recto */
+.rueda .eje{position:absolute;left:50%;top:640px;width:0;height:0;transition:transform .7s cubic-bezier(.6,0,.3,1)}
+.rueda .card{position:absolute;left:-125px;top:-620px;width:250px;transform-origin:125px 620px;transition:opacity .5s}
+.rueda .card.lejos{opacity:0;pointer-events:none}
+.pp-tres .flecha{position:absolute;top:170px;z-index:3;width:56px;height:56px;border-radius:50%;border:1px solid var(--fg);background:#fff;color:var(--fg);display:grid;place-items:center;box-shadow:0 4px 0 var(--fg);cursor:pointer}
+.pp-tres .flecha.izq{left:0}.flecha.der{right:0}
+.pp-tres .tit{margin:0 0 8px;text-align:center;font-weight:300;text-transform:uppercase;font-size:34px;line-height:1}
+@media(min-width:768px){.pp-tres{max-width:none;width:100vw;margin-left:calc(50% - 50vw);padding-bottom:120px}.pp-tres .rueda{max-width:620px;margin:6px auto 0;transform:scale(1.25);transform-origin:50% 0}}   /* PC: la rueda a todo el ancho, sin recortar */
+/* pie */
+.p8-legal a{color:var(--fg);text-decoration:none;display:inline-block;min-height:44px;padding:12px 4px;line-height:20px}
+.p8-base a{color:var(--fg);display:inline-block;min-height:44px;padding:12px 0;line-height:20px}
+.foot{padding:40px 16px 28px;display:grid;gap:14px;color:var(--mute);font-size:13px;max-width:1100px;margin:0 auto}
+.foot .mark{font-weight:900;font-size:min(18vw,180px);letter-spacing:-.05em;color:var(--fg);line-height:.8}
+.foot{position:relative;overflow:hidden}
+.s7-pend{display:inline-block;margin:22px auto 0;padding:4px 10px;border:1px dashed #d9481a;border-radius:6px;color:#9c3010;font-size:13px;max-width:34ch;background:#fff3e6;position:relative;z-index:3}
+.p8{text-align:center;justify-items:center;padding-top:8px;max-width:none}
+.p8 .mark{margin-top:26px}
+.p8-legal{margin-top:22px;font-size:15px;line-height:1.7;color:var(--fg);display:flex;flex-wrap:wrap;column-gap:14px}
+.p8-pend{margin-top:12px}
+.p8-legal button{font:inherit;color:var(--fg);background:none;border:0;cursor:pointer;display:inline-block;min-height:44px;padding:12px 4px;line-height:20px}.p8-legal button[hidden]{display:none}
+.p8-base{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:8px;font-size:15px;color:var(--fg)}
+
+:root{--noche:#0F2A4A;--cielo:#7FBFF5}
+body{transition:background-color .6s,color .6s}
+/* A · Toda la página: noche o cielo, como el hero de la portada */
+body[data-camino="a"][data-amb="negro"]{--bg:var(--noche);--fg:#f2f4f7;--mute:#9fb0c6}
+body[data-camino="a"][data-amb="blanco"]{--bg:var(--cielo);--fg:#0d1117;--mute:#1f3550}
+body[data-camino="a"] .hdr{transition:background-color .6s,color .6s}
+body[data-camino="a"] .precio span{color:inherit;opacity:.8}
+body[data-camino="a"][data-amb="negro"] .c .gal,body[data-camino="c"][data-amb="negro"] .c .gal{background:radial-gradient(circle at 50% 45%,#2b5486,#0b1e36)}
+body[data-camino="a"][data-amb="blanco"] .c .gal{background:radial-gradient(circle at 50% 45%,#ffffff,#a9d6fb)}
+/* B · Solo el escenario del 3D: el resto sigue azul pastel */
+body[data-camino="b"][data-amb="negro"] .c .gal{background:radial-gradient(circle at 50% 40%,#2b5486,#0F2A4A 72%)}
+body[data-camino="b"][data-amb="blanco"] .c .gal{background:radial-gradient(circle at 50% 40%,#ffffff,#7FBFF5 78%)}
+/* C · La compra en su color y la colina de la portada; lo de abajo sigue azul pastel */
+body[data-camino="c"]{--amb:var(--noche);--amb-fg:#f2f4f7}
+body[data-camino="c"][data-amb="blanco"]{--amb:var(--cielo);--amb-fg:#0d1117}
+body[data-camino="c"] .hdr{background:var(--amb);color:var(--amb-fg);box-shadow:none;transition:background-color .6s,color .6s}
+body[data-camino="c"] .pp-uno{position:relative;--fg:var(--amb-fg);color:var(--amb-fg);padding-bottom:70px}
+body[data-camino="c"] .pp-uno::before{content:"";position:absolute;z-index:-1;left:calc(50% - 50vw);width:100vw;top:-140px;bottom:0;background:var(--amb);border-radius:0 0 50% 50%/0 0 70px 70px;transition:background-color .6s}
+body[data-camino="c"] .precio span{color:inherit;opacity:.8}
+body[data-camino="c"][data-amb="blanco"]{--bg:#EEF7FF}   
+body[data-amb="negro"] .pp-tres{--hero:#0F2A4A;--ptext:#f2f4f7}   
+body[data-amb="negro"] .card .ill .v-cielo{display:none}
+body[data-amb="negro"] .card .ill .v-noche{display:block}
+body[data-amb="negro"] .card .ill.icono{--reuse:#19F2B8}
+.pp-tres .card{transition:background-color .6s,color .6s,opacity .5s}
+.rueda .eje{transition:none}   /* la rueda gira sola (JS), sin flechas */
+.rueda{height:600px}
+.rueda .medio{position:absolute;left:50%;bottom:0;width:150px;height:130px;margin-left:-75px;overflow:hidden;z-index:12;pointer-events:none}   /* la mitad del producto asoma debajo de la rueda */
+.rueda .medio img{display:block;width:100%;height:auto;transform-origin:50% 100%;animation:medio 3.2s ease-in-out infinite}
+@keyframes medio{0%,100%{transform:translateY(10px) rotate(-5deg)}50%{transform:translateY(0) rotate(5deg)}}
+@media (prefers-reduced-motion:reduce){.rueda .medio img{animation:none}}
+.minis .t3d{color:#0d1117}   /* la etiqueta 3D, oscura sobre su fondo blanco en los dos ambientes */
+body[data-camino="a"][data-amb="negro"] .add::after,body[data-camino="c"][data-amb="negro"] .add::after{background:#05101f}   /* la sombra del botón, oscura también de noche */
+/* la ficha (de comparar-pp-06, camino C) */
+.pp-ficha{max-width:430px;margin:64px auto 0;padding:0 16px}
+.pp-ficha .tit{margin:0 0 18px;text-align:center;font-weight:300;text-transform:uppercase;font-size:34px;line-height:1}
+/* C · anatomía */
+.pp-ficha .anat{position:relative;height:330px;margin:0 -16px 8px}
+.pp-ficha .anat img{position:absolute;left:50%;top:24px;height:270px;transform:translateX(-50%)}
+.pp-ficha .et{position:absolute;font-size:11px;line-height:1.15;text-transform:uppercase;letter-spacing:.04em;max-width:96px}
+.pp-ficha .et b{display:block;font-size:13px;letter-spacing:0;text-transform:none}
+.pp-ficha .et::before{content:"";position:absolute;top:8px;height:1.5px;background:var(--fg)}
+.pp-ficha .et.izq{left:12px;text-align:left}.pp-ficha .et.izq::before{left:100%;width:var(--l,40px);margin-left:6px}
+.pp-ficha .et.der{right:12px;text-align:right}.pp-ficha .et.der::before{right:100%;width:var(--l,40px);margin-right:6px}
+.pp-ficha .lista{list-style:none;margin:0;padding:0;font-size:15px}
+.pp-ficha .lista li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1.5px solid var(--fg)}
+.pp-ficha .lista li:last-child{border-bottom:1.5px solid var(--fg)}
+.pp-ficha .lista li span{text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:#4a5a70}
+.pp-ficha .pend{display:inline-block;padding:2px 8px;border:1px dashed #d9481a;border-radius:6px;color:#9c3010;background:#fff3e6;font-size:12px;line-height:1.3}
+.pp-ficha .et::before{background:var(--fg)}
+@media(min-width:768px){.pp-ficha{max-width:960px;display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;align-items:center}.pp-ficha .tit{grid-column:1/-1;font-size:56px}.pp-ficha .anat{margin:0;height:400px}.pp-ficha .anat img{height:330px}.pp-ficha .lista{font-size:17px}}
+/* plan 007 · más 3D: halo de calor detrás del producto, botones y pista */
+.c .gal{--calor:0}
+.c .gal::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(34% 44% at 50% 52%,rgba(255,122,60,.75),rgba(251,34,152,.22) 58%,transparent 78%);opacity:var(--calor)}
+.c canvas{z-index:1}
+.tres-ui{position:absolute;left:0;right:0;bottom:12px;z-index:3;display:flex;justify-content:center;gap:8px}
+.tres-ui:empty{display:none}
+.tres-ui button{min-width:44px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #0d1117;background:#fff;color:#0d1117;font:inherit;font-weight:700;font-size:15px;box-shadow:0 3px 0 #0d1117;cursor:pointer}
+.tres-pista{position:absolute;left:0;right:0;bottom:16px;z-index:3;margin:0;text-align:center;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);pointer-events:none}
+.tres-ui:not(:empty)~.tres-pista{bottom:70px}
+.tres-pista.arriba,.tres-ui:not(:empty)~.tres-pista.arriba{top:52px;bottom:auto;padding:0 16px}
+
+.mn-links a{font-size:min(10.5vw,88px)}
+.mn-prod{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:14px;margin:22px 0 0;padding:10px 12px 10px 14px;border:1.5px solid #0d1117;border-radius:20px;background:#fff;color:#0d1117;text-decoration:none}
+.mn-prod img{width:52px;height:72px;object-fit:contain}
+.mn-prod b{display:block;font-size:20px;text-transform:uppercase;letter-spacing:.02em;line-height:1.1}
+.mn-prod small{font-size:13px;color:#4a5a70}
+.mn-prod i{font-style:normal;font-weight:700;padding:11px 16px;border-radius:999px;background:#fb2298;border:1px solid #0d1117;box-shadow:0 3px 0 #0d1117}
+.menu .mn-redes{justify-content:flex-start;margin-top:18px}
+.mn-legal{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:0 18px;font-size:14px}
+.mn-legal a{color:#0d1117;display:inline-flex;align-items:center;min-height:44px}
+.mn-prod:focus-visible,.mn-legal a:focus-visible{outline:3px solid #0d1117;outline-offset:3px}
+
+.menu{overflow-y:auto}
+.mv-b{margin-top:18px}
+.mt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mt{display:grid;align-content:start;gap:6px;min-height:112px;padding:14px;border:2px solid #0d1117;border-radius:22px;background:#fff;color:#0d1117;text-decoration:none;box-shadow:0 4px 0 #0d1117}
+.mt b{font-size:19px;text-transform:uppercase;line-height:1.05}
+.mt small{font-size:13px;color:#4a5a70}
+.mt-shop{grid-column:1/-1;grid-template-columns:60px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;min-height:0;background:#fb2298}
+.mt-shop img{grid-row:1/3;width:60px;height:84px;object-fit:contain}
+.mt-shop small{color:#0d1117}
+.mt:active{transform:translateY(4px);box-shadow:0 0 0 #0d1117}
+.mt:focus-visible{outline:3px solid #0d1117;outline-offset:3px}
+.menu .mn-redes{margin-top:26px}
+.menu .mn-redes .s7-rond{width:52px;height:52px}
+
+.gal .tira{position:absolute;inset:0;display:flex;transition:transform .45s cubic-bezier(.3,.9,.3,1)}
+.gal .lado{flex:0 0 100%;position:relative;overflow:hidden}
+.gal .tira img{position:absolute;inset:0;opacity:1;touch-action:pan-y;user-select:none;-webkit-user-drag:none}
+.gal .flecha{z-index:4;width:56px;height:56px;margin-top:-28px;color:#0d1117;box-shadow:0 2px 10px rgba(13,17,23,.18)}
+.gal .flecha.izq{left:14px}.gal .flecha.der{right:14px}
+.gal:not([data-i="0"]) .tres-pista,.gal:not([data-i="0"]) .tres-ui{display:none}
+@media (prefers-reduced-motion:reduce){.gal .tira{transition:none}}
+
+.titulo{display:grid;justify-items:center;gap:10px}
+.titulo .sep{display:none}
+.titulo .tNom{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border:1.5px solid currentColor;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.08em;line-height:1}
+.titulo .tNom::before{content:"";width:16px;height:16px;border-radius:50%;background:#0b0c0f;box-shadow:0 0 0 1.5px #f2f4f7}
+body[data-amb="blanco"] .titulo .tNom::before{background:#f2f2f4;box-shadow:0 0 0 1.5px #0d1117}
+body[data-nombre="b"] .titulo{gap:0}
+body[data-nombre="b"] .titulo .sep{display:block;width:56px;height:2px;margin:14px 0 12px;background:currentColor}
+body[data-nombre="b"] .titulo .tNom{padding:0;border:0;font-size:22px;font-weight:300;letter-spacing:.14em}
+body[data-nombre="b"] .titulo .tNom::before{display:none}
+body[data-nombre="c"] .titulo{display:block;font-size:40px}
+body[data-nombre="c"] .titulo .sep{display:inline;margin:0 .22em;color:var(--mag)}
+body[data-nombre="c"] .titulo .sep::before{content:"✻"}
+body[data-nombre="c"] .titulo .tNom{display:inline;padding:0;border:0;font:inherit;letter-spacing:inherit}
+body[data-nombre="c"] .titulo .tNom::before{display:none}
+@media(min-width:768px){.titulo{justify-items:start}body[data-nombre="c"] .titulo{font-size:64px}}
+/* plan 007 · C: barra fija de compra (solo móvil) */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--amb,var(--bg));color:var(--amb-fg,var(--fg));box-shadow:0 -6px 24px rgba(13,17,23,.18);transform:translateY(110%);transition:transform .35s cubic-bezier(.3,.9,.3,1),background-color .6s}
+.barra.on{transform:none}
+.b-foto{width:40px;height:56px;object-fit:contain}
+.b-txt{flex:1;min-width:0;font-size:14px;line-height:1.25}
+.b-txt b{display:block;font-size:16px;text-transform:uppercase;letter-spacing:.02em}
+.b-add{flex:0 0 auto;min-height:50px;padding:0 22px;border-radius:999px;background:var(--mag);border:1px solid #0d1117;box-shadow:0 4px 0 #0d1117;font:inherit;font-weight:700;font-size:16px;color:#0d1117;cursor:pointer}
+.b-add:active{transform:translateY(4px);box-shadow:none}
+@media(max-width:767px){body{padding-bottom:84px}}
+@media(min-width:768px){.barra{display:none}}
+@media (prefers-reduced-motion:reduce){.barra{transition:none}}
+
+.titulo .marca{font-size:34px;line-height:1}
+@media(min-width:768px){.titulo .marca{font-size:52px}}
+/* la línea que quita el miedo, debajo del botón */
+.confianza{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:10px;text-align:left;font-size:15px}
+.confianza li{display:grid;grid-template-columns:22px 1fr;column-gap:10px;row-gap:4px;align-items:center}
+.confianza li::before{content:"";grid-row:1;width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fb2298' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.confianza .pend{grid-column:2;justify-self:start;font-size:11px;padding:2px 8px}
+@media(min-width:420px){.confianza{justify-self:center}}
+</style>
+<header class="hdr" id="hdr"><div class="hrow"><span class="hl" aria-hidden="true"></span><a class="logo" href="prototipo-hero.html" style="color:inherit;text-decoration:none">thawtide</a><div class="hr"><a class="ib" href="pendiente.html#cuenta" aria-label="Sign in or create account"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a><button class="ib cart" id="abreCarrito" aria-label="Cart, 0 items" aria-controls="carrito" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 4h2.5l2.2 11h10.6l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.6" fill="currentColor"/><circle cx="17" cy="19.5" r="1.6" fill="currentColor"/></svg><span class="badge" id="cuenta">0</span></button><button class="ib" id="abreMenu" aria-label="Menu" aria-controls="menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div></header>
+<div class="velo" id="velo" hidden></div>
+<aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="tCarrito" hidden>
+  <div class="cj-cab"><h2 id="tCarrito">Your cart</h2><button class="cj-x" type="button" data-cierra aria-label="Close cart">×</button></div>
+  <div class="cj-vacio"><img data-ia="1" src="fotos/pie-copo-frio.webp" alt="" width="242" height="700"><p>Your cart is empty.</p><a class="cj-ir" href="#comprar" data-cierra>Shop hand warmers</a></div>
+</aside>
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <div class="mn-cab"><span class="mn-logo">thawtide</span><button class="cj-x" type="button" data-cierra aria-label="Close menu">×</button></div>
+  
+  <div class="mv-b">
+    <div class="mt-grid">
+      <a class="mt mt-shop" href="#comprar" data-cierra><img src="producto/negro-delante.webp" alt="" width="60" height="84"><b>Shop</b><small>Hand warmer · $29.99</small></a>
+      <a class="mt" href="#porque" data-cierra><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>How it works</b></a>
+      <a class="mt" href="faq.html"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5V14M12 17h.01" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linecap="round"/></svg><b>FAQ</b></a>
+      <a class="mt" href="contacto.html"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M3 7l9 6 9-6" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>Contact</b></a>
+      <a class="mt" href="#ficha" data-cierra><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M3 8l9-5 9 5-9 5-9-5z M3 8v8l9 5 9-5V8 M12 13v8" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>What it&#39;s made of</b></a>
+    </div>
+  </div>
+  <div class="s7-redes mn-redes"><a class="s7-rond" href="#" aria-label="Thawtide on Instagram"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#0d1117" stroke="none"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on TikTok"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#0d1117"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on X"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#0d1117"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></span></a></div>
+  <ul class="mn-legal"><li><a href="politicas.html#shipping">Shipping</a></li><li><a href="politicas.html#returns">Returns</a></li><li><a href="politicas.html#privacy">Privacy</a></li><li><a href="politicas.html#terms">Terms</a></li></ul>
+</nav>
+<main class="pp">
+  
+  <section class="pp-uno c" id="comprar">
+    <div><div class="gal" data-i="0" role="region" aria-roledescription="carousel" aria-label="Product images"><span class="ia">AI images · 3D estimated</span><div class="tira"><div class="lado"><canvas aria-label="Drag to turn the hand warmer"></canvas></div></div><button class="flecha izq" type="button" aria-label="Previous image"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button class="flecha der" type="button" aria-label="Next image"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
+    
+  <div class="compra">
+    <h3 class="titulo"><span class="marca">Thawtide Rechargeable Hand Warmer</span><span class="sep" aria-hidden="true"></span><span class="tNom">Polar Night</span></h3>
+    <div class="precio"><b>$29.99</b></div>
+    <p class="desc">Warm on both sides, with a digital display. Charge it by USB and take it out again.</p>
+    <div class="fila" role="group" aria-label="Color and quantity">
+      <div class="colores"><button class="sw" type="button" data-c="negro" aria-pressed="true" aria-label="Polar Night (black)"><i style="background:#0b0c0f"></i></button><button class="sw" type="button" data-c="blanco" aria-pressed="false" aria-label="Whiteout (white)"><i style="background:#f2f2f4;box-shadow:inset 0 0 0 1px #9aa5b8"></i></button></div>
+      <div class="cant"><button type="button" class="menos" aria-label="One less">−</button><output class="n">1</output><button type="button" class="mas" aria-label="One more">+</button></div>
+    </div>
+    <button class="add" id="add" type="button"><span>Add to cart · $29.99</span></button>
+    <p class="ok" aria-live="polite"></p>
+    
+    <ul class="confianza">
+      <li><b>Free US shipping</b></li>
+      <li><b>Ships from a US warehouse</b></li>
+      <li><b>30-day returns</b></li>
+    </ul>
+  </div>
+
+  </section>
+  
+  <section class="pp-dos" id="detalles">
+  <div>
+    <details open><summary>Details<span class="mas">+</span></summary><div class="dentro"><ul><li>Heats on both sides</li><li>Digital display on the front</li><li>Rechargeable lithium battery</li><li>USB charging, port at the bottom</li><li>Aluminum plate spreads the heat</li></ul></div></details>
+    <details><summary>In the box<span class="mas">+</span></summary><div class="dentro"><span class="pend">PENDING: what's in the box (comes with the sample)</span></div></details>
+    <details><summary>Shipping &amp; returns<span class="mas">+</span></summary><div class="dentro"><p>Free standard shipping in the US, from a US warehouse. Orders are usually processed within an estimated 1–3 business days, and delivery takes an estimated 3–8 days after that. Most orders arrive within 14 days of purchase.</p><p>30-day returns: email us within 30 days of delivery to ask for one.</p><p><a href="faq.html#shipping">Shipping FAQ</a> <a href="politicas.html#shipping">Shipping policy</a> <a href="politicas.html#returns">Return policy</a></p></div></details>
+    <details><summary>Care<span class="mas">+</span></summary><div class="dentro"><span class="pend">PENDING: maker's instructions (lithium battery)</span></div></details>
+  </div>
+</section>
+  
+  <section class="pp-ficha" id="ficha"><p class="tit">What it's made of</p>
+      <div class="anat"><img class="anat-foto" data-ia="1" src="producto/negro-delante.webp" alt="Thawtide hand warmer, front">
+        <div class="et izq" style="top:44px;--l:34px"><b>Digital display</b>On the front</div>
+        <div class="et der" style="top:130px;--l:14px"><b>Heats both sides</b>Front and back</div>
+        <div class="et izq" style="top:190px;--l:14px"><b>Aluminum plate</b>Spreads the heat</div>
+        <div class="et der" style="top:262px;--l:24px"><b>USB port</b>At the bottom</div>
+      </div>
+      <ul class="lista">
+        <li><span>Battery</span>Rechargeable lithium</li>
+        <li><span>Heat lasts</span><b class="pend">PENDING: hours (sample)</b></li>
+        <li><span>Charge time</span><b class="pend">PENDING: sample</b></li>
+        <li><span>Size · weight</span><b class="pend">PENDING: sample</b></li>
+        <li><span>Shell</span><b class="pend">PENDING: material</b></li>
+      </ul></section>
+  
+  <section class="pp-tres" id="porque"><p class="tit">Why it works</p>
+  <div class="rueda" id="rueda">
+    <div class="eje"><article class="card"><div class="big">Both<br>sides</div><div class="ill foto"><img data-ia="1" class="v-cielo" src="tarjetas/1-both-sides-cielo.webp" alt="The white hand warmer turning over, warm on both sides"><img data-ia="1" class="v-noche" src="tarjetas/1-both-sides-noche.webp" alt="The black hand warmer turning over, warm on both sides"></div><h3>Warm on both sides. Flip it, still warm.</h3></article><article class="card"><div class="big">The<br>display</div><div class="ill foto"><img data-ia="1" class="v-cielo" src="tarjetas/2-display-cielo.webp" alt="Close-up of the digital display on the white hand warmer"><img data-ia="1" class="v-noche" src="tarjetas/2-display-noche.webp" alt="Close-up of the digital display on the black hand warmer"></div><h3>A digital display right on the front.</h3></article><article class="card"><div class="big">USB<br>charging</div><div class="ill foto"><img data-ia="1" class="v-cielo" src="tarjetas/3-usb-cielo.webp" alt="The white hand warmer with the charging cable plugged in at the bottom"><img data-ia="1" class="v-noche" src="tarjetas/3-usb-noche.webp" alt="The black hand warmer with the charging cable plugged in at the bottom"></div><h3>Plug it in. Charge it like your phone.</h3></article><article class="card"><div class="big">Re&shy;usable</div><div class="ill icono"><svg class="reuse" viewBox="-195 -150 390 330" role="img" aria-label="The hand warmer inside reuse arrows"><image data-ia="1" class="v-cielo" href="tarjetas/4-producto-cielo.webp" x="-41.5" y="-55.0" width="83" height="130"/><image data-ia="1" class="v-noche" href="tarjetas/4-producto-noche.webp" x="-41.5" y="-55.0" width="83" height="130"/><g style="stroke:var(--reuse);fill:var(--reuse)"><path d="M18.2 -100.5 L90.9 25.5" stroke-width="26" stroke-linecap="round" fill="none"/><path d="M120.8 77.2 L56.3 33.5 L115.2 -0.5 Z" stroke-width="8" stroke-linejoin="round"/><path d="M93.5 93.0 L-52.0 93.0" stroke-width="26" stroke-linecap="round" fill="none"/><path d="M-111.7 93.0 L-41.6 59.0 L-41.6 127.0 Z" stroke-width="8" stroke-linejoin="round"/><path d="M-111.7 61.5 L-39.0 -64.5" stroke-width="26" stroke-linecap="round" fill="none"/><path d="M-9.1 -116.3 L-14.7 -38.5 L-73.6 -72.5 Z" stroke-width="8" stroke-linejoin="round"/></g></svg></div><h3>Charge it again. Skip the single-use packs.</h3></article></div><div class="medio" aria-hidden="true"><img data-ia="1" src="producto/negro-delante.webp" alt="" width="521" height="900"></div></div>
+</section>
+  
+</main>
+
+<div class="barra" id="barra" aria-hidden="true"><img class="b-foto" src="producto/negro-delante.webp" alt="" width="40" height="56"><div class="b-txt"><b>Hand warmer</b><span class="b-col">Polar Night</span> · $29.99</div><button class="b-add" type="button" tabindex="-1">Add to cart</button></div>
+
+<footer class="foot p8" id="p8">
+  
+  <div class="mark">thawtide</div>
+  <nav class="p8-legal" aria-label="Legal"><a href="politicas.html#shipping">Shipping</a><a href="politicas.html#returns">Returns</a><a href="politicas.html#terms">Terms</a><a href="politicas.html#privacy">Privacy</a><a href="contacto.html">Contact</a><a href="faq.html">FAQ</a><a class="p8-optout" href="politicas.html#privacy">Your Privacy Choices</a><button class="p8-cookies" type="button" hidden>Cookie preferences</button></nav>
+  <div class="p8-base"><span>© 2026 Thawtide</span><a href="pendiente.html#creditos">Credits</a></div>
+  
+  <script>(() => { const b = document.currentScript.parentElement.querySelector('.p8-cookies'); if (!b) return; let n = 0; const mira = () => { const p = window.privacyBanner; if (!p || typeof p.showPreferences !== 'function') return false; b.hidden = false; b.onclick = () => p.showPreferences(); return true; }; if (mira()) return; const t = setInterval(() => { if (mira() || ++n > 60) clearInterval(t); }, 500); })();</script>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="producto/n20-3d.js"></script>
+<script>
+
+try { history.scrollRestoration = 'manual'; } catch (_) {}
+if (!document.getElementById(location.hash.slice(1) || '-')) { scrollTo(0, 0); addEventListener('load', () => scrollTo(0, 0)); }
+const FOTOS = {
+  negro: ['fotos/s5-negro.webp', 'fotos/pp-negro-frente.webp', 'fotos/pp-negro-tres-cuartos.webp', 'fotos/pp-negro-mano.webp', 'fotos/s7-parada.webp', 'fotos/s3-abrigo-nano.webp', 'fotos/s7-gradas.webp'],
+  blanco: ['fotos/s5-blanco.webp', 'fotos/pp-blanco-frente.webp', 'fotos/pp-blanco-tres-cuartos.webp', 'fotos/pp-blanco-mano.webp', 'fotos/s3-manos-seedream.webp', 'fotos/s7-perro.webp', 'fotos/s7-telesilla.webp']
+};
+const NOMBRE = {negro: 'Polar Night', blanco: 'Whiteout'}, PRECIO = 29.99;   // precio de Shopify (get-product, 19 oct)
+
+const guarda = c => { try { localStorage.setItem('thawtide-color', c); } catch (_) {} };
+const guardado = () => { try { return localStorage.getItem('thawtide-color'); } catch (_) { return null; } };
+let color = location.hash === '#whiteout' ? 'blanco' : location.hash === '#polar-night' ? 'negro' : (guardado() === 'blanco' ? 'blanco' : 'negro'), n = 1, m3 = null;   // el enlace manda; si no, lo último elegido
+guarda(color);
+const sec = document.getElementById('comprar'), gal = sec.querySelector('.gal'), cv = gal.querySelector('canvas');
+/* plan 007 · sección A: qué camino se ve (?camino=a|b|c) y en qué ambiente está la página */
+const CAMINO = new URLSearchParams(location.search).get('camino') || 'c';   
+document.body.dataset.camino = CAMINO;
+const AMB = {negro: '#0F2A4A', blanco: '#7FBFF5'};
+function pinta() {
+  document.body.dataset.amb = color;
+  document.querySelector('meta[name="theme-color"]').content = CAMINO && CAMINO !== 'b' ? AMB[color] : '#DCEEFC';   // y si además: la barra del navegador del móvil también cambia
+  const tira = gal.querySelector('.tira'); tira.querySelectorAll('.lado.foto').forEach(x => x.remove());
+  tira.insertAdjacentHTML('beforeend', FOTOS[color].map((f, k) => `<div class="lado foto"><img data-ia="1" src="${f}" alt="Thawtide hand warmer in ${NOMBRE[color]}, photo ${k + 1}" draggable="false"></div>`).join(''));
+  ve(gi);
+  const barra = document.getElementById('barra'); barra.querySelector('.b-col').textContent = NOMBRE[color]; barra.querySelector('.b-foto').src = `producto/${color}-delante.webp`;
+  sec.querySelector('.tNom').textContent = NOMBRE[color];
+  sec.querySelectorAll('.sw').forEach(b => b.setAttribute('aria-pressed', b.dataset.c === color));
+  if (m3) m3.color(color);
+  document.querySelectorAll('.rueda .medio img, .pp-ficha .anat-foto').forEach(im => { im.src = color === 'blanco' ? 'producto/blanco-delante.webp' : 'producto/negro-delante.webp'; });   // la mitad del producto y la foto de la ficha siguen el color
+}
+
+let gi = 0;
+function ve(i) { const ls = gal.querySelectorAll('.tira .lado'), k = ls.length; gi = (i % k + k) % k; gal.dataset.i = gi; gal.querySelector('.tira').style.transform = `translateX(${-100 * gi}%)`; ls.forEach((l, x) => l.setAttribute('aria-hidden', x !== gi)); }
+gal.querySelector('.flecha.izq').onclick = () => ve(gi - 1);
+gal.querySelector('.flecha.der').onclick = () => ve(gi + 1);
+let sx = null;
+gal.querySelector('.tira').addEventListener('pointerdown', e => { if (e.target.tagName === 'IMG') sx = e.clientX; });
+addEventListener('pointerup', e => { if (sx === null) return; const d = e.clientX - sx; sx = null; if (Math.abs(d) > 40) ve(gi + (d < 0 ? 1 : -1)); });
+addEventListener('pointercancel', () => { sx = null; });
+/* plan 007 · C: la barra fija sale cuando el botón grande ya pasó por arriba */
+(() => { const barra = document.getElementById('barra'), b = barra.querySelector('.b-add');
+  new IntersectionObserver(([e]) => { const on = !e.isIntersecting && e.boundingClientRect.top < 0; barra.classList.toggle('on', on); barra.setAttribute('aria-hidden', !on); b.tabIndex = on ? 0 : -1; }).observe(document.getElementById('add'));
+  b.onclick = () => document.getElementById('add').click(); })();
+document.body.dataset.nombre = new URLSearchParams(location.search).get('nombre') || 'b';   
+sec.querySelectorAll('.sw').forEach(b => b.onclick = () => { color = b.dataset.c; guarda(color); history.replaceState(null, '', color === 'blanco' ? '#whiteout' : '#polar-night'); pinta(); });
+const cuenta = d => { n = Math.max(1, Math.min(9, n + d)); sec.querySelector('.n').textContent = n; document.querySelector('#add span').textContent = `Add to cart · $${(n * PRECIO).toFixed(2)}`; };   // el botón dice el total
+sec.querySelector('.mas').onclick = () => cuenta(1);
+sec.querySelector('.menos').onclick = () => cuenta(-1);
+
+/* carrito de la maqueta: guarda los artículos en esta página (en Shopify será /cart.js) */
+const cesta = [];
+function pintaCarrito() {
+  const total = cesta.reduce((a, x) => a + x.n, 0);
+  document.getElementById('cuenta').textContent = total;
+  document.getElementById('abreCarrito').setAttribute('aria-label', `Cart, ${total} items`);
+  const panel = document.getElementById('carrito'), vacio = panel.querySelector('.cj-vacio');
+  panel.querySelectorAll('.cj-lista,.cj-total,.cj-pagar,.cj-pend').forEach(x => x.remove());
+  vacio.hidden = total > 0;
+  if (!total) return;
+  vacio.insertAdjacentHTML('afterend', `<ul class="cj-lista">${cesta.map(x => `<li><img data-ia="1" src="${FOTOS[x.c][0]}" alt=""><div><b>Hand warmer · ${NOMBRE[x.c]}</b><small>${x.n} × $${PRECIO.toFixed(2)}</small></div><b>$${(x.n * PRECIO).toFixed(2)}</b></li>`).join('')}</ul><div class="cj-total"><span>Total</span><b>$${(total * PRECIO).toFixed(2)}</b></div><button class="cj-pagar" type="button">Checkout</button><p class="cj-pend">PENDING: checkout is handled by Shopify; nothing is charged here.</p>`);
+}
+document.getElementById('add').onclick = () => {
+  const x = cesta.find(y => y.c === color); if (x) x.n += n; else cesta.push({c: color, n});
+  pintaCarrito(); sec.querySelector('.ok').textContent = `Added: ${n} × Hand warmer · ${NOMBRE[color]}`;
+  document.getElementById('abreCarrito').click();
+};
+
+/* carrito y menú: abrir y cerrar (igual que en la portada) */
+(() => {
+  const velo = document.getElementById('velo'); let abierto = null, desde = null;
+  const abre = (p, b) => { cierra(); abierto = p; desde = b; p.hidden = false; if (p.id === 'carrito') velo.hidden = false; requestAnimationFrame(() => { p.classList.add('on'); velo.classList.add('on'); }); document.body.classList.add('cajon'); b.setAttribute('aria-expanded', 'true'); p.querySelector('[data-cierra]').focus(); };
+  function cierra() { if (!abierto) return; const p = abierto, b = desde; abierto = null; p.classList.remove('on'); velo.classList.remove('on'); document.body.classList.remove('cajon'); b.setAttribute('aria-expanded', 'false'); setTimeout(() => { p.hidden = true; if (!abierto) velo.hidden = true; }, 500); b.focus({preventScroll: true}); }
+  document.getElementById('abreCarrito').addEventListener('click', e => abre(document.getElementById('carrito'), e.currentTarget));
+  document.getElementById('abreMenu').addEventListener('click', () => { let c = null; try { c = localStorage.getItem('thawtide-color'); } catch (_) {} const mi = document.querySelector('.mt-shop img'); if (mi) mi.src = c === 'blanco' ? 'producto/blanco-delante.webp' : 'producto/negro-delante.webp'; });   // la foto del menú, del color elegido
+  document.getElementById('abreMenu').addEventListener('click', e => abre(document.getElementById('menu'), e.currentTarget));
+  velo.addEventListener('click', cierra); document.querySelectorAll('[data-cierra]').forEach(el => el.addEventListener('click', cierra));
+  addEventListener('keydown', e => { if (e.key === 'Escape') cierra(); });
+})();
+
+/* sección 3: la rueda */
+
+const eje = document.querySelector('.rueda .eje'), cs = [...eje.querySelectorAll('.card')], N = cs.length, rueda = document.getElementById('rueda');
+let vt = 0, vt0 = performance.now(), parada = false;
+const coloca = () => cs.forEach((c, i) => { let r = ((i - vt) % N + N) % N; if (r > N / 2) r -= N; c.style.transform = `rotate(${(r * 25).toFixed(2)}deg)`; c.style.zIndex = Math.round(10 - Math.abs(r) * 2); c.classList.toggle('lejos', Math.abs(r) > 1.35); });
+let desde = 0, hacia = 0, empieza = 0;   // cada 3 s, de una tarjeta a la siguiente en .7 s
+const suave = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+setInterval(() => { if (parada || document.hidden || matchMedia('(prefers-reduced-motion: reduce)').matches) return; desde = vt; hacia = Math.round(vt) + 1; empieza = performance.now(); }, 3000);
+(function vuelta(a) { if (hacia !== vt) { const x = Math.min(1, (a - empieza) / 700); vt = desde + (hacia - desde) * suave(x); } coloca(); requestAnimationFrame(vuelta); })(vt0);
+rueda.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') parada = true; }); rueda.addEventListener('pointerleave', () => { parada = false; });
+
+
+pinta(); pintaCarrito();
+fetch('producto/silueta.json').then(r => r.json()).then(sil => {
+  if (!window.THREE || !window.N20_3D) return;
+  m3 = N20_3D(cv, sil); m3.color(color);
+  const st = {ang: 0, drag: false, x: 0}, quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  cv.addEventListener('pointerdown', e => { st.drag = true; st.x = e.clientX; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', e => { if (st.drag) { st.ang += (e.clientX - st.x) * .012; st.x = e.clientX; } });
+  ['pointerup', 'pointercancel'].forEach(t => cv.addEventListener(t, () => { st.drag = false; }));   // pointercancel: el navegador se queda el gesto para bajar la página
+  
+  const TRES = new URLSearchParams(location.search).get('tres') || 'a';   
+  const ui = document.createElement('div'); ui.className = 'tres-ui'; gal.appendChild(ui);
+  const boton = (txt, fn) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = txt; b.onclick = fn; ui.appendChild(b); return b; };
+  const ex = {calor: 0, calienta: false, zoom: 1, zoomQuiere: TRES === 'b' ? .82 : 1, giroQuiere: null, abre: 0, abierto: false};
+  if (TRES === 'a') {   // A · lo tocas y se calienta: halo por las dos caras y la pantalla se enciende
+    const pista = document.createElement('p'); pista.className = 'tres-pista'; pista.textContent = 'Hold to warm it up'; gal.appendChild(pista);
+    cv.addEventListener('pointerdown', () => { ex.calienta = true; });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(t => cv.addEventListener(t, () => { ex.calienta = false; }));
+    ex.pista = pista;
+  }
+  if (TRES === 'b') {   // B · gíralo y acércate
+    boton('Turn over', () => { ex.giroQuiere = st.ang + Math.PI; });
+    boton('−', () => { ex.zoomQuiere = Math.max(.82, ex.zoomQuiere - .12); }).setAttribute('aria-label', 'Zoom out');
+    boton('+', () => { ex.zoomQuiere = Math.min(1.05, ex.zoomQuiere + .12); }).setAttribute('aria-label', 'Zoom in');
+    let ultimo = 0; cv.addEventListener('pointerup', () => { const a = performance.now(); if (a - ultimo < 320) ex.zoomQuiere = ex.zoomQuiere > .95 ? .82 : 1.05; ultimo = a; });   // doble toque: acerca o aleja
+  }
+  if (TRES === 'c') {   // C · ábrelo: se separan las dos caras y se ve la placa de aluminio
+    const et = document.createElement('p'); et.className = 'tres-pista arriba'; et.textContent = 'Aluminum plate · spreads the heat to both sides'; et.hidden = true; gal.appendChild(et);
+    const b = boton('See inside', () => { ex.abierto = !ex.abierto; b.textContent = ex.abierto ? 'Close it' : 'See inside'; et.hidden = !ex.abierto; if (ex.abierto) ex.giroQuiere = Math.round(st.ang / (2 * Math.PI)) * 2 * Math.PI - 1.05; });
+  }
+  let t0 = performance.now(); (function bucle(t) { const dt = Math.min(.05, (t - t0) / 1000); t0 = t;
+    const libre = !st.drag && !quieto && ex.giroQuiere === null && !ex.abierto && !ex.calienta;
+    if (libre) st.ang += .6 * dt;
+    if (ex.giroQuiere !== null) { st.ang += (ex.giroQuiere - st.ang) * Math.min(1, dt * 5); if (Math.abs(ex.giroQuiere - st.ang) < .01) { st.ang = ex.giroQuiere; if (!ex.abierto) ex.giroQuiere = null; } }
+    if (TRES === 'a') { ex.calor = Math.max(0, Math.min(1, ex.calor + (ex.calienta ? dt / 1.2 : -dt / 2))); m3.calor(ex.calor); gal.style.setProperty('--calor', ex.calor.toFixed(3)); ex.pista.textContent = ex.calor > .5 ? 'Warming up · both sides' : 'Hold to warm it up'; }
+    if (TRES === 'b' && Math.abs(ex.zoomQuiere - ex.zoom) > .001) { ex.zoom += (ex.zoomQuiere - ex.zoom) * Math.min(1, dt * 6); m3.zoom(ex.zoom); }
+    if (TRES === 'c') { const q = ex.abierto ? 1 : 0; if (Math.abs(q - ex.abre) > .001) { ex.abre += (q - ex.abre) * Math.min(1, dt * 4); m3.abre(ex.abre); } if (!ex.abierto && ex.abre < .02 && ex.giroQuiere !== null && Math.abs(ex.giroQuiere - st.ang) < .02) ex.giroQuiere = null; }
+    m3.girar(st.ang, .08); requestAnimationFrame(bucle); })(t0);
+}).catch(() => {});
+</script>
+<script>document.body.dataset.btn = new URLSearchParams(location.search).get('btn') || 'a';</script>
+<script>document.querySelectorAll('.gal').forEach(g => g.addEventListener('contextmenu', e => e.preventDefault()));   </script>
+<a href="../work/thawtide.html" target="_parent" style="position:fixed;z-index:2147483647;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:#15191e;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.25)">&larr; Back to portfolio</a></html>

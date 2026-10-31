@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent Hub Demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<style>
+.proj { display: grid; gap: 8px }
+.proj .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline }
+.kv { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .84rem; color: var(--muted) }
+.kv b { color: var(--ink); font-variant-numeric: tabular-nums }
+.flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px }
+.flow button { appearance: none; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 10px 6px; font: 600 .8rem/1.2 var(--body); cursor: pointer; min-height: 44px }
+.flow button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent) }
+@media (max-width: 560px) { .flow { grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+.file { font: 600 .78rem/1 var(--mono); color: var(--muted) }
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px }
+.check li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px }
+.check li::before { content: "☐"; color: var(--muted) }
+.check li.x::before { content: "☑"; color: var(--accent) }
+.cmds { display: flex; flex-wrap: wrap; gap: 6px }
+.cmds button { appearance: none; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 8px 10px; font: 400 .8rem/1 var(--mono); cursor: pointer; min-height: 36px }
+.verdict { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600 }
+.v-allow { background: #1f5a33; color: #d6f5df } .v-ask { background: #6b4a08; color: #fbe9c4 } .v-deny { background: #6e1f1a; color: #fbd9d6 }
+.crit { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .9rem }
+.lvl { display: inline-flex; gap: 3px } .lvl i { width: 18px; height: 6px; border-radius: 3px; background: var(--line) } .lvl i.on { background: var(--accent) }
+</style>
+<body>
+<div class="demobar"><div class="in"><a href="index.html#hub" target="_parent">← Portfolio</a><span class="tag">Demo 2 · Agent hub · real data, Oct 27 2026</span></div></div>
+<div class="wrap">
+  <div class="app">
+    <nav class="side" aria-label="Hub sections">
+      <span class="label">Agent hub</span>
+      <a href="#overview">Projects</a>
+      <a href="#flow">How a request moves</a>
+      <a href="#plan">A real plan</a>
+      <a href="#judge">The judge</a>
+      <a href="#locks">Locks</a>
+      <a href="#lessons">Lessons log</a>
+    </nav>
+    <main>
+      <!-- Overview -->
+      <section class="view" data-view="overview">
+        <div class="grid" style="gap:8px">
+          <span class="label">Hub · status of every project</span>
+          <h1>One hub, seven projects, each with its own agent</h1>
+          <p class="note">Every project lives in its own folder with its own agent session, plan, tests and git history. When a session starts, the hub gets a short status summary of each one, and a weekly report flags anything stuck. It routes requests between them. Commit counts come from <code>git log</code> on Oct 27.</p>
+        </div>
+        <div class="grid g3" id="projects"></div>
+      </section>
+
+      <!-- Flow -->
+      <section class="view" data-view="flow" hidden>
+        <div class="grid" style="gap:8px"><span class="label">Workflow</span><h1>How one request moves through the agents</h1></div>
+        <div class="flow" id="flowBtns" role="group" aria-label="Steps"></div>
+        <div class="card grid" style="gap:10px"><h2 id="flowTitle"></h2><p id="flowText"></p><div class="file" id="flowFile"></div></div>
+        <p class="honest">I made the order a hard rule: the test list can only be marked by a script that reads the judge's verdict, and the builder's tools are checked by hooks before every action.</p>
+      </section>
+
+      <!-- Plan -->
+      <section class="view" data-view="plan" hidden>
+        <div class="grid" style="gap:8px"><span class="label">ExecPlan 004 · docs/exec-plans/active/</span><h1>Lock fixes without false alarms</h1>
+        <p class="note">A real plan from the hub, translated from Spanish and shortened. Plans are written before any code, reviewed by the judge, and approved by Cris. This one went through three judge reviews on Oct 27.</p></div>
+        <div class="grid g2">
+          <div class="card grid" style="gap:8px"><h3>Purpose</h3><p>The judge's verdicts are not being saved in two projects, so passing tests can't be marked. Some locks also stop harmless commands. When this is done, every verdict is saved and only the judge can produce one, harmless commands pass, and two real gaps are closed.</p></div>
+          <div class="card grid" style="gap:8px"><h3>Review history</h3>
+            <table><thead><tr><th>Version</th><th>Judge</th><th>Changes asked</th></tr></thead><tbody>
+              <tr><td>v1</td><td><span class="pill p-warn">changes</span></td><td class="num">13</td></tr>
+              <tr><td>v2</td><td><span class="pill p-warn">changes</span></td><td class="num">7</td></tr>
+              <tr><td>v3</td><td><span class="pill p-warn">changes</span></td><td class="num">3</td></tr>
+            </tbody></table></div>
+        </div>
+        <div class="card grid" style="gap:10px"><h3>Progress</h3>
+          <ul class="check">
+            <li>0. Cris approves the plan</li>
+            <li>1. Phase A: log which fields reach the hooks (names only, never values)</li>
+            <li>2. Wait for one real judge run; stop and rethink if the agent id never arrives</li>
+            <li>3. Recognize the judge only by what the system sees, never by what it writes</li>
+            <li>4. Save every verdict block, one per test</li>
+            <li>5. Quoted text and heredocs are data, not commands</li>
+            <li>6. "Another project" only means a folder that exists</li>
+            <li>7. Ignore agent reports in the rejection detector</li>
+            <li>8. Close the gaps around the test list</li>
+            <li>9. Stop a bare <code>cd</code> into the judge's worktree</li>
+            <li>10. Tests, judge, Cris installs</li>
+            <li>11. Real check inside two projects</li>
+          </ul>
+          <p class="note">Nothing is checked yet: the plan is waiting for the judge's approval and then Cris's.</p>
+        </div>
+      </section>
+
+      <!-- Judge -->
+      <section class="view" data-view="judge" hidden>
+        <div class="grid" style="gap:8px"><span class="label">Subagent · clean context · can't edit files</span><h1>The judge</h1>
+        <p class="note">The judge is a separate agent that only reads and runs checks. It returns a verdict with evidence for every criterion. Below is its real review of plan 004 v3 (Oct 27), translated.</p></div>
+        <div class="card grid" style="gap:4px">
+          <div class="row" style="justify-content:space-between"><h3>Contract review · plan 004 v3</h3><span class="pill p-warn">changes</span></div>
+          <div id="crits"></div>
+        </div>
+        <div class="card grid" style="gap:8px"><h3>What it caught that night</h3>
+          <p>To stop a false alarm, the builder changed one lock so quoted text would count as data. The judge then probed the change and found three ways around it:</p>
+          <div class="tbl"><table><thead><tr><th>Probe</th><th>Before fix</th><th>After</th></tr></thead><tbody>
+            <tr><td><code>echo "$(cp a ~/.claude/settings.json)"</code></td><td><span class="pill p-bad">passed</span></td><td><span class="pill p-ok">blocked</span></td></tr>
+            <tr><td><code>echo "it's" &gt; ~/.claude/settings.json # it's</code></td><td><span class="pill p-bad">passed</span></td><td><span class="pill p-ok">blocked</span></td></tr>
+            <tr><td><code>bash -lc 'cp a ~/.claude/settings.json'</code></td><td><span class="pill p-bad">passed</span></td><td><span class="pill p-ok">blocked</span></td></tr>
+          </tbody></table></div>
+          <p class="note">Each hole got a test and a commit, and the mistake went into the lessons log as L-021.</p>
+        </div>
+      </section>
+
+      <!-- Locks -->
+      <section class="view" data-view="locks" hidden>
+        <div class="grid" style="gap:8px"><span class="label">Hooks · PreToolUse</span><h1>Locks check every action first</h1>
+        <p class="note">Ten hooks run on every session. The main one reads each command before it runs and decides: run it, ask Cris (with the rule shown), or block it. The settings add 22 hard blocks and 44 asks. Pick a command below; the answer is the real one from the lock, recorded on Oct 27 and translated from Spanish.</p></div>
+        <div class="cmds" id="cmds"></div>
+        <div class="term" id="term" aria-live="polite"></div>
+        <div class="grid g3">
+          <div class="card grid" style="gap:6px"><span class="pill p-bad" style="justify-self:start">Never</span><p class="note">Buying or moving money, writing secrets, changing the locks themselves, marking tests by hand, the judge fixing code.</p></div>
+          <div class="card grid" style="gap:6px"><span class="pill p-warn" style="justify-self:start">Ask Cris</span><p class="note">Publishing or deploying, pushing to main, messages to real people, reading a secret, real deletion, touching another project.</p></div>
+          <div class="card grid" style="gap:6px"><span class="pill p-ok" style="justify-self:start">Just do it</span><p class="note">Reading, building, testing, local commits, using connected tools within a small daily budget. It reports in three lines after.</p></div>
+        </div>
+      </section>
+
+      <!-- Lessons -->
+      <section class="view" data-view="lessons" hidden>
+        <div class="grid" style="gap:8px"><span class="label">docs/lecciones · 21 entries</span><h1>Every mistake becomes a lesson</h1>
+        <p class="note">Each entry has what happened, the root cause and a rule. When the same cause shows up twice, the fix moves up a level: a written rule, then a tool, then a lock that enforces it. The level column shows where each fix sits; for proposed lessons it is the level being proposed. Titles translated from Spanish.</p></div>
+        <div class="tbl card" style="padding:6px 12px"><table><thead><tr><th>Id</th><th>Lesson</th><th>Level</th><th>Status</th></tr></thead><tbody id="lessonRows"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const VIEWS = ['overview', 'flow', 'plan', 'judge', 'locks', 'lessons'];
+  function route() {
+    const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview';
+    $$('[data-view]').forEach((s) => (s.hidden = s.dataset.view !== v));
+    $$('.side a').forEach((a) => a.getAttribute('href') === '#' + v ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  }
+  addEventListener('hashchange', () => { route(); scrollTo(0, 0); }); route();
+
+  // Real counts, Oct 27 2026: git log --oneline | wc -l; "passes" entries in feature_list.json
+  const PROJECTS = [
+    { name: 'Hub', what: 'Routes requests, keeps the rules, the locks and the lessons for every project.', state: 'Running', cls: 'p-ok', commits: '50+', tests: '42 lock tests' },
+    { name: 'Thawtide store', what: 'Shopify store for a rechargeable hand warmer: brand, custom theme, policies.', state: 'Theme ready, store not open', cls: 'p-warn', commits: 238, tests: '31 acceptance tests' },
+    { name: 'Credit-repair site + CRM', what: 'Booking page with legal notices, client portal and a CRM for dispute letters.', state: 'CRM being rebuilt', cls: 'p-warn', commits: 146, tests: '33 acceptance tests' },
+    { name: 'Barbershop booking', what: 'Booking product for barbershops. Research done, build plan next.', state: 'Planning', cls: 'p-n', commits: 29, tests: '—' },
+    { name: 'Job search', what: 'Cris\'s own job search. Private, not shown here.', state: 'Private', cls: 'p-n', commits: 67, tests: '—' },
+    { name: 'Portfolio', what: 'This site.', state: 'You are here', cls: 'p-ok', commits: 1, tests: '—' },
+    { name: 'New project', what: 'Created from the project template, still empty.', state: 'Empty', cls: 'p-n', commits: 1, tests: '—' },
+  ];
+  $('#projects').innerHTML = PROJECTS.map((p) => `<div class="card proj"><div class="top"><h3>${esc(p.name)}</h3></div><span class="pill ${p.cls}" style="justify-self:start">${esc(p.state)}</span><p class="note">${esc(p.what)}</p><div class="kv"><span><b>${p.commits}</b> commits</span><span>${esc(p.tests)}</span></div></div>`).join('');
+
+  const STEPS = [
+    ['Request', 'Cris says what he wants in plain words. The hub writes it as a request file in the inbox of the project that owns it. Projects never edit each other.', 'docs/exec-plans/inbox/NNN-from-hub.md'],
+    ['Plan', 'That project\'s agent writes an ExecPlan: purpose, steps, how to check each one. It also writes acceptance tests that start as not passing. Cris approves before anything is built.', 'docs/exec-plans/active/NNN-plan.md · feature_list.json'],
+    ['Build', 'The agent works one test at a time. Every command and file write goes through the locks first.', 'hooks/guard.mjs'],
+    ['Judge', 'A judge agent with a clean context checks the work like a customer would and returns a verdict with evidence. It has no tools to edit files.', 'verification/<test>/veredicto.json'],
+    ['Mark', 'Only a script that reads the judge\'s verdict can flip a test to passing. Editing the test list by hand is blocked.', 'hooks/marcar.mjs'],
+    ['Lesson', 'When something goes wrong, the agent logs what happened, the root cause and a rule. The same cause twice moves the fix up: rule, tool, lock.', 'docs/lecciones/LECCIONES.md'],
+  ];
+  const fb = $('#flowBtns');
+  STEPS.forEach(([n], i) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = `${i + 1}. ${n}`; b.onclick = () => step(i); fb.append(b); });
+  function step(i) { $$('#flowBtns button').forEach((b, j) => b.setAttribute('aria-pressed', String(i === j))); $('#flowTitle').textContent = `${i + 1}. ${STEPS[i][0]}`; $('#flowText').textContent = STEPS[i][1]; $('#flowFile').textContent = STEPS[i][2]; }
+  step(0);
+
+  // Judge's real criteria on plan 004 v3 (Oct 27), translated
+  const CRITS = [
+    ['pass', 'Records the regression of an earlier fix and requires reading quotes left to right.'],
+    ['pass', 'Closed list of interpreters (eval, source, bash -lc …) with test cases.'],
+    ['pass', 'Unquoted heredoc with $( ) is blocked.'],
+    ['pass', 'cd cases and the real check from the original request.'],
+    ['fail', 'Stop rule must require the agent id exactly where step 3 needs it.'],
+    ['pass', 'The new registry file is a hard lock, with a terminal test case.'],
+    ['pass', 'Constitution check complete.'],
+    ['fail', 'Found three commands still passing in the installed lock (fixed in the code that night).'],
+    ['pass', 'Installed copy equals the repo, tests green.'],
+  ];
+  $('#crits').innerHTML = CRITS.map(([r, t]) => `<div class="crit"><span class="pill ${r === 'pass' ? 'p-ok' : 'p-bad'}" style="justify-self:start">${r}</span><span>${esc(t)}</span></div>`).join('');
+
+  // Real answers from the lock (guard.mjs), Oct 27 2026
+  const LOCKS = [
+    { c: 'git status', d: 'allow', es: '', en: 'Reading is fine. It runs.' },
+    { c: 'rm -rf src', d: 'ask', es: 'Regla: nada se borra; lo que sobra va a _archivo/ (mv), y borrar de verdad solo si cris lo pidió. ¿Lo hago igual?', en: 'Rule: nothing gets deleted; extra files go to _archivo/. Real deletion only if Cris asked. Ask him first.' },
+    { c: 'cat .env', d: 'ask', es: 'El comando toca un archivo de claves. Solo si cris lo pide.', en: 'This touches a secrets file. Only if Cris asks.' },
+    { c: 'echo "true" > feature_list.json', d: 'deny', es: 'feature_list.json no se edita: "passes" solo lo cambia marcar.mjs con el veredicto del juez.', en: 'The test list can\'t be edited by hand. Only the marking script can change it, with the judge\'s verdict.' },
+    { c: 'npx vercel --prod', d: 'ask', es: 'Publicar o desplegar en Vercel: solo con el sí de cris.', en: 'Publishing or deploying: only with Cris\'s yes.' },
+    { c: 'git push origin main', d: 'ask', es: 'Push a main = producción (Vercel despliega). Solo con el sí de cris.', en: 'Pushing to main means production. Only with Cris\'s yes.' },
+    { c: 'stripe refunds create --live', d: 'deny', es: 'Dinero real (Stripe en vivo): nunca, ni con el sí de cris. Cobros, pagos y reembolsos los hace él.', en: 'Real money: never, not even with Cris\'s yes. He handles charges, payments and refunds himself.' },
+  ];
+  const WORD = { allow: 'RUNS', ask: 'ASKS CRIS', deny: 'BLOCKED' };
+  LOCKS.forEach((l, i) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = l.c; b.onclick = () => lock(i); $('#cmds').append(b); });
+  function lock(i) { const l = LOCKS[i]; $('#term').innerHTML = `<span style="color:#7fb8ae">agent$</span> ${esc(l.c)}\n<span class="verdict v-${l.d}">${WORD[l.d]}</span>\n${esc(l.en)}`; }
+  lock(3);
+
+  // docs/lecciones/lecciones.jsonl, Oct 27 2026 (titles translated)
+  const L = [
+    ['L-001', 'Said "I can\'t" without checking the tools first', 2, 'approved'], ['L-002', 'Reported a file count from a capped listing', 1, 'approved'],
+    ['L-003', 'Asked Cris to do something the agent could do', 1, 'approved'], ['L-004', 'A decision lived only in the chat', 1, 'approved'],
+    ['L-005', 'Anything for a third party goes through the judge', 1, 'approved'], ['L-006', 'Read the whole source before quoting it', 1, 'approved'],
+    ['L-007', 'Check a compacted chat summary before using it', 1, 'approved'], ['L-008', 'A rejected action may have happened anyway', 1, 'approved'],
+    ['L-009', 'Never edit a script while it runs', 1, 'approved'], ['L-010', '"Do all you can" is not permission for another project', 1, 'approved'],
+    ['L-011', 'A search printed a secret', 1, 'proposed'], ['L-012', 'A decision went unrecorded twice', 2, 'proposed'],
+    ['L-013', '"Can\'t" claimed without isolating each part of a command', 3, 'proposed'], ['L-014', 'An option rested on an unchecked fact', 1, 'proposed'],
+    ['L-015', 'A locked file edited another way', 3, 'proposed'], ['L-016', 'Entered the judge\'s worktree with a bare cd, twice', 3, 'proposed'],
+    ['L-017', 'Spent credits after "let\'s plan first"', 1, 'proposed'], ['L-018', 'Promised a write without checking connector scopes', 2, 'proposed'],
+    ['L-019', 'Did math in its head, twice', 2, 'proposed'], ['L-020', 'Replaced something of Cris\'s without looking first', 1, 'proposed'],
+    ['L-021', 'Loosened a lock without the judge\'s review', 2, 'proposed'],
+  ];
+  const LV = ['', 'Rule', 'Tool', 'Lock'];
+  $('#lessonRows').innerHTML = L.map(([id, t, lv, st]) => `<tr><td class="num">${id}</td><td>${esc(t)}</td><td><span class="lvl" aria-label="${LV[lv]}">${[1, 2, 3].map((k) => `<i class="${k <= lv ? 'on' : ''}"></i>`).join('')}</span> <span class="note">${LV[lv]}</span></td><td><span class="pill ${st === 'approved' ? 'p-ok' : 'p-n'}">${st}</span></td></tr>`).join('');
+})();
+</script>
+</body>
+</html>

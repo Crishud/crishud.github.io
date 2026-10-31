@@ -1,0 +1,175 @@
+{
+  "fecha": "2026-10-30T21:12:20.846Z",
+  "columnas": [
+    {
+      "etapa": "Researched",
+      "n": 0,
+      "total_usd_mes": null,
+      "tarjetas": []
+    },
+    {
+      "etapa": "Email drafted",
+      "n": 9,
+      "total_usd_mes": null,
+      "tarjetas": [
+        {
+          "id": "brightland.co",
+          "nombre": "Brightland",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 100,
+          "valor": null,
+          "enlace": "empresa.html?id=brightland.co"
+        },
+        {
+          "id": "beardbrand.com",
+          "nombre": "Beardbrand",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 75,
+          "valor": null,
+          "enlace": "empresa.html?id=beardbrand.com"
+        },
+        {
+          "id": "graza.co",
+          "nombre": "Graza",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 75,
+          "valor": null,
+          "enlace": "empresa.html?id=graza.co"
+        },
+        {
+          "id": "kettleandfire.com",
+          "nombre": "Kettle & Fire",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 70,
+          "valor": null,
+          "enlace": "empresa.html?id=kettleandfire.com"
+        },
+        {
+          "id": "deathwishcoffee.com",
+          "nombre": "Death Wish Coffee",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 58,
+          "valor": null,
+          "enlace": "empresa.html?id=deathwishcoffee.com"
+        },
+        {
+          "id": "brooklinen.com",
+          "nombre": "Brooklinen",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 53,
+          "valor": null,
+          "enlace": "empresa.html?id=brooklinen.com"
+        },
+        {
+          "id": "tentree.com",
+          "nombre": "tentree",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 53,
+          "valor": null,
+          "enlace": "empresa.html?id=tentree.com"
+        },
+        {
+          "id": "allbirds.com",
+          "nombre": "Allbirds",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 50,
+          "valor": null,
+          "enlace": "empresa.html?id=allbirds.com"
+        },
+        {
+          "id": "bokksu.com",
+          "nombre": "Bokksu",
+          "tipo": "prospecto",
+          "etapa": "Email drafted",
+          "motivo": "First email drafted (not sent)",
+          "puntuacion": 45,
+          "valor": null,
+          "enlace": "empresa.html?id=bokksu.com"
+        }
+      ]
+    },
+    {
+      "etapa": "Call held",
+      "n": 0,
+      "total_usd_mes": null,
+      "tarjetas": []
+    },
+    {
+      "etapa": "Proposal",
+      "n": 2,
+      "total_usd_mes": null,
+      "tarjetas": [
+        {
+          "id": "cris-llamada-1",
+          "nombre": "Role-play: Cris reading the test script",
+          "tipo": "llamada",
+          "etapa": "Proposal",
+          "sintetico": false,
+          "leido": true,
+          "motivo": "The seller agreed to send a proposal by Friday and the buyer agreed to review it",
+          "cita": "I'll send you a short proposal by Friday, and we book 30 minutes next Tuesday to walk through it with Sam.",
+          "valor": {
+            "min": 300,
+            "max": 500
+          },
+          "siguiente": {
+            "quien": "Seller",
+            "que": "Send a short proposal",
+            "cuando": "By Friday",
+            "cita": "I'll send you a short proposal by Friday"
+          },
+          "enlace": "llamada.html?id=cris-llamada-1"
+        },
+        {
+          "id": "prueba-sintetica",
+          "nombre": "Role-play: a candle store (test call)",
+          "tipo": "llamada",
+          "etapa": "Proposal",
+          "sintetico": true,
+          "leido": false,
+          "motivo": "The seller committed to sending a proposal by Friday, which the buyer accepted.",
+          "cita": "I'll send you a short proposal by Friday, and we book 30 minutes next Tuesday to walk through it with Sam.",
+          "valor": {
+            "min": 300,
+            "max": 500
+          },
+          "siguiente": {
+            "quien": "Seller",
+            "que": "Send a short proposal",
+            "cuando": "by Friday",
+            "cita": "I'll send you a short proposal by Friday"
+          },
+          "enlace": "llamada.html?id=prueba-sintetica"
+        }
+      ]
+    },
+    {
+      "etapa": "Won",
+      "n": 0,
+      "total_usd_mes": null,
+      "tarjetas": []
+    },
+    {
+      "etapa": "Lost",
+      "n": 0,
+      "total_usd_mes": null,
+      "tarjetas": []
+    }
+  ]
+}

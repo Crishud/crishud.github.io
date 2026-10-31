@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Prospects · Sales desk demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<main class="main">
+  <div class="cabeza"><h1>Prospects</h1><span class="meta" id="meta"></span></div>
+  <div class="pestanas"><span class="on">Companies to work</span><span id="cuenta" class="gris"></span></div>
+  <div class="cuerpo">
+    <p class="gris" style="margin:0 0 14px">Each store was read from its public website and scored against the <a href="perfil.html">ideal customer profile</a>. Every reason comes with the exact line it was taken from.</p>
+    <div class="tabla-caja"><table>
+      <thead><tr><th>Company</th><th>ICP score</th><th>Fit</th><th>Sells</th><th>Products</th><th>Email</th></tr></thead>
+      <tbody id="filas"></tbody>
+    </table></div>
+  </div>
+</main>
+<script type="module">
+import { marco, datos, esc, avatar, fecha, error } from './app.js';
+marco('index.html');
+try {
+  const d = await datos('prospectos.json');
+  document.getElementById('meta').textContent = `Run on ${fecha(d.fecha)} · ${d.modelo}`;
+  document.getElementById('cuenta').textContent = `${d.empresas.length} stores`;
+  const clase = { fit: 'p-fit', maybe: 'p-maybe', 'no fit': 'p-nofit' };
+  document.getElementById('filas').innerHTML = d.empresas.map((e) => `
+    <tr data-id="${esc(e.dominio)}" tabindex="0">
+      <td class="c-emp"><div class="empresa">${avatar(e.nombre || e.dominio)}${esc(e.nombre || e.dominio)} <span class="dominio">${esc(e.dominio)}</span></div></td>
+      <td class="c-pun">${e.shopify ? `<div class="barra"><b>${e.puntuacion}</b><span><i style="width:${e.puntuacion}%"></i></span></div>` : '<span class="gris">—</span>'}</td>
+      <td class="c-fit"><span class="pildora ${clase[e.etiqueta] || ''}">${esc(e.etiqueta || 'error')}</span></td>
+      <td class="gris c-vende">${esc(e.que_vende || e.nota || e.error || '')}</td>
+      <td class="c-prod">${e.productos ? (e.productos === 250 ? '250+' : e.productos) : '<span class="gris">—</span>'}</td>
+      <td class="c-mail">${e.correo ? '<span class="pildora">Draft</span>' : '<span class="gris">—</span>'}</td>
+    </tr>`).join('');
+  for (const tr of document.querySelectorAll('tbody tr')) {
+    const ir = () => { location.href = `empresa.html?id=${encodeURIComponent(tr.dataset.id)}`; };
+    tr.addEventListener('click', ir);
+    tr.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') ir(); });
+  }
+} catch (e) { error(e); }
+</script>
+</body>
+</html>

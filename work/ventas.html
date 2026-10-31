@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>AI sales desk · Cristian Sánchez</title>
+<meta name="description" content="Two small AI tools for selling: one researches prospects, the other turns a sales call into CRM notes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header id="header">
+  <div class="row">
+    <a class="logo" href="../index.html" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
+    <button class="icon-nav" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <div id="menu"><div><ul id="nav"><li><a href="../about.html">about</a></li><li><a href="../learn.html">learn</a></li><li><a href="../portfolio.html" aria-current="page">portfolio</a></li><li><a href="../contact.html">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li></ul></li></ul></div></div>
+  </div>
+</header>
+<div class="content">
+
+<section class="main nopad-b">
+  <div class="row">
+    <div class="col col-5 text-main rise">
+      <span class="uppercase">Personal project · sales demo</span>
+      <h1 class="draw">sales desk.</h1>
+      <p class="intro">Two small AI tools for selling: one researches prospects, the other turns a sales call into CRM notes.</p>
+      <p>I built them the way I’d want to use them: every claim the AI makes comes with the exact line it was taken from, or it doesn’t count.</p>
+      <ul class="stack" aria-label="What I used"><li>Node.js</li><li>Gemini API</li><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li><li>Playwright</li></ul>
+      <div class="buttons"><a class="button" href="#demo">Try the demo</a><a class="button secondary" href="../portfolio.html">All projects</a></div>
+    </div>
+    <div class="col col-7 img-main rise"><div class="marco"><img src="../img/shots/ventas-m.png" alt="" loading="lazy"></div></div>
+  </div>
+</section>
+<section class="dark">
+  <div class="split-list">
+    <div class="rise"><h2>What I set out to do</h2><p>Find stores that fit, write a first email worth sending, and keep what was said on a call. The research reads only each store’s public website. The emails are drafts: nothing here sends anything.</p></div>
+    <div class="rise"><h2>Decisions I made</h2><ul class="facts"><li><b>Every AI claim needs a quote,</b> checked word for word against the page. If it isn’t there, the claim is dropped.</li><li><b>Some checks are plain rules,</b> not AI: product count, FAQ questions, and whether a quote really says what it’s used for.</li><li><b>Emails stay drafts.</b> There’s a Copy button, no Send button, and no email code at all.</li><li><b>A deal only gets a dollar value</b> when the buyer says a budget on a call.</li><li><b>The test calls are role-plays</b> and say so: one test script, read once by AI voices and once by me.</li></ul></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="sub-head rise"><h2>How it works</h2><p>Node.js scripts do the reading and the AI work, save each run as a JSON file, and plain pages show the result. The browser never talks to the AI.</p></div>
+  <div class="rise"><div class="arch" role="img" aria-label="Store list → Node.js scripts → Checks → JSON files → Static pages"><div class="node">Store list<small>public websites only</small></div><span class="wire" style="--i:1"></span><div class="node">Node.js scripts<small>read pages, call Gemini</small></div><span class="wire" style="--i:2"></span><div class="node">Checks<small>quotes and fixed rules</small></div><span class="wire" style="--i:3"></span><div class="node">JSON files<small>one per run</small></div><span class="wire" style="--i:4"></span><div class="node">Static pages<small>table, file, board, call</small></div></div></div>
+  <div class="sub-head rise"><h3>From a call to the board</h3><p>Every field has to point at the line of the transcript it came from, or it isn’t saved.</p></div>
+  <div class="rise"><ol class="flow-steps"><li style="--i:0;--n:5">Recording</li><li style="--i:1;--n:5">Transcript<small>with timestamps</small></li><li style="--i:2;--n:5">Deal fields<small>pain, budget, who decides, timing</small></li><li style="--i:3;--n:5">Each field checked<small>its quote must be in the transcript</small></li><li style="--i:4;--n:5">Deal moves<small>with the reason</small></li></ol></div>
+</section>
+
+<section class="dark">
+  <div class="sub-head rise"><h2>Under the hood</h2><p>What I used, and why.</p></div>
+  <div class="tech rise"><div><b>Gemini API</b><span>Reads the pages, scores the fit, drafts the email and transcribes the call. It runs from Node.js scripts, so no key ever reaches the browser.</span></div><div><b>Quote checking</b><span>A claim only counts if its quote appears word for word on the page or in the transcript.</span></div><div><b>Plain rules where AI isn’t needed</b><span>Product counts, FAQ questions, and whether a quote really mentions the US or a founder. Same answer every time, at no cost.</span></div><div><b>Static pages</b><span>Runs are saved as JSON and shown with plain HTML and JavaScript. Opening the demo costs nothing.</span></div><div><b>Tests and screenshots</b><span>Node tests check the saved data. Playwright opens every page at computer and phone size and fails on anything cut off.</span></div><div><b>Two steps for audio</b><span>Transcribe first, then pull out the fields. Asking for both at once made the model loop.</span></div></div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>The plan, and where it stands</h2><ol class="steps"><li><span class="st done">Done</span><span>Prospect research on 10 real public stores: 9 scored with sources and a draft email, 1 left out because it couldn’t be confirmed as a Shopify store.</span></li><li><span class="st done">Done</span><span>Call to CRM, tested with a synthetic call and with my own recording reading the same script.</span></li><li><span class="st ">Pending</span><span>An unscripted call, with me as the seller.</span></li></ol></div></div>
+</section>
+
+
+<section class="light" id="demo">
+  <div class="row"><div class="col col-12 rise"><h2>Prospect research</h2><p>Stores scored against the ideal customer. Open one to see each reason with its source and the draft email.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../ventas/app/index.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../ventas/app/index.html" title="Prospect research, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../ventas/app/index.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../ventas/app/index.html" title="Prospect research, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light" id="call">
+  <div class="row"><div class="col col-12 rise"><h2>Call to CRM</h2><p>Two test calls of the same script: one read by AI voices, one recorded by me. The transcript, the deal fields with the line each came from, and the deal moved on the board.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../ventas/app/llamada.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../ventas/app/llamada.html" title="Call to CRM, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../ventas/app/llamada.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../ventas/app/llamada.html" title="Call to CRM, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>What I can’t claim yet</h2><p>No meetings booked and no deals closed with this. It’s a demo. The emails were never sent, the stores were only read and never contacted, and both calls so far are role-plays of the same test script.</p></div></div>
+</section>
+<section class="dark">
+  <nav class="pager" aria-label="More projects"><a href="barber.html"><small>← Previous</small><b>Barbershop booking</b></a><a href="links.html" style="text-align:right"><small>Next →</small><b>Creator links page</b></a></nav>
+</section>
+</div>
+<footer id="footer">
+  <a class="top" href="#header" aria-label="Back to top">↑</a>
+  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="../about.html">about</a><a href="../learn.html">learn</a><a href="../portfolio.html">portfolio</a><a href="../contact.html">contact</a></nav></div>
+</footer>
+<script src="../app.js"></script>
+</body>
+</html>

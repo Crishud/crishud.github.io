@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbershop Booking Concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="comun.css">
+<style>
+/* Concept: a phone-first product. The client page sits in a phone frame; the owner app beside it. */
+:root { --b-bg: #f4f2ee; --b-ink: #161514; --b-muted: #6b6762; --b-line: #dedad3; --b-acc: #161514; --b-acc-ink: #f4f2ee; --b-gold: #b08a3e; --b-card: #ffffff; --b-serif: "Fraunces", Georgia, serif; --b-sans: "Inter", "Segoe UI", system-ui, sans-serif }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --b-bg: #141312; --b-ink: #f2efe9; --b-muted: #a8a29a; --b-line: #33302c; --b-acc: #f2efe9; --b-acc-ink: #141312; --b-gold: #d6b26a; --b-card: #1d1b19 } }
+:root[data-theme="dark"] { --b-bg: #141312; --b-ink: #f2efe9; --b-muted: #a8a29a; --b-line: #33302c; --b-acc: #f2efe9; --b-acc-ink: #141312; --b-gold: #d6b26a; --b-card: #1d1b19 }
+body { background: var(--bg) }
+.tabs2 { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px }
+.tabs2 a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--panel); font-weight: 600 }
+.tabs2 a[aria-current="page"] { border-color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent) }
+.stage2 { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 18px }
+@media (max-width: 860px) { .stage2 { grid-template-columns: minmax(0, 1fr) } }
+.phone { border: 10px solid #1d1d1f; border-radius: 34px; background: var(--b-bg); color: var(--b-ink); font-family: var(--b-sans); overflow: hidden; max-width: 380px; width: 100%; justify-self: center }
+.scr { height: 660px; overflow-y: auto; padding: 18px 16px 24px; display: grid; gap: 14px; align-content: start }
+.test { font: 700 .66rem/1 var(--mono); letter-spacing: .08em; color: var(--b-gold); text-transform: uppercase }
+.shop { font: 800 1.8rem/1.05 var(--b-serif) }
+.bigbook { appearance: none; border: 0; background: var(--b-acc); color: var(--b-acc-ink); font: 700 1.1rem/1 var(--b-sans); min-height: 56px; border-radius: 14px; cursor: pointer; width: 100% }
+.bbtn { appearance: none; border: 1px solid var(--b-line); background: var(--b-card); color: var(--b-ink); font: 600 .95rem/1.2 var(--b-sans); min-height: 48px; border-radius: 12px; cursor: pointer; padding: 10px 14px; text-align: left }
+.bbtn[aria-pressed="true"] { border-color: var(--b-ink); box-shadow: inset 0 0 0 2px var(--b-ink) }
+.svcs { display: grid; gap: 8px }
+.svcs .s { display: flex; justify-content: space-between; gap: 10px; align-items: center }
+.times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px }
+.times .bbtn { text-align: center; padding: 10px 4px }
+.ph { aspect-ratio: 4/3; border-radius: 12px; background: repeating-linear-gradient(135deg, var(--b-line) 0 10px, transparent 10px 20px); display: grid; place-items: center; color: var(--b-muted); font-size: .8rem }
+.hrs { font-size: .88rem; color: var(--b-muted); display: grid; gap: 2px }
+.b-field { display: grid; gap: 4px; font-size: .88rem }
+.b-field input { font: inherit; min-height: 48px; padding: 10px 12px; border: 1px solid var(--b-line); border-radius: 12px; background: var(--b-card); color: var(--b-ink) }
+.back { appearance: none; border: 0; background: transparent; color: var(--b-muted); font: 600 .88rem/1 var(--b-sans); cursor: pointer; padding: 6px 0; text-align: left; min-height: 32px }
+.ok { padding: 14px; border-radius: 12px; background: var(--b-card); border: 1px solid var(--b-line); display: grid; gap: 6px }
+.owner { display: grid; gap: 14px; min-width: 0 }
+.otabs { display: flex; flex-wrap: wrap; gap: 4px }
+.otabs button { appearance: none; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 8px; padding: 8px 12px; font: 600 .88rem/1 var(--body); cursor: pointer; min-height: 44px }
+.otabs button[aria-pressed="true"] { background: var(--ink); color: var(--bg) }
+.appt { display: grid; grid-template-columns: 70px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line) }
+.timer { font: 800 2.4rem/1 var(--display); font-variant-numeric: tabular-nums }
+/* Owner phone app (from the proposal sketch) */
+.o-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px }
+.o-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; font-size: .72rem; color: var(--b-muted) }
+.o-days span { padding: 6px 0; border-radius: 10px } .o-days span.on { background: var(--b-ink); color: var(--b-bg); font-weight: 700 }
+.o-band { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--b-gold); color: #1d1b19; font-weight: 600; font-size: .9rem; border: 0; cursor: pointer; width: 100%; min-height: 44px }
+.o-next { padding: 12px; border-radius: 14px; background: var(--b-ink); color: var(--b-bg); display: grid; gap: 8px }
+.o-next .k { font: 700 .66rem/1 var(--mono); letter-spacing: .08em; opacity: .8 }
+.o-next .act { display: flex; gap: 6px } .o-next .act button { flex: 1; min-height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: inherit; font: 600 .9rem/1 var(--b-sans); cursor: pointer }
+.o-line { display: grid; gap: 4px }
+.o-slot { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; align-items: stretch; font-size: .86rem }
+.o-slot .t { color: var(--b-muted); padding-top: 8px; font-variant-numeric: tabular-nums }
+.o-slot .a { border-radius: 10px; padding: 8px 10px; background: var(--b-card); border: 1px solid var(--b-line); text-align: left; color: var(--b-ink); font: inherit; min-height: 44px }
+.o-slot .free { border-style: dashed; color: var(--b-muted); cursor: pointer; background: transparent }
+.o-fab { position: sticky; bottom: 66px; justify-self: end; width: 56px; height: 56px; border-radius: 50%; border: 0; background: var(--b-acc); color: var(--b-acc-ink); font: 700 1.8rem/1 var(--b-sans); cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,.25) }
+.o-nav { position: sticky; bottom: 0; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--b-bg); border-top: 1px solid var(--b-line); margin: 0 -16px; padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px)) }
+.o-nav button { border: 0; background: transparent; color: var(--b-muted); font: 600 .82rem/1 var(--b-sans); min-height: 48px; cursor: pointer }
+.o-nav button[aria-current="page"] { color: var(--b-ink) }
+.o-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--b-line); width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; color: var(--b-ink); font: inherit; text-align: left; cursor: pointer; min-height: 48px }
+.o-stat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center } .o-stat div { padding: 8px; border-radius: 10px; background: var(--b-card); border: 1px solid var(--b-line) } .o-stat b { display: block; font-size: 1.2rem } .o-stat span { font: 600 .62rem/1 var(--mono); letter-spacing: .06em; color: var(--b-muted) }
+.o-msg { font-size: .8rem; color: var(--b-muted); min-height: 1em }
+/* Desktop panel */
+.desk { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-height: 420px }
+@media (max-width: 760px) { .desk { grid-template-columns: minmax(0, 1fr) } }
+.desk nav { background: var(--ink); color: var(--bg); padding: 12px 8px; display: flex; flex-direction: column; gap: 2px }
+@media (max-width: 760px) { .desk nav { flex-direction: row; overflow-x: auto } }
+.desk nav button { border: 0; background: transparent; color: inherit; opacity: .75; text-align: left; padding: 9px 10px; border-radius: 6px; font: 500 .88rem/1.2 var(--body); cursor: pointer; white-space: nowrap; min-height: 40px }
+.desk nav button[aria-current="page"] { opacity: 1; background: rgba(127,127,127,.25); font-weight: 700 }
+.desk nav button:disabled { opacity: .4; cursor: default }
+.desk .body { padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0 }
+.agenda { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 12px }
+@media (max-width: 900px) { .agenda { grid-template-columns: minmax(0, 1fr) } }
+.grid-ag { display: grid; grid-template-columns: 56px repeat(2, minmax(120px, 1fr)); font-size: .82rem; min-width: 320px }
+.grid-ag div { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 4px 6px; min-height: 40px }
+.grid-ag .h { font-weight: 700; background: var(--soft) }
+.grid-ag button { width: 100%; text-align: left; border: 0; border-radius: 6px; padding: 6px; background: var(--accent); color: var(--accent-ink); font: 600 .8rem/1.2 var(--body); cursor: pointer }
+.grid-ag button.sel { outline: 3px solid var(--warn) }
+.side { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: grid; gap: 8px; align-content: start }
+</style>
+<body>
+<div class="demobar"><div class="in"><a href="work/barber.html" target="_parent">← Back to the case study</a><span class="tag">Demo 5 · concept prototype · test data</span></div></div>
+<div class="wrap">
+  <nav class="tabs2" aria-label="Sides of the product"><a href="#setup">1. Owner sets up</a><a href="#client">2. Client books</a><a href="#owner">3. Owner's day</a></nav>
+  <p class="honest" style="margin-top:14px">This product is in planning: research and decisions are done, no code yet. This prototype shows the flows from the planning documents (3-tap booking, price list already written for the owner, phone-first owner app). The shop, barbers, prices and clients are test data. The product name isn't final, so it isn't used here.</p>
+
+  <!-- Setup -->
+  <section class="view" data-view="setup" style="margin-top:18px">
+    <div class="stage2">
+      <div class="phone"><div class="scr" id="setupScr"></div></div>
+      <div class="grid" style="gap:12px;align-content:start">
+        <span class="label">Goal from the plan</span>
+        <h2>From sign-up to first booking in under 10 minutes</h2>
+        <p>Research into what shop owners post online pointed to one problem: the app is easy, filling it is not. So the price list comes already written for the type of shop. The owner only fixes what is different and publishes.</p>
+        <div class="card grid" style="gap:6px"><span class="label">Time on this setup</span><span class="timer" id="timer">0:00</span><span class="note">Starts when you pick a shop type.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client -->
+  <section class="view" data-view="client" hidden style="margin-top:18px">
+    <div class="stage2">
+      <div class="phone"><div class="scr" id="clientScr"></div></div>
+      <div class="grid" style="gap:12px;align-content:start">
+        <span class="label">Client page</span>
+        <h2>Book in three taps</h2>
+        <p>Service, time (the first free one is already picked), then name and phone to confirm. Empty sections of the page hide themselves. When the day is full, the client can join a waitlist.</p>
+        <ul class="note" style="margin:0;padding-left:1.1em;display:grid;gap:4px"><li>Buttons are at least 48 px; Book is 56 px.</li><li>No password for clients: changes come from a text-message link.</li><li>The confirmation has directions, add-to-calendar, move and cancel.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner -->
+  <section class="view" data-view="owner" hidden style="margin-top:18px">
+    <div class="stage2">
+      <div class="phone"><div class="scr" id="ownerScr" style="padding-bottom:0;position:relative"></div></div>
+      <div class="grid" style="gap:12px;align-content:start">
+        <span class="label">Owner app · phone</span>
+        <h2>Built from the project's own proposal sketch</h2>
+        <p>The owner screens follow the planning team's proposal drawing (“our owner screens”): Today as the home screen, a pinned “Next” card with Call and Text, tap a free slot to book it, a new appointment in three taps by dictating, and only three tabs. Each idea in that drawing is credited to the app it came from or the flaw it fixes.</p>
+        <ul class="note" style="margin:0;padding-left:1.1em;display:grid;gap:4px"><li>Try: tap a free slot, use the + button, dictate “Jordan, skin fade, at 2:00”.</li><li>Money stays hidden: there are no online payments in version 1.</li><li>Heavy settings live on the desktop panel below.</li></ul>
+      </div>
+    </div>
+    <div class="owner card" style="margin-top:22px">
+      <div class="row" style="justify-content:space-between"><h2>Desktop panel</h2><span class="test" style="color:var(--warn)">Test data</span></div>
+      <div id="desk"></div>
+    </div>
+  </section>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const VIEWS = ['setup', 'client', 'owner'];
+  function route() {
+    const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'setup';
+    $$('[data-view]').forEach((s) => (s.hidden = s.dataset.view !== v));
+    $$('.tabs2 a').forEach((a) => a.getAttribute('href') === '#' + v ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    if (v === 'client') drawClient(); if (v === 'owner') drawOwner();
+  }
+  addEventListener('hashchange', () => { route(); scrollTo(0, 0); });
+
+  // Test data: catalog templates per shop type (prices are placeholders, not market data)
+  const TEMPLATES = {
+    Barbershop: [['Haircut', 30, 30], ['Skin fade', 45, 35], ['Beard trim', 20, 15], ['Cut + beard', 50, 45], ['Kids cut', 30, 20]],
+    'Nail salon': [['Manicure', 30, 25], ['Gel manicure', 45, 40], ['Pedicure', 50, 45]],
+    'Hair salon': [['Women\'s cut', 45, 50], ['Blowout', 40, 40], ['Color', 120, 110]],
+  };
+  const shop = { name: 'Test: Corner Cut Barbers', type: null, services: [], published: false, barbers: ['Test: Andre', 'Test: Luis'] };
+  let t0 = null, tick = null;
+
+  function drawSetup() {
+    const s = $('#setupScr');
+    if (!shop.type) {
+      s.innerHTML = `<span class="test">Test data</span><div class="shop">What kind of shop?</div><p style="color:var(--b-muted);margin:0">We'll fill in your services and prices. You can change anything.</p>`
+        + Object.keys(TEMPLATES).map((k) => `<button class="bbtn" data-k="${esc(k)}">${esc(k)}</button>`).join('');
+      s.querySelectorAll('[data-k]').forEach((b) => b.onclick = () => { shop.type = b.dataset.k; shop.services = TEMPLATES[shop.type].map(([n, m, p]) => ({ n, m, p, on: true })); t0 = Date.now(); clearInterval(tick); tick = setInterval(time, 1000); drawSetup(); });
+      return;
+    }
+    if (!shop.published) {
+      s.innerHTML = `<button class="back" id="bk">← Shop type</button><span class="test">Test data · prices are placeholders</span><div class="shop">Your services</div><p style="color:var(--b-muted);margin:0">Already written for a ${esc(shop.type.toLowerCase())}. Fix prices or switch off what you don't do.</p>`
+        + shop.services.map((x, i) => `<div class="ok"><div class="svcs"><div class="s"><b>${esc(x.n)}</b><label style="font-size:.8rem"><input type="checkbox" data-on="${i}" ${x.on ? 'checked' : ''}> offer</label></div><div class="s"><span style="color:var(--b-muted);font-size:.85rem">${x.m} min</span><span>$<input data-p="${i}" value="${x.p}" inputmode="numeric" style="width:64px;min-height:40px;border:1px solid var(--b-line);border-radius:8px;padding:6px;background:var(--b-bg);color:var(--b-ink);font:inherit" aria-label="Price for ${esc(x.n)}"></span></div></div></div>`).join('')
+        + `<button class="bigbook" id="pub">Publish my page</button>`;
+      $('#bk').onclick = () => { shop.type = null; clearInterval(tick); drawSetup(); };
+      s.querySelectorAll('[data-on]').forEach((c) => c.onchange = () => (shop.services[+c.dataset.on].on = c.checked));
+      s.querySelectorAll('[data-p]').forEach((c) => c.oninput = () => (shop.services[+c.dataset.p].p = Math.max(0, parseInt(c.value, 10) || 0)));
+      $('#pub').onclick = () => { shop.published = true; clearInterval(tick); drawSetup(); };
+      return;
+    }
+    s.innerHTML = `<span class="test">Test data</span><div class="shop">You're live</div><div class="ok"><b>${esc(shop.name)}</b><span style="color:var(--b-muted);font-size:.88rem">${shop.services.filter((x) => x.on).length} services · 2 barbers · Tue–Sat</span></div><p style="margin:0">Setup took <b>${$('#timer').textContent}</b>. Share your link or open the client page.</p><a class="bigbook" href="#client" style="display:grid;place-items:center;text-decoration:none">See my client page</a><button class="back" id="again">Start over</button>`;
+    $('#again').onclick = () => { shop.type = null; shop.published = false; $('#timer').textContent = '0:00'; drawSetup(); };
+  }
+  function time() { const s = Math.floor((Date.now() - t0) / 1000); $('#timer').textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; }
+
+  // Client side
+  const HOURS = ['10:00', '10:30', '11:00', '11:30', '12:00', '1:00', '1:30', '2:00', '3:00'];
+  // Demo works on the next open day (Tue–Sat), named for real
+  // Today if the shop is open today (Tue–Sat) and it's before 10 am, so every slot is still ahead; otherwise the next open day
+  const od = new Date(); if (od.getHours() >= 10) od.setDate(od.getDate() + 1);
+  while (od.getDay() === 0 || od.getDay() === 1) od.setDate(od.getDate() + 1);
+  const isToday = od.toDateString() === new Date().toDateString();
+  const openDay = isToday ? 'Today' : od.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  let myAppt = null, movingFrom = null;
+  const demoMsg = (b, msg) => { b.onclick = () => { b.textContent = msg; b.disabled = true; }; };
+  const booked = new Set(['10:00', '11:00', '1:30']);
+  const appts = [{ t: '10:00', n: 'Test: Chris M.', s: 'Skin fade', b: 'Test: Andre', st: 'Booked' }, { t: '11:00', n: 'Test: Jordan P.', s: 'Cut + beard', b: 'Test: Luis', st: 'Booked' }, { t: '1:30', n: 'Test: Sam T.', s: 'Haircut', b: 'Test: Andre', st: 'Booked' }];
+  const waitlist = [];
+  const cpick = { step: 0, svc: null, time: null };
+  const svcList = () => (shop.services.length ? shop.services : TEMPLATES.Barbershop.map(([n, m, p]) => ({ n, m, p, on: true }))).filter((x) => x.on);
+  function drawClient() {
+    const s = $('#clientScr'); const svcs = svcList(); const free = HOURS.filter((h) => !booked.has(h));
+    if (cpick.step === 0) movingFrom = null; // back on the shop page = the change was dropped, the booking stays
+    const changing = movingFrom && cpick.step >= 1 && cpick.step <= 3 ? `<div class="ok" style="padding:8px 12px"><span style="font-size:.85rem">Changing your ${esc(movingFrom.t)} booking. It stays until you confirm the new time.</span></div>` : '';
+    if (cpick.step === 0) {
+      s.innerHTML = `<span class="test">Test data</span><div class="shop">${esc(shop.name.replace('Test: ', ''))}</div><button class="bigbook" id="go">Book</button>
+        <div class="svcs">${svcs.map((x) => `<div class="s"><span>${esc(x.n)}</span><b>$${x.p}</b></div>`).join('')}</div>
+        <div class="hrs"><b style="color:var(--b-ink)">Hours</b><span>Tue–Fri 10–7 · Sat 9–5</span><span>Sun–Mon closed</span></div>`;
+      $('#go').onclick = () => { cpick.step = 1; drawClient(); };
+    } else if (cpick.step === 1) {
+      s.innerHTML = `<button class="back" id="bk">← Back</button>${changing}<span class="test">Tap 1 of 3</span><div class="shop" style="font-size:1.4rem">Pick a service</div>` + svcs.map((x, i) => `<button class="bbtn" data-i="${i}"><span style="display:flex;justify-content:space-between;gap:8px"><span>${esc(x.n)} <span style="color:var(--b-muted);font-weight:400">· ${x.m} min</span></span><b>$${x.p}</b></span></button>`).join('');
+      $('#bk').onclick = () => { cpick.step = 0; drawClient(); };
+      s.querySelectorAll('[data-i]').forEach((b) => b.onclick = () => { cpick.svc = svcs[+b.dataset.i]; cpick.time = free[0] || null; cpick.step = 2; drawClient(); });
+    } else if (cpick.step === 2) {
+      s.innerHTML = `<button class="back" id="bk">← Back</button>${changing}<span class="test">Tap 2 of 3 · ${openDay}</span><div class="shop" style="font-size:1.4rem">Pick a time</div>`
+        + (free.length ? `<p style="margin:0;color:var(--b-muted);font-size:.88rem">The first free time is already picked.</p><div class="times">${HOURS.map((h) => `<button class="bbtn" data-h="${h}" ${booked.has(h) ? 'disabled style="opacity:.35;text-decoration:line-through"' : ''} aria-pressed="${cpick.time === h}">${h}</button>`).join('')}</div><button class="bigbook" id="nx">Continue</button>`
+          : `<div class="ok"><b>This day is full.</b><span>Join the waitlist and we'll text you if a spot opens.</span></div><button class="bigbook" id="wl">Join the waitlist</button>`);
+      $('#bk').onclick = () => { cpick.step = 1; drawClient(); };
+      s.querySelectorAll('[data-h]:not([disabled])').forEach((b) => b.onclick = () => { cpick.time = b.dataset.h; drawClient(); });
+      if ($('#nx')) $('#nx').onclick = () => { cpick.step = 3; drawClient(); };
+      if ($('#wl')) $('#wl').onclick = () => { waitlist.push(cpick.svc.n); cpick.step = 5; drawClient(); };
+    } else if (cpick.step === 3) {
+      s.innerHTML = `<button class="back" id="bk">← Back</button>${changing}<span class="test">Tap 3 of 3</span><div class="shop" style="font-size:1.4rem">Confirm</div><div class="ok"><b>${esc(cpick.svc.n)} · $${cpick.svc.p}</b><span>${openDay} at ${cpick.time}</span></div>
+        <div class="b-field"><label for="cn">Name</label><input id="cn" autocomplete="off"></div><div class="b-field"><label for="cp">Mobile</label><input id="cp" inputmode="tel" autocomplete="off" placeholder="(555) 010-0000"></div>
+        <button class="bigbook" id="cf" disabled>Confirm booking</button>`;
+      $('#bk').onclick = () => { cpick.step = 2; drawClient(); };
+      const chk = () => ($('#cf').disabled = !($('#cn').value.trim().length > 1 && $('#cp').value.replace(/\D/g, '').length >= 10));
+      $('#cn').oninput = chk; $('#cp').oninput = chk;
+      $('#cf').onclick = () => {
+        if (movingFrom) { booked.delete(movingFrom.t); appts.splice(appts.indexOf(movingFrom), 1); movingFrom = null; } // old time freed only now
+        booked.add(cpick.time); myAppt = { t: cpick.time, n: $('#cn').value.trim(), s: cpick.svc.n, b: 'Test: Luis', st: 'Booked' }; appts.push(myAppt); cpick.step = 4; drawClient();
+      };
+    } else if (cpick.step === 4) {
+      s.innerHTML = `<span class="test">Test data</span><div class="shop" style="font-size:1.5rem">You're booked</div><div class="ok"><b>${esc(cpick.svc.n)}</b><span>${openDay} at ${cpick.time} · with Test: Luis</span></div>
+        <button class="bbtn" id="dir">Directions</button><button class="bbtn" id="cal">Add to calendar</button><button class="bbtn" id="mv">Move</button><button class="bbtn" id="cx">Cancel</button>
+        <p style="margin:0;color:var(--b-muted);font-size:.82rem">A text with a link to change it would be sent. In this demo nothing is sent. The booking now shows in the owner's day.</p><button class="back" id="home">← Back to the shop page</button>`;
+      demoMsg($('#dir'), 'Demo: would open the map to the shop'); demoMsg($('#cal'), 'Demo: would add it to your calendar');
+      $('#mv').onclick = () => { movingFrom = myAppt; cpick.time = HOURS.find((h) => !booked.has(h)) || null; cpick.step = 2; drawClient(); };
+      $('#cx').onclick = () => { if (myAppt) { booked.delete(myAppt.t); appts.splice(appts.indexOf(myAppt), 1); myAppt = null; } movingFrom = null; cpick.step = 0; drawClient(); };
+      $('#home').onclick = () => { cpick.step = 0; drawClient(); };
+    } else {
+      s.innerHTML = `<div class="shop" style="font-size:1.5rem">You're on the waitlist</div><p style="margin:0">We'll text you if a spot opens (${openDay}).</p><button class="back" id="home">← Back to the shop page</button>`;
+      $('#home').onclick = () => { cpick.step = 0; drawClient(); };
+    }
+  }
+
+  // ---------- Owner app (phone), following the project's proposal sketch ----------
+  const order = (x) => HOURS.indexOf(x.t);
+  const CLI = { 'Test: Chris M.': { visits: 12, miss: 0, every: '~3 wk', note: 'Clipper #2 on the sides', since: 'Mar 2026', hist: [['Haircut', 'Oct 7 · 3:00 PM'], ['Cut + beard', 'Sep 16 · 5:30 PM']] },
+    'Test: Jordan P.': { visits: 5, miss: 1, every: '~4 wk', note: 'Prefers Luis', since: 'Jun 2026', hist: [['Cut + beard', 'Sep 30 · 11:00 AM']] },
+    'Test: Sam T.': { visits: 2, miss: 0, every: '—', note: '', since: 'Sep 2026', hist: [['Haircut', 'Oct 2 · 1:30 PM']] } };
+  const requests = [{ n: 'Test: Alex R.', s: 'Haircut', t: '2:00' }];
+  const ost = { view: 'today', client: null, draft: null, prefillT: null, blocked: false, paused: false, msg: '' };
+  const say = (m) => { ost.msg = m; const e = $('#oMsgP'); if (e) e.textContent = m; };
+  function drawOwner() { drawPhone(); drawDesk(); }
+  function nav() { return `<nav class="o-nav" aria-label="Owner tabs">${[['today', 'Today'], ['clients', 'Clients'], ['more', 'More']].map(([k, l]) => `<button data-ov="${k}" ${ost.view === k || (k === 'clients' && ost.view === 'client') ? 'aria-current="page"' : ''}>${l}</button>`).join('')}</nav>`; }
+  function drawPhone() {
+    const s = $('#ownerScr'); const list = appts.slice().sort((a, b) => order(a) - order(b));
+    let h = '';
+    if (ost.view === 'today') {
+      const nx = list.find((a) => a.st === 'Booked');
+      const days = [...Array(7)].map((_, i) => { const d = new Date(od); d.setDate(d.getDate() + i); return d; });
+      h = `<div class="o-top"><b>${esc(openDay)}</b><span class="test">Test data</span></div>
+        <div class="o-days">${days.map((d, i) => `<span class="${i === 0 ? 'on' : ''}">${'SMTWTFS'[d.getDay()]}<br>${d.getDate()}</span>`).join('')}</div>
+        ${requests.length ? `<button class="o-band" id="oReq">${requests.length} new request${requests.length > 1 ? 's' : ''}<span>›</span></button>` : ''}
+        ${ost.paused ? '<div class="ok"><b>Bookings paused.</b><span style="font-size:.85rem">Your page shows “not taking bookings right now”.</span></div>' : ''}
+        ${nx ? `<div class="o-next"><span class="k">NEXT · ${nx.t}</span><b>${esc(nx.n.replace('Test: ', ''))} · ${esc(nx.s)}</b><div class="act"><button data-d="call">Call</button><button data-d="text">Text</button></div></div>` : '<div class="ok"><b>Nothing booked yet.</b><button class="bbtn" id="oShare">Share my link</button></div>'}
+        <div class="o-line">${HOURS.map((t) => { const a = list.find((x) => x.t === t); const blk = ost.blocked && (t === '12:00' || t === '1:00');
+          return `<div class="o-slot"><span class="t">${t}</span>${a ? `<button class="a" data-a="${esc(a.n)}"><b>${esc(a.n.replace('Test: ', ''))}</b> · ${esc(a.s)}<br><span style="color:var(--b-muted);font-size:.78rem">${esc(a.b.replace('Test: ', ''))}</span></button>` : blk ? '<div class="a" style="color:var(--b-muted)">Blocked</div>' : `<button class="a free" data-t="${t}">Free · tap to book here</button>`}</div>`; }).join('')}</div>
+        <p class="o-msg" id="oMsgP" aria-live="polite">${esc(ost.msg)}</p>
+        <button class="o-fab" id="oPlus" aria-label="New appointment">+</button>`;
+    } else if (ost.view === 'requests') {
+      h = `<button class="back" data-ov="today">← Today</button><div class="shop" style="font-size:1.3rem">Requests</div>${requests.map((r, i) => `<div class="ok"><b>${esc(r.n.replace('Test: ', ''))} · ${esc(r.s)}</b><span>Asks for ${r.t}</span><div class="row"><button class="bbtn" data-acc="${i}">Accept</button><button class="bbtn" data-dec="${i}">Decline</button></div></div>`).join('') || '<p>No requests.</p>'}`;
+    } else if (ost.view === 'new') {
+      const d = ost.draft;
+      h = `<button class="back" data-ov="today">× Close</button><div class="shop" style="font-size:1.3rem">New appointment</div>
+        <div class="b-field"><label for="dict">Say it (or type it)</label><input id="dict" autocomplete="off" placeholder="Jordan, skin fade, at 2:00" value="${d ? esc(d.raw) : ''}"></div>
+        <div class="row"><button class="bbtn" id="mic" style="flex:1">🎙 Use sample dictation</button><button class="bbtn" id="parse" style="flex:1">Fill in</button></div>
+        ${d ? `<div class="ok"><span style="font-size:.78rem;color:var(--b-muted)">Tap any field to fix it</span>
+          <div class="b-field"><label for="dN">Client</label><input id="dN" value="${esc(d.n)}"></div>
+          <div class="b-field"><label for="dS">Service</label><select id="dS" style="min-height:48px;border-radius:12px;border:1px solid var(--b-line);background:var(--b-card);color:var(--b-ink);padding:0 10px">${svcList().map((x) => `<option ${x.n === d.s ? 'selected' : ''}>${esc(x.n)}</option>`).join('')}</select></div>
+          <div class="b-field"><label for="dT">When (${esc(openDay)})</label><select id="dT" style="min-height:48px;border-radius:12px;border:1px solid var(--b-line);background:var(--b-card);color:var(--b-ink);padding:0 10px">${HOURS.map((t) => `<option ${t === d.t ? 'selected' : ''} ${booked.has(t) ? 'disabled' : ''}>${t}${booked.has(t) ? ' (taken)' : ''}</option>`).join('')}</select></div></div>
+          <button class="bigbook" id="dOk">Confirm</button>` : ''}
+        <p class="o-msg" id="oMsgP" aria-live="polite" style="color:var(--b-gold);font-weight:600">${esc(ost.msg)}</p>
+        <p class="o-msg">Tap 1: + · tap 2: dictate · tap 3: confirm. In the real app the phone's microphone does the typing.</p>`;
+    } else if (ost.view === 'clients') {
+      const names = [...new Set(appts.map((a) => a.n))];
+      h = `<div class="shop" style="font-size:1.3rem">Clients</div><div class="b-field"><input id="cq" placeholder="Search by name or phone" aria-label="Search clients"></div><div id="clist">${names.map((n) => `<button class="o-row" data-c="${esc(n)}"><span>${esc(n.replace('Test: ', ''))}</span><span>›</span></button>`).join('')}</div>`;
+    } else if (ost.view === 'client') {
+      const n = ost.client, c = CLI[n] || { visits: 1, miss: 0, every: '—', note: '', since: 'today', hist: [] };
+      h = `<button class="back" data-ov="clients">‹ Clients</button><div class="shop" style="font-size:1.4rem">${esc(n.replace('Test: ', ''))}</div><span style="color:var(--b-muted);font-size:.85rem">(555) 010-01${String(n.length).padStart(2, '0')} · client since ${c.since}</span>
+        <div class="row"><button class="bbtn" data-d="call" style="flex:1">Call</button><button class="bbtn" data-d="text" style="flex:1">Text</button><button class="bbtn" id="again" style="flex:1">Book again</button></div>
+        <div class="o-stat"><div><b>${c.visits}</b><span>VISITS</span></div><div><b>${c.miss}</b><span>NO-SHOWS</span></div><div><b>${c.every}</b><span>EVERY</span></div></div>
+        <div class="ok"><b style="font-size:.85rem">Notes (facts, not opinions)</b><span>${esc(c.note || '—')}</span></div>
+        ${c.hist.map(([sv, w]) => `<div class="o-row" style="cursor:default"><span>${esc(sv)}</span><span style="color:var(--b-muted);font-size:.85rem">${esc(w)}</span></div>`).join('')}
+        <p class="o-msg" id="oMsgP" aria-live="polite">${esc(ost.msg)}</p>`;
+    } else if (ost.view === 'more') {
+      const row = (id, l, extra = '') => `<button class="o-row" id="${id}"><span>${l}</span><span>${extra || '›'}</span></button>`;
+      h = `<div class="shop" style="font-size:1.3rem">More</div><span class="test">My page</span>${row('mView', 'View my page')}${row('mLink', 'Copy link · QR · bio link')}${row('mRev', 'Ask for a review')}
+        <span class="test" style="margin-top:8px">Quick settings (the daily stuff)</span>${row('mHours', "Today's hours", od.getDay() === 6 ? '9–5' : '10–7')}${row('mBlock', 'Block time', ost.blocked ? 'On · 12–2' : 'Off')}${row('mPause', 'Pause bookings', ost.paused ? 'On' : 'Off')}${row('mHelp', 'Help')}
+        <div class="ok"><b style="font-size:.9rem">This is easier on a computer</b><button class="bbtn" id="mSend">Text me the link</button></div>
+        <p class="o-msg" id="oMsgP" aria-live="polite">${esc(ost.msg)}</p>`;
+    }
+    s.innerHTML = h + (['today', 'clients', 'client', 'more'].includes(ost.view) ? nav() : '');
+    ost.msg = '';
+    // wiring
+    $$('[data-ov]', s).forEach((b) => b.onclick = () => { ost.view = b.dataset.ov; drawPhone(); });
+    $$('[data-d]', s).forEach((b) => b.onclick = () => say(b.dataset.d === 'call' ? 'Demo: this would call the client from your phone.' : 'Demo: this would open a text to the client. Nothing is sent here.'));
+    if ($('#oReq')) $('#oReq').onclick = () => { ost.view = 'requests'; drawPhone(); };
+    if ($('#oShare')) $('#oShare').onclick = () => say('Demo: this would share your booking link.');
+    if ($('#oPlus')) $('#oPlus').onclick = () => { ost.view = 'new'; ost.draft = null; drawPhone(); };
+    $$('[data-t]', s).forEach((b) => b.onclick = () => { ost.view = 'new'; ost.draft = { raw: '', n: '', s: svcList()[0].n, t: b.dataset.t }; drawPhone(); });
+    $$('[data-a]', s).forEach((b) => b.onclick = () => { ost.view = 'client'; ost.client = b.dataset.a; drawPhone(); });
+    $$('[data-acc]', s).forEach((b) => b.onclick = () => { const r = requests.splice(+b.dataset.acc, 1)[0]; if (!booked.has(r.t)) { booked.add(r.t); appts.push({ t: r.t, n: r.n, s: r.s, b: 'Test: Andre', st: 'Booked' }); } ost.view = 'today'; ost.msg = 'Accepted. The client gets a confirmation text (not in this demo).'; drawOwner(); });
+    $$('[data-dec]', s).forEach((b) => b.onclick = () => { requests.splice(+b.dataset.dec, 1); ost.view = 'today'; ost.msg = 'Declined.'; drawOwner(); });
+    if (ost.view === 'new') {
+      const parse = (raw) => { const parts = raw.split(',').map((x) => x.trim()); const n = parts[0] ? 'Test: ' + parts[0] : ''; const sv = svcList().find((x) => raw.toLowerCase().includes(x.n.toLowerCase())) || svcList()[0]; const tm = (raw.match(/(\d{1,2}:\d{2})/) || [])[1]; const t = HOURS.includes(tm) ? tm : (ost.draft && ost.draft.t) || HOURS.find((h) => !booked.has(h)); return { raw, n, s: sv.n, t }; };
+      $('#mic').onclick = () => { ost.draft = parse('Jordan, skin fade, at 2:00'); drawPhone(); };
+      $('#parse').onclick = () => { ost.draft = parse($('#dict').value || ''); drawPhone(); };
+      if ($('#dOk')) $('#dOk').onclick = () => { const n = $('#dN').value.trim(), sv = $('#dS').value, t = $('#dT').value.replace(' (taken)', ''); if (!n || booked.has(t)) { say(!n ? 'Add the client name.' : 'That time is taken.'); return; } booked.add(t); appts.push({ t, n: n.startsWith('Test: ') ? n : 'Test: ' + n, s: sv, b: 'Test: Luis', st: 'Booked' }); ost.view = 'today'; ost.msg = `Booked ${n.replace('Test: ', '')} at ${t}.`; drawOwner(); };
+    }
+    if (ost.view === 'clients') { const q = $('#cq'); q.oninput = () => $$('#clist [data-c]').forEach((b) => (b.hidden = !b.textContent.toLowerCase().includes(q.value.toLowerCase()))); $$('[data-c]', s).forEach((b) => b.onclick = () => { ost.view = 'client'; ost.client = b.dataset.c; drawPhone(); }); }
+    if (ost.view === 'client') $('#again').onclick = () => { ost.view = 'new'; ost.draft = { raw: '', n: ost.client, s: (CLI[ost.client] && CLI[ost.client].hist[0] && CLI[ost.client].hist[0][0]) || svcList()[0].n, t: HOURS.find((h) => !booked.has(h)) }; drawPhone(); };
+    if (ost.view === 'more') {
+      $('#mView').onclick = () => { location.hash = 'client'; };
+      $('#mLink').onclick = () => say('Demo: copies your link, shows a QR code and a link for your Instagram bio.');
+      $('#mRev').onclick = () => say('Demo: sends every client a review link, by email or by text. Never only to happy clients. Nothing is sent here.');
+      $('#mHours').onclick = () => say('Demo: change today\'s hours only (Tue–Fri 10–7, Sat 9–5).');
+      $('#mBlock').onclick = () => { ost.blocked = !ost.blocked; ost.msg = ost.blocked ? 'Blocked 12–2 today (if free).' : 'Unblocked.'; drawPhone(); };
+      $('#mPause').onclick = () => { ost.paused = !ost.paused; ost.msg = ost.paused ? 'Bookings paused.' : 'Bookings back on.'; drawPhone(); };
+      $('#mHelp').onclick = () => say('Demo: help articles and a way to reach support.');
+      $('#mSend').onclick = () => say('Demo: texts you a link to open the full panel on a computer.');
+    }
+  }
+
+  // ---------- Desktop panel ----------
+  const DM = [['agenda', 'Today / Agenda'], ['clients', 'Clients'], ['page', 'My page'], ['services', 'Services'], ['team', 'Team'], ['money', 'Money (later)'], ['settings', 'Settings']];
+  const SET = [['1 · Business', 'name, address, hours · paint your availability'], ['2 · Booking rules', 'how far ahead, intervals, booking window · “look busy”'], ['3 · Policies', 'cancellation · deposit when payments exist · pick a mode'], ['4 · Client messages', 'text templates and when they go out'], ['5 · Team and permissions', 'who sees and who changes what'], ['6 · Links', 'Google, Instagram, reviews'], ['7 · Plan and billing', '']];
+  const dst = { m: 'agenda', sel: null, confirm: false, q: '' };
+  function drawDesk() {
+    const d = $('#desk'); if (!d) return;
+    let body = '';
+    if (dst.m === 'agenda') {
+      const bar = shop.barbers;
+      const cell = (t, b) => { const a = appts.find((x) => x.t === t && x.b === b); return a ? `<button class="${dst.sel === a ? 'sel' : ''}" data-ap="${appts.indexOf(a)}">${esc(a.n.replace('Test: ', ''))} · ${esc(a.s)}</button>` : ''; };
+      const a = dst.sel;
+      body = `<div class="row" style="justify-content:space-between"><b>${esc(openDay)} · by barber <span class="note">(day view only in this demo; the plan has day and week, and drag to move)</span></b><button class="btn" id="dNew" style="min-height:36px;padding:6px 12px">New appointment</button></div>
+        <div class="agenda"><div class="tbl"><div class="grid-ag"><div class="h"></div>${bar.map((b) => `<div class="h">${esc(b.replace('Test: ', ''))}</div>`).join('')}${HOURS.map((t) => `<div class="h">${t}</div>${bar.map((b) => `<div>${cell(t, b)}</div>`).join('')}`).join('')}</div></div>
+        <div class="side">${a ? `<b>${esc(a.n.replace('Test: ', ''))} · ${esc(a.s)}</b><span class="note">${esc(openDay)} · ${a.t} · ${esc(a.b.replace('Test: ', ''))}</span><span class="note">Notes: ${esc((CLI[a.n] && CLI[a.n].note) || '—')}</span>
+          <div class="row"><button class="mini" data-dd="call">Call</button><button class="mini" data-dd="text">Text</button></div>
+          <div class="row"><label class="note" for="dMoveT">Move to</label><select id="dMoveT" style="min-height:32px">${HOURS.filter((h) => !booked.has(h)).map((h) => `<option>${h}</option>`).join('')}</select><button class="mini" id="dMove">Move</button></div>
+          ${dst.confirm ? `<div class="toast" style="background:var(--bad-soft);color:var(--bad)">Cancel ${esc(a.n.replace('Test: ', ''))} at ${a.t}?</div><div class="row"><button class="mini" id="dYes">Yes, cancel</button><button class="mini" id="dNo">Keep it</button></div>` : '<button class="mini" id="dCancel">Cancel…</button>'}` : '<span class="note">Click an appointment to see it here.</span>'}<p class="note" id="dMsg" aria-live="polite"></p></div></div>`;
+    } else if (dst.m === 'settings') {
+      body = `<div class="field"><label for="sq">Search settings (e.g. “deposit”, “reminder”)</label><input id="sq" value="${esc(dst.q)}" autocomplete="off"></div><div id="slist">${SET.map(([t, x]) => `<div class="card" data-sx="${esc((t + ' ' + x).toLowerCase())}" style="margin-bottom:8px"><b>${t}</b><div class="note">${x}</div></div>`).join('')}</div>`;
+    } else if (dst.m === 'services') {
+      body = `<div class="tbl"><table><thead><tr><th>Service</th><th>Time</th><th>Price</th></tr></thead><tbody>${svcList().map((x) => `<tr><td>${esc(x.n)}</td><td class="num">${x.m} min</td><td class="num">$${x.p}</td></tr>`).join('')}</tbody></table></div><p class="note">The catalog comes written for the type of shop. Prices are placeholders. Planned: snap a photo of your price board and AI fills the list.</p>`;
+    } else if (dst.m === 'clients') {
+      body = `<div class="tbl"><table><thead><tr><th>Client</th><th>Visits</th><th>Every</th><th>Note</th></tr></thead><tbody>${Object.entries(CLI).map(([n, c]) => `<tr><td>${esc(n)}</td><td class="num">${c.visits}</td><td>${c.every}</td><td>${esc(c.note || '—')}</td></tr>`).join('')}</tbody></table></div>`;
+    } else if (dst.m === 'page') {
+      body = `<p>Preview plus four fields: color, font, cover and section order. Sections with nothing in them are hidden on the client page.</p><div><a class="btn" href="#client">Open the client page</a></div>`;
+    } else if (dst.m === 'team') {
+      body = shop.barbers.map((b) => `<div class="appt"><b>${esc(b.replace('Test: ', ''))}</b><span class="note">Tue–Sat</span><span class="pill p-ok">Taking bookings</span></div>`).join('');
+    }
+    d.innerHTML = `<div class="desk"><nav aria-label="Panel menu">${DM.map(([k, l]) => `<button data-dm="${k}" ${dst.m === k ? 'aria-current="page"' : ''} ${k === 'money' ? 'disabled title="Only when payments exist"' : ''}>${l}</button>`).join('')}</nav><div class="body">${body}</div></div>`;
+    $$('[data-dm]', d).forEach((b) => b.onclick = () => { dst.m = b.dataset.dm; dst.confirm = false; drawDesk(); });
+    $$('[data-ap]', d).forEach((b) => b.onclick = () => { dst.sel = appts[+b.dataset.ap]; dst.confirm = false; drawDesk(); });
+    $$('[data-dd]', d).forEach((b) => b.onclick = () => ($('#dMsg').textContent = 'Demo: nothing is sent from this page.'));
+    if ($('#dNew')) $('#dNew').onclick = () => { ost.view = 'new'; ost.draft = null; drawPhone(); $('#ownerScr').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); };
+    if ($('#dCancel')) $('#dCancel').onclick = () => { dst.confirm = true; drawDesk(); };
+    if ($('#dNo')) $('#dNo').onclick = () => { dst.confirm = false; drawDesk(); };
+    if ($('#dYes')) $('#dYes').onclick = () => { const a = dst.sel; booked.delete(a.t); appts.splice(appts.indexOf(a), 1); if (myAppt === a) myAppt = null; dst.sel = null; dst.confirm = false; drawOwner(); };
+    if ($('#dMove')) $('#dMove').onclick = () => { const a = dst.sel; const nt = $('#dMoveT').value; if (!nt) { $('#dMsg').textContent = 'No free time left today.'; return; } booked.delete(a.t); a.t = nt; booked.add(nt); drawOwner(); };
+    if ($('#sq')) { const q = $('#sq'); const f = () => $$('#slist [data-sx]').forEach((c) => (c.hidden = !c.dataset.sx.includes(q.value.toLowerCase()))); q.oninput = () => { dst.q = q.value; f(); }; f(); }
+  }
+  drawSetup(); route();
+})();
+</script>
+</body>
+</html>

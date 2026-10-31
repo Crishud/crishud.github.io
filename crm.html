@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Credit Repair CRM Demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<style>
+.areas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px }
+.areas a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--panel); font-weight: 600 }
+.areas a[aria-current="page"] { border-color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent) }
+.hero2 { display: grid; gap: 14px; padding: 28px; border-radius: 16px; background: var(--term); color: var(--term-ink) }
+.hero2 h1 { color: #fff; font-size: clamp(2rem, 5vw, 3rem) }
+.hero2 p { color: var(--term-ink); opacity: .9 }
+.doors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px }
+@media (max-width: 760px) { .doors { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.stamp { display: inline-block; font: 600 .72rem/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; padding: 4px 8px; border: 1px dashed var(--accent); color: var(--accent); border-radius: 4px }
+.notice { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .93rem }
+.notice b { font: 700 .9rem/1.4 var(--mono); color: var(--accent) }
+.slots { display: flex; flex-wrap: wrap; gap: 6px }
+.slots button { appearance: none; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 8px; padding: 8px 10px; font: 500 .85rem/1.2 var(--body); cursor: pointer; min-height: 44px; min-width: 70px }
+.slots button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent) }
+.lockbar { padding: 12px 14px; border-radius: 10px; font-weight: 600; font-size: .92rem }
+.lock-on { background: var(--warn-soft); color: var(--warn) } .lock-off { background: var(--ok-soft); color: var(--ok) }
+.ftabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: 1px solid var(--line) }
+.ftabs button { appearance: none; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); padding: 10px 12px; font: 600 .88rem/1 var(--body); cursor: pointer; min-height: 40px }
+.ftabs button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent) }
+.stepl { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px }
+.stepl li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel) }
+.stepl .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-size: .75rem; font-weight: 700 }
+.stepl li.done .dot { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
+.letter { font: 400 .85rem/1.6 var(--body); background: #fff; color: #1b1b1b; border: 1px solid var(--line); border-radius: 6px; padding: 22px; max-width: 62ch; position: relative }
+.letter .draft { position: absolute; top: 10px; right: 10px; font: 700 .7rem/1 var(--mono); color: #b3261e; border: 1px solid #b3261e; padding: 3px 6px; transform: rotate(3deg) }
+</style>
+<body>
+<div class="demobar"><div class="in"><a href="work/crm.html" target="_parent">← Back to the case study</a><span class="tag">Demo 4 · credit-repair CRM · sample data</span></div></div>
+<div class="wrap">
+  <nav class="areas" aria-label="Areas">
+    <a href="#site">Public site</a><a href="#book">Book a call</a><a href="#portal">Client portal</a><a href="crm-team.html#clients">Team CRM</a><a href="crm-team.html#letters">Letters</a>
+  </nav>
+  <p class="honest" style="margin-top:14px">Built from the approved mockup A and the app’s own screens, rules and wording, made clickable with sample data. “Northline Credit” is a demo name: the real business name isn't final. No real client or credit file appears here.</p>
+
+  <!-- Public site -->
+  <section class="view" data-view="site" style="margin-top:18px">
+    <div class="hero2">
+      <span class="label" style="color:var(--term-ink)">Northline Credit · New York</span>
+      <h1>Before the bank tells you no.</h1>
+      <p>A free call to understand your case. A written contract before any work. You pay when the work is delivered.</p>
+      <div><a class="btn" href="#book">Book a free call</a></div>
+    </div>
+    <div class="grid" style="gap:8px"><span class="label">How it works</span>
+      <div class="doors">
+        <div class="card grid" style="gap:8px"><span class="stamp">Free</span><h3>We talk for 30 minutes</h3><p class="note">You tell us what is going on. Nothing is signed on the call.</p></div>
+        <div class="card grid" style="gap:8px"><span class="stamp">3 business days to cancel</span><h3>Written contract</h3><p class="note">Work starts only after you sign, and only after the cancel window ends.</p></div>
+        <div class="card grid" style="gap:8px"><span class="stamp">30 days to answer</span><h3>Letters by round</h3><p class="note">We dispute the items you believe are inaccurate. The bureaus have time to answer each round.</p></div>
+        <div class="card grid" style="gap:8px"><span class="stamp">Nothing up front</span><h3>Pay on delivery</h3><p class="note">The price is in the contract and is charged when the work is delivered.</p></div>
+      </div>
+    </div>
+    <p class="note">No result is guaranteed.</p>
+  </section>
+
+  <!-- Booking -->
+  <section class="view" data-view="book" hidden style="margin-top:18px">
+    <h1>Book a free call</h1>
+    <div class="grid g2" style="align-items:start">
+      <form class="card grid" id="bookF" novalidate style="gap:14px">
+        <div class="grid" style="gap:6px"><span class="label">Day and time (New York time)</span><div class="slots" id="bSlots"></div></div>
+        <div class="grid g2">
+          <div class="field"><label for="fName">Full name</label><input id="fName" autocomplete="off"></div>
+          <div class="field"><label for="fMail">Email</label><input id="fMail" type="email" autocomplete="off"></div>
+          <div class="field"><label for="fPhone">Phone</label><input id="fPhone" inputmode="tel" autocomplete="off"></div>
+          <div class="field"><label for="fState">State</label><select id="fState"></select></div>
+          <div class="field"><label for="fTopic">What is it about?</label><select id="fTopic"><option value="personal">Personal credit</option><option value="business">Business credit</option><option value="other">Other</option></select></div>
+          <div class="field"><label for="fCourt">Open lawsuit or bankruptcy?</label><select id="fCourt"><option value="no">No</option><option value="yes">Yes</option></select></div>
+        </div>
+        <div id="gate" aria-live="polite"></div>
+        <label class="row" style="align-items:flex-start;gap:10px;font-size:.9rem"><input type="checkbox" id="fAck" style="margin-top:4px;accent-color:var(--accent)"> <span>I understand that the call is free, that my credit report is not reviewed on it, and that nothing starts without a written contract.</span></label>
+        <div class="row"><button class="btn" id="fBtn" type="submit" disabled>Book the call</button><span class="note" id="fHint"></span></div>
+        <div id="fDone" hidden></div>
+      </form>
+      <div class="card grid" style="gap:4px"><span class="label">Read before booking</span>
+        <div class="notice"><b>1</b><span>The call is free and does not commit you to anything.</span></div>
+        <div class="notice"><b>2</b><span>We do not review your credit report on the call. There is no need to bring documents.</span></div>
+        <div class="notice"><b>3</b><span>No work starts without a written contract. If you sign it, you have 3 business days to cancel it without penalty.</span></div>
+        <div class="notice"><b>4</b><span>The price is stated in the contract and is charged when the work is delivered.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portal -->
+  <section class="view" data-view="portal" hidden style="margin-top:18px">
+    <div class="row" style="justify-content:space-between"><h1>Your steps</h1><span class="note">Signed in with a one-time link · Sample: Dana W.</span></div>
+    <ol class="stepl" id="pSteps"></ol>
+    <div class="card grid" id="pDoc" style="gap:12px"></div>
+    <div class="row"><button class="btn ghost" type="button" id="pCancelAsk">Cancel the contract</button></div>
+    <div class="card grid" id="pCancel" hidden style="gap:10px"><p><b>Are you sure? If you cancel, the contract is canceled and your portal closes.</b></p><div class="row"><button class="btn" type="button" id="pCancelYes">Yes, cancel</button><button class="btn ghost" type="button" id="pCancelNo">Keep it</button></div></div>
+  </section>
+
+  <!-- Team CRM -->
+  <section class="view" data-view="crm" hidden style="margin-top:18px">
+    <div class="row" style="justify-content:space-between"><h1>Clients</h1><div class="seg" role="group" aria-label="Filter" id="flt"></div></div>
+    <div class="card tbl" style="padding:6px 12px"><table><thead><tr><th>Client</th><th>Service</th><th>State</th><th>Status</th><th>Work lock</th><th></th></tr></thead><tbody id="cRows"></tbody></table></div>
+    <div id="file"></div>
+  </section>
+
+  <!-- Letters -->
+  <section class="view" data-view="letters" hidden style="margin-top:18px">
+    <h1>Letters</h1>
+    <p class="note">Preview shows each letter as it prints. The CRM sends nothing: a person prints the letters and takes them to certified mail, then logs the tracking number.</p>
+    <div class="card tbl" style="padding:6px 12px"><table><thead><tr><th>Client</th><th>Round</th><th>To</th><th>Type</th><th>Status</th><th></th></tr></thead><tbody id="lRows"></tbody></table></div>
+    <div id="lPrev"></div>
+  </section>
+</div>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const VIEWS = ['site', 'book', 'portal', 'crm', 'letters'];
+  function route() {
+    const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'site';
+    // The team side now lives in its own page, built on the approved CRM mockup
+    if (v === 'crm' || v === 'letters') { location.replace('crm-team.html#' + (v === 'crm' ? 'clients' : 'letters')); return; }
+    $$('[data-view]').forEach((s) => (s.hidden = s.dataset.view !== v));
+    $$('.areas a').forEach((a) => a.getAttribute('href') === '#' + v ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  }
+  addEventListener('hashchange', () => { route(); scrollTo(0, 0); });
+
+  // ----- Booking -----
+  const STATES = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+  STATES.forEach((s) => { const o = document.createElement('option'); o.value = o.textContent = s; $('#fState').append(o); }); $('#fState').value = 'NY';
+  const base = new Date(); base.setHours(0, 0, 0, 0);
+  const slots = []; for (let i = 1; slots.length < 8; i++) { const d = new Date(base); d.setDate(d.getDate() + i); if (d.getDay() === 0 || d.getDay() === 6) continue; ['10:00 am', '2:30 pm'].forEach((t) => slots.push(d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) + ' · ' + t)); }
+  let slot = null;
+  slots.slice(0, 8).forEach((s) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = s; b.setAttribute('aria-pressed', 'false'); b.onclick = () => { slot = s; $$('#bSlots button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); fcheck(); }; $('#bSlots').append(b); });
+  function eligible() { const t = $('#fTopic').value, s = $('#fState').value; return t === 'business' ? s !== 'GA' : s === 'NY'; }
+  function fcheck() {
+    const ok = eligible();
+    $('#gate').innerHTML = ok ? '' : `<div class="lockbar lock-on">We cannot take your case. ${$('#fTopic').value === 'business' ? 'Business credit is not offered in Georgia.' : 'Personal credit and other services are only offered in New York for now.'}</div>`;
+    const filled = slot && $('#fName').value.trim().length > 1 && /.+@.+\..+/.test($('#fMail').value) && $('#fPhone').value.replace(/\D/g, '').length >= 10;
+    $('#fBtn').disabled = !(ok && filled && $('#fAck').checked);
+    $('#fHint').textContent = !ok ? '' : !slot ? 'Pick a time.' : !filled ? 'Fill in your name, email and phone.' : !$('#fAck').checked ? 'Tick the box to confirm you read the notices.' : 'Ready.';
+  }
+  ['fName', 'fMail', 'fPhone'].forEach((id) => $('#' + id).addEventListener('input', fcheck));
+  ['fState', 'fTopic', 'fAck'].forEach((id) => $('#' + id).addEventListener('change', fcheck));
+  $('#bookF').addEventListener('submit', (e) => { e.preventDefault(); if ($('#fBtn').disabled) return; const d = $('#fDone'); d.hidden = false; d.className = 'toast'; d.textContent = `Booked: ${slot}. In the real product a link to view, change or cancel the call is sent by email; in this demo nothing is sent.`; });
+  fcheck();
+
+  // ----- Portal -----
+  const P = [
+    { t: 'Federal notice (Consumer Credit File Rights)', s: true, doc: 'notice' },
+    { t: 'New York notice', s: true, doc: 'notice' },
+    { t: 'Written contract', s: false, doc: 'contract' },
+    { t: '3 business days to cancel', s: false },
+    { t: 'Documents: ID, proof of address, SSN verification', s: false },
+    { t: 'Work begins', s: false },
+  ];
+  let canceled = false;
+  function drawPortal() {
+    if (canceled) { $('#pSteps').innerHTML = ''; $('#pDoc').innerHTML = '<p>The contract is canceled and this portal is closed. Nothing was charged.</p><p class="note">Demo: reload the page to start over.</p>'; $('#pCancelAsk').hidden = true; $('#pCancel').hidden = true; return; }
+    $('#pSteps').innerHTML = P.map((p, i) => `<li class="${p.s ? 'done' : ''}"><span class="dot">${p.s ? '✓' : i + 1}</span><span>${esc(p.t)}</span>${p.s ? `<span class="pill p-ok">${p.doc ? 'Signed' : 'Done'}</span>` : i === P.findIndex((x) => !x.s) ? '<span class="pill p-warn">Next</span>' : ''}</li>`).join('');
+    const next = P.findIndex((x) => !x.s);
+    if (next === 2) {
+      $('#pDoc').innerHTML = `<h3>Written contract</h3><p class="note">Sample contract text would appear here, approved by a lawyer before use. Price: stated in the contract, charged on delivery.</p>
+        <div class="field"><label for="sig">Type your full name to sign</label><input id="sig" autocomplete="off"></div>
+        <p class="note">By typing your name and pressing «I sign the contract», you sign this contract.</p>
+        <div><button class="btn" id="signB" type="button" disabled>I sign the contract</button></div>`;
+      $('#sig').oninput = () => ($('#signB').disabled = $('#sig').value.trim().length < 3);
+      $('#signB').onclick = () => { P[2].s = true; drawPortal(); };
+    } else if (next === 3) {
+      $('#pDoc').innerHTML = `<h3>Your cancel window is open</h3><p>You can cancel without penalty for 3 business days. Work does not start until this window ends.</p><div><button class="btn ghost" id="skipB" type="button">Demo: jump 3 business days ahead</button></div>`;
+      $('#skipB').onclick = () => { P[3].s = true; drawPortal(); };
+    } else if (next === 4) {
+      $('#pDoc').innerHTML = `<h3>Upload your documents</h3><p class="note">ID, proof of address and SSN verification. In this demo no file is uploaded.</p><div><button class="btn" id="docB" type="button">Demo: mark documents received</button></div>`;
+      $('#docB').onclick = () => { P[4].s = true; P[5].s = true; drawPortal(); };
+    } else {
+      $('#pDoc').innerHTML = `<h3>Work has started</h3><p>Your first round of letters is being prepared. You will see each bureau's answer here.</p>`;
+    }
+  }
+  $('#pCancelAsk').onclick = () => ($('#pCancel').hidden = false);
+  $('#pCancelNo').onclick = () => ($('#pCancel').hidden = true);
+  $('#pCancelYes').onclick = () => { canceled = true; drawPortal(); };
+  drawPortal();
+
+  // ----- Team CRM -----
+  const BUR = ['Equifax', 'Experian', 'TransUnion'];
+  const CLIENTS = [
+    { id: 1, name: 'Sample: Dana W.', svc: 'Personal credit', st: 'NY', status: 'Client', steps: [1, 1, 1, 1, 1], items: [['Sample Bank Card', 'Client says it was paid on time',['In dispute', 'Updated', 'In dispute']], ['Sample Auto Loan', 'Wrong balance', ['Verified', 'In dispute', 'Repaired']]] },
+    { id: 2, name: 'Sample: Marco R.', svc: 'Business credit', st: 'TX', status: 'Client', steps: [1, 1, 1, 0, 0], items: [['Sample Supplier Co.', 'Not mine', ['Unspecified', 'Unspecified', 'Unspecified']]] },
+    { id: 3, name: 'Sample: Priya S.', svc: 'Personal credit', st: 'NY', status: 'Prospect', steps: [0, 0, 0, 0, 0], items: [] },
+    { id: 4, name: 'Sample: Omar K.', svc: 'Personal credit', st: 'NY', status: 'Lead', steps: [0, 0, 0, 0, 0], items: [] },
+    { id: 5, name: 'Sample: Lena F.', svc: 'Other', st: 'NY', status: 'Paused', steps: [1, 1, 1, 1, 0], items: [] },
+  ];
+  const STEPN = ['Required notices signed', 'Contract signed', 'Cancel window passed', 'Documents (ID, proof, SSN verification, POA)', 'Texts approved by the lawyer'];
+  const missing = (c) => STEPN.filter((_, i) => !c.steps[i]);
+  let filter = 'All', open = 1, tab = 'Summary';
+  ['All', 'Client', 'Prospect', 'Lead'].forEach((f) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = f; b.onclick = () => { filter = f; drawCrm(); }; $('#flt').append(b); });
+  function drawCrm() {
+    $$('#flt button').forEach((b) => b.setAttribute('aria-pressed', String(b.textContent === filter)));
+    const cls = { Client: 'p-ok', Prospect: 'p-n', Lead: 'p-n', Paused: 'p-warn', Lost: 'p-bad', Inactive: 'p-n' };
+    $('#cRows').innerHTML = CLIENTS.filter((c) => filter === 'All' || c.status === filter).map((c) => `<tr><td>${esc(c.name)}</td><td>${esc(c.svc)}</td><td>${c.st}</td><td><span class="pill ${cls[c.status]}">${c.status}</span></td><td>${missing(c).length ? '<span class="pill p-warn">Locked</span>' : '<span class="pill p-ok">Open</span>'}</td><td><button class="mini" data-o="${c.id}">Open</button></td></tr>`).join('');
+    $$('#cRows button').forEach((b) => b.onclick = () => { open = +b.dataset.o; tab = 'Summary'; drawFile(); $('#file').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    drawFile();
+  }
+  function drawFile() {
+    const c = CLIENTS.find((x) => x.id === open); const m = missing(c);
+    const TABS = ['Summary', 'Contract', 'Documents', 'Disputes', 'Notes'];
+    let body = '';
+    if (tab === 'Summary') body = `<div class="grid g2"><div><span class="label">Service</span><p>${esc(c.svc)} · ${c.st}</p></div><div><span class="label">SSN</span><p>•••-••-${1000 + c.id * 137}</p></div><div><span class="label">Contact preferences</span><p>Email yes · SMS yes · Calls no</p></div><div><span class="label">Items in dispute</span><p>${c.items.length}</p></div></div>`;
+    if (tab === 'Contract') body = `<ul class="stepl">${STEPN.map((s, i) => `<li class="${c.steps[i] ? 'done' : ''}"><span class="dot">${c.steps[i] ? '✓' : i + 1}</span><span>${esc(s)}</span><span></span></li>`).join('')}</ul>`;
+    if (tab === 'Documents') body = `<div class="tbl"><table><thead><tr><th>Document</th><th>Status</th></tr></thead><tbody>${['Photo ID', 'Proof of address', 'SSN verification', 'Power of attorney (POA)'].map((d, i) => `<tr><td>${d}</td><td>${c.steps[3] ? '<span class="pill p-ok">Received</span>' : '<span class="pill p-n">Missing</span>'}</td></tr>`).join('')}</tbody></table></div>`;
+    if (tab === 'Disputes') body = c.items.length ? `<div class="tbl"><table><thead><tr><th>Creditor</th><th>Reason</th>${BUR.map((b) => `<th>${b}</th>`).join('')}</tr></thead><tbody>${c.items.map(([cr, r, s]) => `<tr><td>${esc(cr)}</td><td>${esc(r)}</td>${s.map((x) => `<td><span class="pill ${/Repaired|Updated|Deleted|Positive/.test(x) ? 'p-ok' : /dispute/.test(x) ? 'p-warn' : 'p-n'}">${x}</span></td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '<p class="note">No items yet. Items are added after the client goes over the report with the team, once work can start.</p>';
+    if (tab === 'Notes') body = `<p class="note">${c.status === 'Lead' ? 'Booked a free call from the website.' : 'Sample note: client asked for updates by email.'}</p>`;
+    $('#file').innerHTML = `<div class="card grid" style="gap:14px"><div class="row" style="justify-content:space-between"><h2>${esc(c.name)}</h2><span class="note">Client file</span></div>
+      <div class="lockbar ${m.length ? 'lock-on' : 'lock-off'}">${m.length ? 'Work cannot start yet. Missing: ' + esc(m.join(', ')) + '.' : 'Work can start: notices and contract signed on approved texts, and the time to cancel has passed.'}</div>
+      <div class="ftabs" role="group" aria-label="File tabs">${TABS.map((t) => `<button type="button" aria-pressed="${t === tab}" data-t="${t}">${t}</button>`).join('')}</div>${body}</div>`;
+    $$('#file .ftabs button').forEach((b) => b.onclick = () => { tab = b.dataset.t; drawFile(); });
+  }
+  drawCrm();
+
+  // ----- Letters -----
+  const LET = [
+    { c: 'Sample: Dana W.', r: 1, to: 'Equifax', type: 'Round 1', st: 'Sent', track: '9407 1000 0000 0000 0001' },
+    { c: 'Sample: Dana W.', r: 1, to: 'Experian', type: 'Round 1', st: 'Sent', track: '9407 1000 0000 0000 0002' },
+    { c: 'Sample: Dana W.', r: 2, to: 'TransUnion', type: 'Method of verification', st: 'To print' },
+    { c: 'Sample: Dana W.', r: 2, to: 'Sample Bank Card', type: 'Debt validation', st: 'To print', draft: true },
+  ];
+  function drawLetters() {
+    const cls = { Sent: 'p-ok', 'To print': 'p-warn', Archived: 'p-n' };
+    $('#lRows').innerHTML = LET.map((l, i) => `<tr><td>${esc(l.c)}</td><td>Round ${l.r}</td><td>${esc(l.to)}</td><td>${esc(l.type)}</td><td><span class="pill ${cls[l.st]}">${l.st}</span>${l.track ? `<br><span class="note">${esc(l.track)}</span>` : ''}</td><td style="white-space:nowrap"><button class="mini" data-p="${i}">Preview</button>${l.st === 'To print' ? ` <button class="mini" data-s="${i}">Mark sent</button>` : ''}</td></tr>`).join('');
+    $$('#lRows button[data-p]').forEach((b) => b.onclick = () => preview(+b.dataset.p));
+    $$('#lRows button[data-s]').forEach((b) => b.onclick = () => send(+b.dataset.s));
+  }
+  function preview(i) {
+    const l = LET[i];
+    $('#lPrev').innerHTML = `<div class="letter">${l.draft ? '<span class="draft">DRAFT — DO NOT MAIL</span>' : ''}<p>Sample: Dana W.<br>000 Sample St, New York, NY</p><br><p>${esc(l.to)}<br>Dispute department</p><br><p>Re: ${esc(l.type)} · Round ${l.r}</p><br><p>Sample letter body. The real templates are approved by a lawyer before they can be printed; an unapproved template prints with a DRAFT mark.</p></div>`;
+  }
+  function send(i) {
+    $('#lPrev').innerHTML = `<form class="card grid" id="sendF" style="gap:10px;max-width:520px"><h3>Mark as sent</h3><div class="grid g2"><div class="field"><label for="sDate">Date mailed</label><input id="sDate" type="date"></div><div class="field"><label for="sTrack">Certified mail tracking number</label><input id="sTrack" autocomplete="off" placeholder="10 to 34 characters"></div></div><p class="note" id="sErr"></p><div><button class="btn" type="submit">Save</button></div></form>`;
+    $('#sDate').valueAsDate = new Date();
+    $('#sendF').onsubmit = (e) => { e.preventDefault(); const t = $('#sTrack').value.replace(/\s/g, ''); if (t.length < 10 || t.length > 34) { $('#sErr').textContent = 'The tracking number must be 10 to 34 characters.'; return; } if (LET[i].draft) { $('#sErr').textContent = 'This letter uses a template that is not approved yet, so it cannot be marked as sent.'; return; } LET[i].st = 'Sent'; LET[i].track = $('#sTrack').value; $('#lPrev').innerHTML = '<div class="toast">Saved as sent.</div>'; drawLetters(); };
+  }
+  drawLetters();
+  route();
+})();
+</script>
+</body>
+</html>

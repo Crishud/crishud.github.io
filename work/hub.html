@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>My AI agent hub · Cristian Sánchez</title>
+<meta name="description" content="The setup I use to run every project with AI agents without losing control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<header id="header">
+  <div class="row">
+    <a class="logo" href="../index.html" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
+    <button class="icon-nav" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <div id="menu"><div><ul id="nav"><li><a href="../about.html">about</a></li><li><a href="../learn.html">learn</a></li><li><a href="../portfolio.html" aria-current="page">portfolio</a></li><li><a href="../contact.html">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li></ul></li></ul></div></div>
+  </div>
+</header>
+<div class="content">
+
+<section class="main nopad-b">
+  <div class="row">
+    <div class="col col-5 text-main rise">
+      <span class="uppercase">How I work · Claude Code</span>
+      <h1 class="draw">agent hub.</h1>
+      <p class="intro">The setup I use to run every project with AI agents without losing control.</p>
+      <p>AI agents are fast, but they’ll say “done” without proof, change their own rules or wander into another client’s folder. So I built the guardrails before anything else.</p>
+      <ul class="stack" aria-label="What I used"><li>Claude Code</li><li>Node.js</li><li>JSON</li><li>Git</li><li>PowerShell</li><li>Bash</li></ul>
+      <div class="buttons"><a class="button" href="#demo">Try the demo</a><a class="button secondary" href="../portfolio.html">All projects</a></div>
+    </div>
+    <div class="col col-7 img-main rise"><div class="marco"><img src="../img/shots/hub-m.png" alt="" loading="lazy"></div></div>
+  </div>
+</section>
+<section class="dark">
+  <div class="split-list">
+    <div class="rise"><h2>What I set out to do</h2><p>One owner decides, the agents do the work. Risky actions get blocked by code, not by asking nicely, and nothing is finished until someone other than the builder has tested it.</p></div>
+    <div class="rise"><h2>Decisions I made</h2><ul class="facts"><li><b>Locks in code, not in the prompt.</b> A Node.js hook reads every command before it runs and blocks or asks.</li><li><b>The builder never approves itself.</b> A separate reviewer agent tests like a customer and can’t fix anything.</li><li><b>Big work starts with a written plan,</b> tests first, and my yes before any code.</li><li><b>Each project only sees itself.</b> To ask another project for something, an agent leaves a note in its inbox.</li><li><b>Mistakes become rules.</b> The same cause twice moves the fix up a level: rule, then tool, then lock.</li><li><b>Nothing gets deleted.</b> Old work moves to an archive folder.</li></ul></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="sub-head rise"><h2>How it works</h2><p>Every command an agent wants to run passes through a hook I set up in Node.js before it reaches the files.</p></div>
+  <div class="rise"><div class="arch" role="img" aria-label="Me → Claude Code agent → guard.mjs hook → Project files"><div class="node">Me<small>I ask and approve</small></div><span class="wire" style="--i:1"></span><div class="node">Claude Code agent<small>plans and builds</small></div><span class="wire" style="--i:2"></span><div class="node">guard.mjs hook<small>reads every command</small></div><span class="wire" style="--i:3"></span><div class="node">Project files<small>one repo per project</small></div></div></div>
+  <div class="sub-head rise"><h3>When the same mistake happens twice</h3><p>A lesson starts as a written rule. If it happens again, it becomes a tool, and then a lock in code.</p></div>
+  <div class="rise"><ol class="flow-steps"><li style="--i:0;--n:4">Mistake<small>logged with its cause</small></li><li style="--i:1;--n:4">Rule<small>written down</small></li><li style="--i:2;--n:4">Tool<small>a script that checks it</small></li><li style="--i:3;--n:4">Lock<small>enforced by the hook</small></li></ol></div>
+</section>
+
+<section class="dark">
+  <div class="sub-head rise"><h2>Under the hood</h2><p>What I used, and why.</p></div>
+  <div class="tech rise"><div><b>Claude Code hooks</b><span>A hook (guard.mjs) checks every command and file edit before it runs: denied, asks me, or runs.</span></div><div><b>Subagents</b><span>A reviewer and a researcher, each starting with a clean context so they don’t inherit the builder’s assumptions.</span></div><div><b>Git, with main as production</b><span>Work happens on a dev branch. Pushing to main needs my click.</span></div><div><b>Plans in Markdown</b><span>Each project keeps its plans and a progress file, so any session can pick up where the last one stopped.</span></div><div><b>A generated status page</b><span>One script reads every project and writes the status page. Nobody updates it by hand.</span></div><div><b>Attack tests for the locks</b><span>Before a lock change goes in, the reviewer tries to get around it with a list of attack cases.</span></div></div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>The plan, and where it stands</h2><ol class="steps"><li><span class="st done">Done</span><span>The base: global rules, locks, reviewer and researcher agents, a project template and one status page for everything.</span></li><li><span class="st done">Done</span><span>Locks that ask instead of only blocking: money is never allowed; sending, keys and other folders ask me.</span></li><li><span class="st done">Done</span><span>Read-only access to a live site, tested against the reviewer’s attack cases until none got through.</span></li><li><span class="st now">In progress</span><span>Fewer false alarms, and saving every reviewer verdict automatically.</span></li></ol></div></div>
+</section>
+
+
+<section class="light" id="demo">
+  <div class="row"><div class="col col-12 rise"><h2>The hub</h2><p>The project list, how a request moves, what the locks block, the reviewer and my mistakes log.</p><p class="live">Both screens are live: click, scroll and type inside them.</p></div></div>
+  <div class="devices rise">
+    <div class="dev d-pc"><div class="lab"><span>Computer</span><a href="../hub.html">Open full screen ↗</a></div><div class="pc"><div class="bar"><i></i><i></i><i></i></div><div class="vp"><iframe src="../hub.html" title="The hub, on a computer" loading="lazy"></iframe></div></div></div>
+    <div class="dev"><div class="lab"><span>Phone</span><a href="../hub.html">Open ↗</a></div><div class="phone"><div class="vp"><iframe src="../hub.html" title="The hub, on a phone" loading="lazy"></iframe></div></div></div>
+  </div>
+</section>
+<section class="light">
+  <div class="row"><div class="col col-12 rise"><h2>What I can’t claim yet</h2><p>On Windows there’s no sandbox: the locks read what the agent writes, not what a program does inside. The real defence is not keeping real keys on the machine. I say that plainly in my own notes too.</p></div></div>
+</section>
+<section class="dark">
+  <nav class="pager" aria-label="More projects"><a href="thawtide.html"><small>← Previous</small><b>Thawtide store</b></a><a href="barber.html" style="text-align:right"><small>Next →</small><b>Barbershop booking</b></a></nav>
+</section>
+</div>
+<footer id="footer">
+  <a class="top" href="#header" aria-label="Back to top">↑</a>
+  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="../about.html">about</a><a href="../learn.html">learn</a><a href="../portfolio.html">portfolio</a><a href="../contact.html">contact</a></nav></div>
+</footer>
+<script src="../app.js"></script>
+</body>
+</html>

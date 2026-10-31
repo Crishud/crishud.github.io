@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>Policies · Thawtide</title>
+<meta name="description" content="Thawtide shipping, refund and return, privacy and terms of service.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#DCEEFC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&display=swap">
+<link rel="stylesheet" href="paginas.css">
+<body><a href="../work/thawtide.html" target="_parent" style="position:fixed;z-index:2147483647;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:#15191e;color:#fff;font:600 13px/1 system-ui,sans-serif;padding:10px 14px;border-radius:999px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
+
+<header class="hdr" id="hdr"><div class="hrow"><span class="hl" aria-hidden="true"></span><a class="logo" href="prototipo-hero.html" style="color:inherit;text-decoration:none">thawtide</a><div class="hr"><a class="ib" href="pendiente.html#cuenta" aria-label="Sign in or create account"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a><button class="ib cart" id="abreCarrito" aria-label="Cart, 0 items" aria-controls="carrito" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 4h2.5l2.2 11h10.6l2-8H7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.5" r="1.6" fill="currentColor"/><circle cx="17" cy="19.5" r="1.6" fill="currentColor"/></svg><span class="badge" id="cuenta">0</span></button><button class="ib" id="abreMenu" aria-label="Menu" aria-controls="menu" aria-expanded="false"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div></div></header>
+<div class="velo" id="velo" hidden></div>
+<aside class="carrito" id="carrito" role="dialog" aria-modal="true" aria-labelledby="tCarrito" hidden>
+  <div class="cj-cab"><h2 id="tCarrito">Your cart</h2><button class="cj-x" type="button" data-cierra aria-label="Close cart">×</button></div>
+  <div class="cj-vacio"><img data-ia="1" src="fotos/pie-copo-frio.webp" alt="" width="242" height="700"><p>Your cart is empty.</p><a class="cj-ir" href="producto.html" data-cierra>Shop hand warmers</a></div>
+</aside>
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <div class="mn-cab"><span class="mn-logo">thawtide</span><button class="cj-x" type="button" data-cierra aria-label="Close menu">×</button></div>
+  <div class="mv-b">
+    <div class="mt-grid">
+      <a class="mt mt-shop" href="producto.html"><img src="producto/negro-delante.webp" alt="" width="60" height="84"><b>Shop</b><small>Hand warmer · $29.99</small></a>
+      <a class="mt" href="prototipo-hero.html#part3"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-8z" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>How it works</b></a>
+      <a class="mt" href="faq.html"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5V14M12 17h.01" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linecap="round"/></svg><b>FAQ</b></a>
+      <a class="mt" href="contacto.html"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="#0d1117" stroke-width="1.8"/><path d="M3 7l9 6 9-6" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>Contact</b></a>
+      <a class="mt" href="producto.html#ficha"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M3 8l9-5 9 5-9 5-9-5z M3 8v8l9 5 9-5V8 M12 13v8" fill="none" stroke="#0d1117" stroke-width="1.8" stroke-linejoin="round"/></svg><b>What it&#39;s made of</b></a>
+    </div>
+  </div>
+  <div class="s7-redes mn-redes"><a class="s7-rond" href="#" aria-label="Thawtide on Instagram"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d1117" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#0d1117" stroke="none"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on TikTok"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#0d1117"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span></a><a class="s7-rond" href="#" aria-label="Thawtide on X"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#0d1117"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg></span></a></div>
+  <ul class="mn-legal"><li><a href="politicas.html#shipping">Shipping</a></li><li><a href="politicas.html#returns">Returns</a></li><li><a href="politicas.html#privacy">Privacy</a></li><li><a href="politicas.html#terms">Terms</a></li></ul>
+</nav>
+<main class="pg">
+  <header class="pg-cab">
+    <h1 class="pg-tit">Policies</h1>
+    <p class="pg-sub">Shipping, returns, privacy and terms for Thawtide orders in the US.</p>
+  </header>
+  <div class="pg-pols">
+    <ul class="pg-chips" aria-label="Policies"><li><a href="#shipping">Shipping</a></li><li><a href="#returns">Returns</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#terms">Terms</a></li><li><a href="#contact">Contact</a></li></ul>
+    <div>
+    <section class="pg-pol" id="shipping" aria-labelledby="p-shipping"><h2 id="p-shipping">Shipping policy</h2><div class="pg-rte">
+<p>Last updated: October 22, 2026</p>
+<h2>Where we ship</h2>
+<p>We currently ship to addresses in the 48 contiguous United States and Washington, D.C. We do not ship internationally yet. We cannot ship to PO Boxes or APO/FPO/DPO addresses at this time.</p>
+<h2>Shipping cost</h2>
+<p><strong>Standard shipping is free on every order.</strong> Any shipping charge is shown at checkout before you pay.</p>
+<h2>Processing time</h2>
+<p>Orders ship from a fulfillment warehouse in the United States. Orders are usually processed within an estimated 1–3 days (Monday to Friday, excluding U.S. holidays). Orders placed on weekends or holidays are processed the next business day.</p>
+<h2>Delivery time</h2>
+<p>Once shipped, delivery usually takes an estimated 3–8 days. Most orders arrive within 14 days of purchase. These are estimates, not guarantees: weather, carrier delays and peak season (November–January) can add time.</p>
+<h2>Tracking</h2>
+<p>When your order ships, you will receive an email with a tracking number. Tracking can take up to 24–48 hours to show movement.</p>
+<h2>Battery shipping</h2>
+<p>Our hand warmers contain a rechargeable lithium-ion battery. They ship following carrier rules for lithium batteries, which is why some destinations are not available yet.</p>
+<h2>Address problems</h2>
+<p>Please double-check your shipping address at checkout. If you notice a mistake, email us right away at <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a>; we can only change the address before the order ships. If a package is returned to us because of an incorrect or incomplete address, we will contact you to arrange reshipping, and the customer pays the reshipping cost.</p>
+<h2>Lost, late or damaged packages</h2>
+<p>If your tracking has not updated for 7 business days, or it shows delivered but you cannot find the package, email us at <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a> with your order number. We will open a claim with the carrier and, if the package is confirmed lost, send a replacement or a refund.</p>
+<p>If your package arrives damaged, see our <a href="#returns">Refund &amp; Return Policy</a>.</p>
+<h2>Questions</h2>
+<p>Email <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a>.</p>
+    </div></section>
+    <section class="pg-pol" id="returns" aria-labelledby="p-returns"><h2 id="p-returns">Refund &amp; return policy</h2><div class="pg-rte">
+<p>Last updated: October 21, 2026</p>
+<p>We want you to be happy with your Thawtide hand warmer. If something is not right, here is how returns, exchanges and refunds work.</p>
+<h2>Returns</h2>
+<p>You have <strong>30 days</strong> after your order is delivered to ask for a return.</p>
+<p>To be eligible, the item must be in the same condition you received it: unused or only lightly tried, not damaged, with its original packaging and any accessories that came in the box. You will also need your order number or proof of purchase.</p>
+<p>To start a return, email us at <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a> with your order number and the reason for the return. If your return is accepted, we will email you the return address and instructions. Items sent back without first asking for a return will not be accepted.</p>
+<p>Return shipping: you are responsible for the cost of return shipping, unless the item arrived damaged, defective or wrong.</p>
+<h2>Damaged, defective or wrong items</h2>
+<p>Please check your order when it arrives. If the item is damaged, defective, or not what you ordered, contact us within <strong>7 days</strong> of delivery so we can make it right.</p>
+<p><strong>Do not mail back a hand warmer that is damaged, swollen, leaking, or that got unusually hot.</strong> Stop using it, keep it away from anything flammable, and send us a photo or short video. We will send you a replacement or a full refund without asking you to ship it back.</p>
+<h2>Exceptions / non-returnable items</h2>
+<p>We cannot accept returns of:</p>
+<ul>
+<li>Items that have been dropped, opened (the casing), modified, punctured, or exposed to water or extreme heat after delivery.</li>
+<li>Items damaged by not following the instructions included with the product.</li>
+<li>Gift cards (if we ever sell them).</li>
+</ul>
+<h2>Exchanges</h2>
+<p>The fastest way to get a different color is to return the item you have and, once the return is accepted, place a new order for the one you want.</p>
+<h2>Refunds</h2>
+<p>We will let you know once we receive and inspect your return (or review the photo of a defective item) and tell you whether the refund is approved. If approved, the refund goes back to your original payment method within <strong>10 business days</strong>. Your bank or card issuer may take extra time to post it.</p>
+<p>If more than 15 business days have passed since we approved your refund and you still have not received it, email us at <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a>.</p>
+<h2>Product recalls</h2>
+<p>If a safety recall ever affects a product we sold, we will contact affected customers using the email on their order and follow the remedy set with the authorities. You can always check for official recalls at cpsc.gov.</p>
+<h2>Questions</h2>
+<p>Email <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a>. We usually reply within 1–2 business days.</p>
+    </div></section>
+    <section class="pg-pol" id="privacy" aria-labelledby="p-privacy"><h2 id="p-privacy">Privacy policy</h2><div class="pg-rte">
+<p><span class="pend">Mockup: in the real store this is Shopify's built-in privacy policy (/policies/privacy-policy). It is not copied or made up here.</span></p>
+    </div></section>
+    <section class="pg-pol" id="terms" aria-labelledby="p-terms"><h2 id="p-terms">Terms of service</h2><div class="pg-rte">
+<p>Last updated: October 21, 2026</p>
+<h2>1. Who we are</h2>
+<p>This website and online store (the "Store") is operated by <strong>Thawtide</strong> ("Thawtide", "we", "us", "our"). The Store is hosted on Shopify. By visiting the Store or buying from us, you agree to these Terms of Service ("Terms"), together with our <a href="#privacy">Privacy Policy</a>, <a href="#shipping">Shipping Policy</a> and <a href="#returns">Refund &amp; Return Policy</a>. If you do not agree, please do not use the Store.</p>
+<h2>2. Eligibility</h2>
+<p>You must be at least the age of majority where you live to place an order. The Store is intended for customers in the United States.</p>
+<h2>3. Products and descriptions</h2>
+<p>We try to describe and show our products accurately. Colors on screens can vary, and photos may show the product larger than its real size. Heat levels and running time depend on the setting used, the outside temperature and battery age; figures we publish are typical values, not guarantees.</p>
+<p>We may change product details, prices or availability, or stop selling a product, at any time.</p>
+<h2>4. Prices and payment</h2>
+<p>Prices are shown in U.S. dollars. Applicable sales tax and any shipping charge are shown at checkout before you pay. Payments are processed by our payment providers; we do not store your full card details. We may refuse or cancel an order if the price or description was clearly wrong, if we suspect fraud, or if the item is unavailable. If we cancel after you paid, we refund you in full.</p>
+<h2>5. Orders and shipping</h2>
+<p>When you place an order you receive an order confirmation email; this is not yet our acceptance. Your order is accepted when we ship it. Delivery times are estimates; see our <a href="#shipping">Shipping Policy</a>. Title and risk of loss pass to you when the package is delivered to you.</p>
+<h2>6. Returns and refunds</h2>
+<p>Returns and refunds follow our <a href="#returns">Refund &amp; Return Policy</a>.</p>
+<h2>7. Safe use of our products</h2>
+<p>Our hand warmers contain a rechargeable lithium-ion battery and get hot. You agree to use them as described in the instructions included with the product. Do not use a damaged product. Keep it out of reach of children and do not let anyone who cannot feel heat or remove the device on their own use it unsupervised.</p>
+<h2>8. Warranty and disclaimer</h2>
+<p>We do not offer a separate written warranty. Damaged, defective or wrong items are handled as described in our <a href="#returns">Refund &amp; Return Policy</a>.</p>
+<p>Except for any rights that cannot be excluded under the law of your state, the Store and products are provided "as is" and "as available". Some states do not allow the exclusion of implied warranties, so this may not apply to you.</p>
+<h2>9. Limitation of liability</h2>
+<p>To the fullest extent allowed by law, we are not liable for indirect, incidental, special or consequential damages arising from your use of the Store. Our total liability for any claim related to a product is limited to the amount you paid for that product. Nothing in these Terms limits liability that cannot be limited by law, including liability for death or personal injury caused by negligence or by a defective product.</p>
+<h2>10. Website use</h2>
+<p>You agree not to misuse the Store: no fraud, no attempts to break its security, no scraping or automated ordering, and no copying of our photos, text or brand without permission. Content on the Store belongs to us or our licensors. "Thawtide" is our brand name.</p>
+<h2>11. Governing law and disputes</h2>
+<p>These Terms are governed by applicable U.S. federal law and the laws of the state where Thawtide is based. Before filing any claim, please contact us at <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a> so we can try to solve it informally.</p>
+<h2>12. Changes</h2>
+<p>We may update these Terms. The version posted on the Store when you place an order applies to that order.</p>
+<h2>13. Contact</h2>
+<p>Thawtide<br>Email: <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a></p>
+    </div></section>
+    <section class="pg-pol" id="contact" aria-labelledby="p-contact"><h2 id="p-contact">Contact information</h2><div class="pg-rte">
+<p><strong>Trade name:</strong> Thawtide</p>
+<p><strong>Email:</strong> <a href="mailto:cristian.scbv@gmail.com">cristian.scbv@gmail.com</a></p>
+<p>We usually reply within 1–2 business days.</p>
+    </div></section>
+    </div>
+  </div>
+</main>
+<footer class="foot p8" id="p8">
+  <div class="mark">thawtide</div>
+  <nav class="p8-legal" aria-label="Legal"><a href="politicas.html#shipping">Shipping</a><a href="politicas.html#returns">Returns</a><a href="politicas.html#terms">Terms</a><a href="politicas.html#privacy">Privacy</a><a href="contacto.html">Contact</a><a href="faq.html">FAQ</a><a class="p8-optout" href="politicas.html#privacy">Your Privacy Choices</a><button class="p8-cookies" type="button" hidden>Cookie preferences</button></nav>
+  <div class="p8-base"><span>© 2026 Thawtide</span><a href="pendiente.html#creditos">Credits</a></div>
+  <script>(() => { const b = document.currentScript.parentElement.querySelector('.p8-cookies'); if (!b) return; let n = 0; const mira = () => { const p = window.privacyBanner; if (!p || typeof p.showPreferences !== 'function') return false; b.hidden = false; b.onclick = () => p.showPreferences(); return true; }; if (mira()) return; const t = setInterval(() => { if (mira() || ++n > 60) clearInterval(t); }, 500); })();</script>
+</footer>
+<script src="paginas.js"></script>
+<script src="trampa.js"></script>
+</body>
+</html>

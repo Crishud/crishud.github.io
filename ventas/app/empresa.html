@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Company · Sales desk demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<main class="main">
+  <div class="cabeza"><div><a class="volver" href="index.html">← Prospects</a><h1 id="titulo">Company</h1></div><span class="meta" id="meta"></span></div>
+  <div class="cuerpo" id="cuerpo"></div>
+</main>
+<script type="module">
+import { marco, datos, esc, avatar, fecha, error, CUMPLE } from './app.js';
+marco('index.html');
+try {
+  const d = await datos('prospectos.json');
+  const id = new URLSearchParams(location.search).get('id');
+  const e = d.empresas.find((x) => x.dominio === id) || d.empresas[0];
+  document.title = `${e.nombre || e.dominio} · Sales desk demo`;
+  document.getElementById('titulo').innerHTML = `<span class="empresa">${avatar(e.nombre || e.dominio)}${esc(e.nombre || e.dominio)}</span>`;
+  document.getElementById('meta').textContent = `Researched ${fecha(d.fecha)} · ${d.modelo}`;
+  if (!e.shopify) {
+    document.getElementById('cuerpo').innerHTML = `<div class="tarjeta"><div class="dentro"><p>${esc(e.nota || e.error)}</p><p class="gris">It was left out of the pipeline.</p></div></div>`;
+  } else {
+    const enlace = (url) => `<a href="${esc(url)}" target="_blank" rel="noreferrer">${esc(url.replace(/^https?:\/\//, ''))}</a>`;
+    const cita = (c) => {
+      if (c.ejemplos?.length) return `<p class="cita">Counted by rule. For example: ${c.ejemplos.slice(0, 3).map((x) => `“${esc(x)}”`).join(' · ')} ${enlace(c.url)}</p>`;
+      if (c.cita) return `<p class="cita">“${esc(c.cita)}” ${enlace(c.url)}</p>`;
+      if (c.rechazada) return `<p class="cita">Quote the AI gave, not counted: “${esc(c.rechazada)}”</p>`;
+      return c.tipo === 'regla' && c.url ? `<p class="cita">Checked by rule ${enlace(c.url)}</p>` : '';
+    };
+    document.getElementById('cuerpo').innerHTML = `
+      <div class="dos">
+        <div>
+          <div class="tarjeta">
+            <h3><span>ICP score</span><span class="barra" style="min-width:180px"><b>${e.puntuacion}</b><span><i style="width:${e.puntuacion}%"></i></span></span></h3>
+            <div class="dentro gris" style="border-bottom:1px solid var(--line)">${esc(e.que_vende)} · <a href="https://${esc(e.dominio)}" target="_blank" rel="noreferrer">${esc(e.dominio)}</a></div>
+            ${e.criterios.map((c) => `<div class="criterio"><span class="nombre">${esc(c.nombre)} <span class="gris">· ${c.peso} pts</span></span><span class="pildora p-${c.cumple}">${CUMPLE[c.cumple]}</span><span class="razon">${esc(c.razon)}</span>${cita(c)}</div>`).join('')}
+          </div>
+        </div>
+        <div>
+          <div class="tarjeta">
+            <h3><span>First email · draft</span>${e.correo ? '<button class="boton" id="copiar" type="button">Copy</button>' : ''}</h3>
+            <div class="dentro">${e.correo ? `<p style="margin:0 0 10px"><span class="gris">Subject:</span> ${esc(e.correo.asunto)}</p><pre class="correo">${esc(e.correo.cuerpo)}</pre>
+              <p class="gris" style="margin:14px 0 0;font-size:12.5px">Draft, never sent. Opens with: “${esc(e.gancho.cita)}” (<a href="${esc(e.gancho.url)}" target="_blank" rel="noreferrer">source</a>).</p>` : `<p class="gris">${esc(e.nota)}</p>`}</div>
+          </div>
+          <div class="tarjeta">
+            <h3><span>Pages read</span><span class="gris" style="font-weight:400">${e.paginas.length}</span></h3>
+            <div class="dentro">${e.paginas.map((p) => `<div><a href="${esc(p.url)}" target="_blank" rel="noreferrer">${esc(p.url.replace(/^https?:\/\//, ''))}</a></div>`).join('')}</div>
+          </div>
+        </div>
+      </div>`;
+    document.getElementById('copiar')?.addEventListener('click', async (ev) => {
+      try { await navigator.clipboard.writeText(`Subject: ${e.correo.asunto}\n\n${e.correo.cuerpo}`); ev.target.textContent = 'Copied'; } catch { ev.target.textContent = 'Copy failed'; }
+    });
+  }
+} catch (err) { error(err); }
+</script>
+</body>
+</html>

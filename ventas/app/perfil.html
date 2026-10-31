@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Ideal customer · Sales desk demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<main class="main">
+  <div class="cabeza"><h1>Ideal customer profile</h1></div>
+  <div class="cuerpo" style="max-width:820px">
+    <div class="tarjeta"><div class="dentro" id="desc"></div></div>
+    <div class="tarjeta"><h3><span>Criteria</span><span class="gris" style="font-weight:400">weights add up to 100</span></h3><div id="criterios"></div></div>
+    <div class="tarjeta"><h3><span>How a store gets scored</span></h3><div class="dentro">
+      <p style="margin-top:0">Two criteria are checked by rule: the store's public <code>/products.json</code> must answer, and the number of products listed there sets the catalog criterion.</p>
+      <p>The other four are judged by AI from the store's own pages (home, about, FAQ, shipping and refund policies). For each one the AI has to copy the exact line that supports it. The script then looks for that line in the page it says it came from. If the line isn't there, the criterion is dropped and counts as “No data”.</p>
+      <p style="margin-bottom:0">“Yes” counts the full weight, “Partly” half, and “No” or “No data” nothing. 70 and up is a fit, 45 to 69 a maybe.</p>
+    </div></div>
+  </div>
+</main>
+<script type="module">
+import { marco, datos, esc, error } from './app.js';
+marco('perfil.html');
+try {
+  const icp = await datos('icp.json');
+  document.getElementById('desc').innerHTML = `<p style="margin:0"><b>${esc(icp.nombre)}</b></p><p style="margin:6px 0 0" class="gris">${esc(icp.descripcion)}</p>`;
+  document.getElementById('criterios').innerHTML = icp.criterios.map((c) => `<div class="criterio"><span class="nombre">${esc(c.nombre)}</span><span class="pildora">${c.peso} pts</span><span class="razon">${c.tipo === 'regla' ? 'Rule' : 'AI with a quote'} · ${esc(c.como)}</span></div>`).join('');
+} catch (e) { error(e); }
+</script>
+</body>
+</html>

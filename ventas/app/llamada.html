@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Call · Sales desk demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+</head>
+<body>
+<main class="main">
+  <div class="cabeza"><div><a class="volver" href="pipeline.html">← Pipeline</a><h1 id="titulo">Calls</h1></div><span class="meta" id="meta"></span></div>
+  <div class="cuerpo" id="cuerpo"></div>
+</main>
+<script type="module">
+import { marco, datos, esc, fecha, error, claseEtapa } from './app.js';
+marco('llamada.html');
+try {
+  const tablero = await datos('pipeline.json');
+  const llamadas = tablero.columnas.flatMap((c) => c.tarjetas).filter((t) => t.tipo === 'llamada');
+  const id = new URLSearchParams(location.search).get('id') || llamadas[0]?.id;
+  const pendiente = '<div class="pendiente"><b>PENDING:</b> an unscripted call recorded by Cris playing the seller.</div>';
+  const selector = llamadas.length > 1 ? `<div class="pestanas" style="padding:0;margin:-6px 0 14px">${llamadas.map((c) => `<a href="llamada.html?id=${encodeURIComponent(c.id)}" style="text-decoration:none"><span class="${c.id === id ? 'on' : ''}">${esc(c.nombre)}</span></a>`).join('')}</div>` : '';
+  if (!id) { document.getElementById('cuerpo').innerHTML = pendiente; throw new Error('No calls processed yet'); }
+  const l = await datos(`llamadas/${encodeURIComponent(id)}.json`);
+  document.getElementById('titulo').textContent = l.negocio;
+  document.getElementById('meta').textContent = `Processed ${fecha(l.fecha)} · ${l.modelo}`;
+
+  const marca = (texto, cita) => {
+    const i = cita ? texto.toLowerCase().indexOf(cita.toLowerCase()) : -1;
+    return i < 0 ? esc(texto) : esc(texto.slice(0, i)) + `<mark>${esc(texto.slice(i, i + cita.length))}</mark>` + esc(texto.slice(i + cita.length));
+  };
+  const citas = [l.dolor, l.presupuesto, l.decide, l.plazo, l.motivo_etapa].map((c) => c.cita).concat(l.proximos_pasos.map((p) => p.cita)).filter(Boolean);
+  const turno = (t, n) => {
+    const c = citas.find((x) => t.texto.toLowerCase().includes(x.toLowerCase()));
+    return `<div class="turno" id="t${n}"><span class="ts">${esc(t.t)}</span><div><div class="quien">${esc(t.quien)}</div><div>${marca(t.texto, c)}</div></div></div>`;
+  };
+  const campo = (titulo, c) => `<div class="campo"><h4>${titulo}</h4><p>${esc(c.valor)}</p>${c.cita ? `<p class="cita" data-cita="${esc(c.cita)}">“${esc(c.cita)}”</p>` : ''}</div>`;
+
+  document.getElementById('cuerpo').innerHTML = `
+    ${selector}
+    ${l.aviso ? `<div class="sintetico">${esc(l.aviso)}</div>` : ''}
+    ${pendiente}
+    <div class="dos">
+      <div class="tarjeta">
+        <div class="reproductor"><audio controls preload="metadata" src="../${esc(l.audio)}"></audio></div>
+        <h3><span>Transcript</span><span class="pista">${l.transcripcion.length} turns · scroll inside</span></h3>
+        <div class="turnos">${l.transcripcion.map(turno).join('')}</div>
+      </div>
+      <div>
+        <div class="tarjeta">
+          <h3><span>Summary</span><span class="pildora ${claseEtapa(l.etapa)}">${esc(l.etapa)}</span></h3>
+          <div class="dentro">${esc(l.resumen)}</div>
+        </div>
+        <div class="tarjeta">
+          <h3><span>Deal fields</span><span class="gris" style="font-weight:400">each one with the line it came from</span></h3>
+          ${campo('Pain', l.dolor)}${campo('Budget', l.presupuesto)}${campo('Who decides', l.decide)}${campo('Timing', l.plazo)}${campo('Why this stage', l.motivo_etapa)}
+        </div>
+        <div class="tarjeta">
+          <h3><span>Next steps</span></h3>
+          <div class="dentro">${l.proximos_pasos.length ? l.proximos_pasos.map((p) => `<label class="paso"><input type="checkbox"><span><b>${esc(p.quien)}:</b> ${esc(p.que)} <span class="gris">· ${esc(p.cuando)}</span></span></label>`).join('') : '<p class="gris">None agreed on the call.</p>'}</div>
+        </div>
+      </div>
+    </div>`;
+  // Clicking a quote scrolls the transcript to the line it came from.
+  for (const q of document.querySelectorAll('.cita[data-cita]')) {
+    q.addEventListener('click', () => {
+      const n = l.transcripcion.findIndex((t) => t.texto.toLowerCase().includes(q.dataset.cita.toLowerCase()));
+      document.getElementById(`t${n}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+} catch (e) { if (!document.querySelector('.pendiente')) error(e); }
+</script>
+</body>
+</html>
