@@ -2,42 +2,748 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="data:,">
-<title>Cristian Sánchez · Sales and automation</title>
-<meta name="description" content="Bilingual in English and Spanish. I find qualified buyers, follow up and build my own tools with AI.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Cristian Sánchez Benavides</title>
+<meta name="description" content="Programmer, passionate about artificial intelligence and sales. Projects you can try, and how each one is built.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&display=swap">
-<link rel="stylesheet" href="estilo.css">
+<style>
+body { margin:0 } [hidden] { display:none!important } img { max-width:100% }
+
+:root { --bg:#fff; --ink:#333; --ink2:#757575; --line:#e4e4e4; --band:#f8f8f8; --bar:#111; --accent:#d64a3c; --sun:#e9b949; --sea:#7fc0b4; --rose:#efc5bb; --tan:#d9ae74;
+  --ui:"Figtree","Helvetica Neue",Arial,sans-serif; color-scheme:light }
+html { font-size:clamp(14px,1.25vw,16px) }
+body { background:var(--bg); color:var(--ink); font-family:var(--ui); font-weight:300; font-size:1rem; line-height:1.5 }
+.in { max-width:1040px; margin:0 auto; padding-left:max(20px,env(safe-area-inset-left,0px)); padding-right:max(20px,env(safe-area-inset-right,0px)) }
+#header { position: absolute; top: 0; left: 0; right: 0; z-index: 1000; background: #111; padding: 0 5%; height: 62px }
+#header .row { max-width: 1040px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px }
+.logo { display: inline-flex; width: 46px; height: 46px; transition: opacity .3s } .logo svg { width: 100%; height: 100%; font-family: var(--ui) }
+.logo:hover { opacity: .5; color: #fff }
+#nav { display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0 }
+#nav > li > a { display: block; padding: 0 1em; line-height: 92px; color: #fff; text-decoration: none; font-size: 16px; transition: color .3s }
+#nav > li > a:hover, #nav > li > a[aria-current="page"] { color: #757575 }
+.social { display: flex; gap: 20px; list-style: none; margin: 0 0 0 26px; padding: 0 }
+.social a { display: grid; place-items: center; width: 28px; height: 28px; color: #fff; transition: opacity .3s } .social a:hover { opacity: .5; color: #fff }
+.social svg { width: 22px; height: 22px; fill: currentColor }
+.icon-nav { margin-left: auto; display: none; background: none; border: 0; color: #fff; width: 44px; height: 44px; cursor: pointer; padding: 10px }
+.icon-nav span { display: block; height: 2px; background: currentColor; margin: 5px 0; transition: transform .3s cubic-bezier(.2,.7,.1,1), opacity .3s }
+@media (min-width: 830px) { #header { height: 92px } .logo { width: 62px; height: 62px } }
+@media (min-width: 1024px) { #nav > li > a { font-size: 18px } }
+@media (max-width: 829px) {
+  .icon-nav { display: block }
+  #menu { position: absolute; top: 62px; left: 0; right: 0; background: #222; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.1,1) }
+  #menu > div { overflow: hidden }
+  #header.open #menu { grid-template-rows: 1fr }
+  #header.open .icon-nav span:nth-child(1) { transform: translateY(7px) rotate(45deg) } #header.open .icon-nav span:nth-child(2) { opacity: 0 } #header.open .icon-nav span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
+  #nav { flex-direction: column; align-items: stretch }
+  #nav > li { border-top: 1px solid #212121; border-bottom: 1px solid #363636; text-align: center }
+  #nav > li > a { line-height: 64px; font-size: 24px }
+  .social { justify-content: center; margin: 0; padding: 18px 0 22px }
+}
+
+#footer { position: relative; background: #f5f5f5; padding: 40px 5% 31px; color: #757575; font-size: 16px; text-align: center; box-shadow: inset 0 1px 4px rgba(0, 0, 0, .1) }
+#footer .row { max-width: 1040px }
+#nav-footer { display: none }
+#nav-footer a { color: #757575; text-decoration: none; margin-right: 20px; transition: color .3s } #nav-footer a:hover { color: #333 }
+#footer::before { content: ""; position: absolute; left: 0; right: 0; top: -50px; height: 50px; background: linear-gradient(rgba(255, 255, 255, 0), #fff); pointer-events: none }
+.top { position: absolute; left: 50%; top: -50px; margin-left: -59px; width: 118px; height: 58px; border-radius: 59px 59px 0 0; background: #f5f5f5; box-shadow: inset 0 1px 3px rgba(0, 0, 0, .1); transition: transform .3s cubic-bezier(.2,.7,.1,1) }
+.top::before { content: ""; position: absolute; left: 50%; top: 25px; width: 30px; height: 30px; margin-left: -15px; border: solid #fff; border-width: 6px 0 0 6px; transform: rotate(45deg); filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, .08)) }
+.top::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: -2px; height: 14px; background: #f5f5f5 }
+.top:hover { transform: translateY(-5px) }
+@media (min-width: 830px) { #footer .row { display: flex; justify-content: space-between; text-align: left } #nav-footer { display: block } }
+
+#header .row,#footer .row { margin:0 auto }
+#header { position:relative }
+#header .row::after { content:"" }
+#header a { color:#fff } #nav > li > a[aria-current="page"] { color:#757575 }
+
+nav span { color:#fff }
+.hero { display:grid; grid-template-columns:minmax(0,410fr) minmax(0,590fr); gap:2.2rem; align-items:start; padding-top:2rem }
+.hero > div:first-child { padding-top:1.8rem; position:relative }
+.m-titulo { position:absolute; left:62%; top:.4rem; width:7.6rem; mix-blend-mode:multiply }
+.m-texto { display:block; width:100%; height:auto; mix-blend-mode:multiply }
+h1 { font-size:5.67rem; line-height:1.1; font-weight:700; letter-spacing:-.04em; margin:0 0 .45rem }
+.sub { font-size:1.33rem; color:var(--ink2); line-height:1.3; margin:0 0 1.33rem }
+.con-ojo { position:relative } .con-ojo span { position:absolute; left:.33rem; top:-.3rem; font-size:.78rem; font-weight:400; letter-spacing:2px; line-height:1.1; text-transform:uppercase; color:var(--ink2) }
+.esc-l { filter:brightness(1.03); mix-blend-mode:multiply }
+.tarj { list-style:none; margin:0; padding:5.33rem 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.39rem }
+.tarj li { background:#fff; border-radius:.67rem; box-shadow:0 1px 4px rgba(0,0,0,.2); padding:.44rem .44rem 0; min-width:0 } .tarj li:hover { box-shadow:0 4px 8px rgba(0,0,0,.2) }
+.tarj a { display:block; color:inherit; text-decoration:none } .foto-t { display:block; border-radius:.44rem; overflow:hidden; aspect-ratio:628/368; background:#eee } .foto-t img { display:block; width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .8s cubic-bezier(.2,.7,.1,1) } .tarj li:hover .foto-t img { transform:scale(1.04) }
+.tarj h4 { font-size:1rem; font-weight:300; line-height:1.2; margin:.89rem .89rem .22rem } .tarj p { font-size:.89rem; line-height:1.2; color:var(--ink2); margin:0 .89rem .89rem }
+.art.ancha { max-width:46rem } .vuelta { margin:0 0 1rem; font-size:.9rem } .con-ojo2 span { display:block; font-size:.78rem; font-weight:400; letter-spacing:2px; line-height:1.1; text-transform:uppercase; color:var(--ink2); margin-bottom:.8rem }
+.disp { position:relative; margin:1.8rem 0 1.2rem; padding-bottom:6% } .d-pc { display:block; width:100%; height:auto; border-radius:.5rem; box-shadow:0 0 0 1px var(--line),0 10px 30px rgba(0,0,0,.14) } .d-m { position:absolute; right:3%; bottom:0; width:19%; height:auto; border-radius:.8rem; box-shadow:0 0 0 1px var(--line),0 10px 24px rgba(0,0,0,.25) }
+.acc { margin:0 } .btn { display:inline-block; background:#111; color:#fff!important; text-decoration:none!important; border-radius:999px; padding:.55rem 1.3rem; font-weight:600; font-size:.95rem }
+.flujo { display:flex; flex-wrap:wrap; gap:.9rem 1.6rem; margin-top:1.2rem } .flujo div { position:relative; flex:1 1 8rem; min-width:0; background:#fafafa; border:1px solid var(--line); border-top:3px solid #5fb2a8; border-radius:.5rem; padding:.7rem .8rem } .flujo div:nth-child(2) { border-top-color:#e1ae9e } .flujo div:nth-child(3) { border-top-color:#dfae36 } .flujo div:nth-child(4) { border-top-color:#bc8e5b } .flujo div:nth-child(5) { border-top-color:#ca4544 }
+.flujo div:not(:last-child)::after { content:"→"; position:absolute; right:-1.3rem; top:50%; transform:translateY(-50%); color:var(--ink2) } .flujo b { display:block; font-weight:600 } .flujo span { display:block; font-size:.85rem; color:var(--ink2); line-height:1.3 }
+.fichas.pie-f { margin-top:1.2rem } .gal { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; margin-top:1.2rem } .gal figure { margin:0; min-width:0 } .gal img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:.5rem; box-shadow:0 0 0 1px var(--line) } .gal figcaption { font-size:.85rem; color:var(--ink2); margin-top:.4rem }
+.estado { list-style:none; margin:1.2rem 0 0; padding:0 } .estado li { display:grid; grid-template-columns:6rem minmax(0,1fr); gap:.8rem; align-items:start; padding:.55rem 0; border-bottom:1px solid var(--line) } .estado span { text-align:center; border-radius:999px; font-size:.75rem; font-weight:600; padding:.15rem .4rem } .b-ok { background:#e2f2ee; color:#1f6f62 } .b-va { background:#fbf0d3; color:#7a5a08 } .b-no { background:#efefef; color:#555 }
+.aviso { background:#fdf3f1; border-left:3px solid #ca4544; border-radius:.3rem; padding:1rem 1.1rem } .aviso h3 { margin:0 0 .3rem } .aviso p { margin:0 }
+.art section.vision { margin:2rem 0 0; padding:2rem 2rem 1.6rem; border:0; border-radius:.8rem; background:linear-gradient(135deg,#111,#2b2b2b); color:#fff }
+.v-ojo { font-size:.78rem; letter-spacing:2px; text-transform:uppercase; color:#b0dbd6; margin:0 0 .8rem!important } .v-f { font-size:1.55rem; line-height:1.3; font-weight:300; margin:0 0 1.4rem!important }
+.vision ul { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem } .vision li { border-top:2px solid #efc563; padding-top:.5rem; font-size:.88rem; line-height:1.35; color:#ddd }
+.vision + section { border-top:0; margin-top:0 }
+.mas { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.2rem; padding-block:3rem } .mas h2 { margin:0 0 .2rem } .mas p { margin:0 } .sig { border-top:1px solid var(--line) }
+.cab { padding-top:3rem } .cab h1 { font-size:clamp(2.6rem,6.4vw,4.4rem); letter-spacing:-.03em } .vuelta2 { margin:0 0 1rem; font-size:.9rem } .vuelta2 a,.sig a { color:#111; text-decoration:underline; text-underline-offset:3px } .cab .ent { max-width:40rem; margin:0 0 1rem }
+.filas { padding-bottom:2rem } .fila { display:grid; grid-template-columns:minmax(0,590fr) minmax(0,410fr); gap:2.6rem; align-items:center; padding-block:3rem; border-bottom:1px solid var(--line) } .fila:last-child { border-bottom:0 } .fila:nth-child(even) img { order:2 }
+.fila img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:.6rem; box-shadow:0 0 0 1px var(--line),0 10px 26px rgba(0,0,0,.12) } .fila .num { margin-bottom:.8rem } .fila p { margin:0 } .fila:nth-child(6n+1) .num { background:linear-gradient(#b0dbd6,#5fb2a8) } .fila:nth-child(6n+2) .num { background:linear-gradient(#f4dcd6,#e1ae9e) } .fila:nth-child(6n+3) .num { background:linear-gradient(#efc563,#dfae36) } .fila:nth-child(6n+4) .num { background:linear-gradient(#dcba83,#bc8e5b) } .fila:nth-child(6n+5) .num { background:linear-gradient(#da6d6c,#ca4544) }
+.demo { padding-block:4rem } .demo > p { margin:0 0 1.2rem } .d-bot { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem; margin-bottom:.9rem } .d-g { display:inline-flex; flex-wrap:wrap; gap:.4rem } .d-g:empty { display:none } .d-bot button { font:inherit; font-size:.88rem; padding:.3rem .95rem; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer } .d-bot button.on { background:#111; border-color:#111; color:#fff }
+.d-marco { margin:0 auto; max-width:100%; background:#fff; border-radius:.7rem; overflow:hidden; box-shadow:0 0 0 1px var(--line),0 12px 30px rgba(0,0,0,.14); transition:max-width .5s cubic-bezier(.2,.7,.1,1) } .d-marco.movil { max-width:390px } .d-barra { display:flex; align-items:center; gap:.35rem; height:2.1rem; padding:0 .8rem; background:#f1f1f1; border-bottom:1px solid var(--line) } .d-barra i { width:.6rem; height:.6rem; border-radius:50%; background:#d6d6d6 } .d-abre { margin-left:auto; font-size:.78rem; color:#333 }
+.d-marco iframe { display:block; width:100%; height:min(44rem,78vh); border:0; background:#fff } .sig { padding-block:2.4rem 3.5rem } .sig p { margin:0 }
+.discos { list-style:none; display:flex; flex-wrap:wrap; gap:1rem 2.6rem; margin:1.8rem 0 0; padding:0 } .discos a { display:flex; align-items:center; gap:.6rem; color:#0a78b5!important; font-weight:600; font-size:.89rem; text-decoration:none; transition:opacity .3s } .discos li:nth-child(2) a { color:#e6007e!important } .discos a:hover { opacity:.6 } .discos a::after { content:attr(aria-label) } .discos svg { box-sizing:content-box; width:1.3rem; height:1.3rem; padding:.6rem; border-radius:50%; background:#0a78b5; color:#fff; fill:#fff } .discos li:nth-child(2) svg { background:#e6007e }
+.forma { padding-block:5.33rem } #f-contacto { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 2.2rem } #f-contacto > div:not(.f-pie) { min-width:0 } #f-contacto label { display:block; margin:0 0 .3rem } #f-contacto input,#f-contacto textarea { display:block; box-sizing:border-box; width:100%; font:inherit; color:var(--ink); background:#fff; border:1px solid #949494; border-radius:.44rem; padding:0 .89rem; height:2.67rem } #f-contacto input { margin-bottom:1.1rem } #f-contacto textarea { height:8.2rem; padding-block:.7rem; resize:vertical } #f-contacto input:focus,#f-contacto textarea:focus { outline:2px solid #333; outline-offset:1px }
+.f-pie { grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem } .f-pie p { margin:0; color:var(--ink2) } .f-pie b { font-weight:400; color:var(--ink); user-select:all } .f-pie button { font:inherit; color:#fff; background:#333; border:1px solid #333; border-radius:.44rem; height:2.67rem; padding:0 2rem; cursor:pointer; transition:background .3s } .f-pie button:hover { background:#000 }
+.foto img,.circ img,.coll i img,.fecha .av img { display:block; width:100%; height:100%; object-fit:cover } .circ,.fecha .av { overflow:hidden } .coll i { overflow:hidden; min-width:0; min-height:0 }
+.circ img { object-fit:contain; background:#ece4d8 }
+.hero p.txt { margin:0 0 1.33rem }
+.head { min-width:0 } .head img { display:block; width:100%; height:auto }
+hr.fin { border:0; border-top:1px solid var(--line); margin:0 }
+.thumbs { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1.1rem; padding-block:1.8rem 3rem }
+.th { aspect-ratio:3/4; border-radius:8px; border:5px solid #fff; box-shadow:0 0 0 1px var(--line),0 2px 5px rgba(0,0,0,.08); overflow:hidden; display:flex; align-items:center; justify-content:center; background:var(--band); font-size:.72rem; color:var(--ink2); text-align:center; padding:2px; min-width:0 }
+.th img { width:100%; height:100%; object-fit:cover; display:block }
+.band { background:#fafafa; border-block:1px solid var(--line) }
+.partes { display:grid; gap:3.4rem; padding-block:5.33rem; justify-items:center }
+.cinco { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1.6rem; width:100%; align-items:start }
+.cinco h2 { font-size:1.45rem; margin:.15rem 0 .7rem }
+.k { display:flex; align-items:center; gap:.5rem; margin:0; font-size:.9rem; color:var(--ink2) } .k i { width:.8rem; height:.8rem; border-radius:50% }
+h2 { font-size:2rem; font-weight:300; margin:0 0 .9rem; line-height:1.2 }
+ul.l { list-style:none; margin:0; padding:0 } ul.l li { margin-bottom:.44rem } .pend { color:var(--accent) }
+.pie { display:block; width:min(46rem,100%); height:auto }
+.hechos-g { display:grid; grid-template-columns:minmax(0,590fr) minmax(0,410fr); gap:2.2rem; align-items:start; padding-top:5.33rem }
+.facts { display:block; width:100%; height:auto; filter:brightness(1.05); mix-blend-mode:multiply }
+.hechos a { color:var(--ink); text-decoration:underline; text-underline-offset:3px }
+.proy { display:grid; grid-template-columns:minmax(0,410fr) minmax(0,590fr); gap:2.2rem; padding-block:5.33rem 0 }
+.proy-t { padding-top:1.78rem } .proy-t p { margin:0 0 1.33rem } .proy-t a { color:#111; text-decoration:underline; text-underline-offset:3px }
+.proy-i { display:block; width:100%; height:auto }
+.dos { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:44px; align-items:center; padding-block:66px; border-bottom:1px solid var(--line) }
+.dos:last-of-type { border-bottom:0 }
+.a { color:var(--ink); text-decoration:underline; text-underline-offset:3px; font-weight:400; background:none; border:0; padding:0; font:inherit; cursor:pointer }
+.dos img.sh { width:100%; display:block; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.14) }
+.hueco { aspect-ratio:4/3; border:2px dashed var(--accent); border-radius:10px; color:var(--accent); display:flex; align-items:center; justify-content:center; text-align:center; padding:16px; min-width:0 }
+.skills { padding-top:5.33rem } .skills h2 { text-align:right }
+.barras { --h:25rem; --l:repeating-linear-gradient(to right,#ddd 0 3px,transparent 3px 6px); list-style:none; margin:0; padding:0; height:var(--h); display:grid; grid-template-columns:8.1% repeat(5,16.19%); column-gap:2%; align-items:end;
+  background-image:var(--l),var(--l),var(--l),var(--l); background-size:100% 1px; background-repeat:no-repeat; background-position:0 0,0 calc(var(--h)*.2253),0 calc(var(--h)*.4507),0 calc(var(--h)*.676) }
+.niv { height:100%; background:#fafafa; border-right:1px solid #ddd } .niv span { display:block; height:calc(var(--h)*.2253); transform:translateY(-.6em); text-align:center; font-weight:600; font-size:.89rem; color:var(--ink2); text-shadow:#fff 0 1px 1px }
+.b { box-sizing:border-box; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:.6rem; padding:0 .2rem 1.11rem; border:1px solid; border-radius:.44rem .44rem 0 0; box-shadow:inset 0 1px 0 rgba(255,255,255,.6); color:#fff; font-weight:600; text-align:center; text-shadow:rgba(0,0,0,.5) 0 -1px 0; min-width:0 }
+.pc { font-size:3.33rem; line-height:1; opacity:.8 } .pc small { font-size:1.33rem; padding-left:3px } .sk { font-size:.89rem; line-height:1.2 }
+.b.aqua { border-color:#8dc5be; background:linear-gradient(#b0dbd6,#5fb2a8) } .b.pink { border-color:#ebc0b5; background:linear-gradient(#f4dcd6,#e1ae9e) } .b.yellow { border-color:#e7af30; background:linear-gradient(#efc563,#dfae36) } .b.brown { border-color:#dcb386; background:linear-gradient(#dcba83,#bc8e5b) } .b.red { border-color:#e14949; background:linear-gradient(#da6d6c,#ca4544) }
+.b.neg { height:auto; border:0; background:none; box-shadow:none; padding:0; color:#b93a39; text-shadow:none } .b.neg .pc { opacity:1 } .b.neg::after { content:""; box-sizing:border-box; width:100%; height:1.25rem; border:1px solid #e14949; border-bottom:0; border-radius:.44rem .44rem 0 0; background:linear-gradient(#da6d6c,#ca4544); box-shadow:inset 0 1px 0 rgba(255,255,255,.6) }
+.pila { position:relative; aspect-ratio:5/3.4; min-width:0 } .pila img { position:absolute; width:58%; border-radius:6px; box-shadow:0 8px 22px rgba(0,0,0,.2) }
+.pila img:nth-child(1){ left:0; top:12%; transform:rotate(-5deg) } .pila img:nth-child(2){ left:24%; top:0; transform:rotate(3deg) } .pila img:nth-child(3){ right:0; top:22%; transform:rotate(-2deg) }
+.mar { position:relative; min-width:0 } .mar .av { position:absolute; left:-14px; top:-14px; width:32%; aspect-ratio:1; border-radius:50%; border:5px solid #fff; box-shadow:0 2px 10px rgba(0,0,0,.2); overflow:hidden; background:#fff } .mar .av img { width:100%; height:100%; object-fit:cover; object-position:50% 0 }
+.lin { border-top:1px solid var(--line) }
+.hist { display:grid; grid-template-columns:minmax(0,590fr) minmax(0,410fr); gap:2.2rem; padding-block:5.33rem 7.11rem }
+.marco { position:relative; display:block; aspect-ratio:1180/700; min-width:0 }
+.foto { position:absolute; left:15.4%; right:1%; top:0; bottom:0; overflow:hidden; background:#efefef; border:6px solid #fff; box-shadow:0 0 0 1px var(--line),0 2px 6px rgba(0,0,0,.08) }
+.circ { position:absolute; left:0; top:9%; width:36%; aspect-ratio:1; border-radius:50%; background:#e4e4e4; border:6px solid #fff; box-shadow:0 1px 6px rgba(0,0,0,.18) }
+.art { max-width:37.8rem; margin:0 auto; padding:3.5rem max(20px,env(safe-area-inset-right,0px)) 5rem max(20px,env(safe-area-inset-left,0px)); box-sizing:content-box }
+.art h1 { font-size:3rem; font-weight:300; letter-spacing:0; line-height:1.15; margin:0 0 1.2rem }
+.fecha { display:flex; align-items:center; gap:.7rem; margin:0 0 1.6rem; font-size:.8rem; color:var(--ink2) } .fecha .av { width:2.6rem; height:2.6rem; border-radius:50%; background:#e4e4e4; border:1px solid var(--line) }
+.coll { display:grid; grid-template-columns:62fr 192fr 75fr 75fr; grid-template-rows:repeat(12,minmax(0,1fr)); gap:2px; aspect-ratio:404/238; border-radius:8px; overflow:hidden; margin-bottom:2.4rem }
+.coll i { position:relative; background:#efefef } .coll i img { position:absolute; inset:0 } .coll .iz { grid-column:1; grid-row:span 3 } .coll .iz:nth-child(1) { grid-row:1 / span 3 } .coll .iz:nth-child(2) { grid-row:4 / span 3 } .coll .iz:nth-child(3) { grid-row:7 / span 3 } .coll .iz:nth-child(4) { grid-row:10 / span 3 } .coll .medio:nth-child(7) { grid-column:3 } .coll .medio:nth-child(8) { grid-column:4 } .coll .alto { grid-column:2; grid-row:1 / -1 } .coll .ancho { grid-column:3 / 5; grid-row:1 / span 6 } .coll .medio { grid-row:7 / span 6 }
+.art p { margin:0 0 1.33rem } .art section { border-top:1px solid var(--line); padding-top:2.4rem; margin-top:2.4rem } 
+.ent { font-size:1.2rem; line-height:1.45 } .toc { margin:0; padding-left:1.3rem } .toc li { margin-bottom:.35rem }
+.art a { color:#111; text-decoration:underline; text-underline-offset:3px }
+.art h3 { font-size:1.1rem; font-weight:600; margin:1.6rem 0 .3rem }
+.esc { display:block; width:100%; height:auto; margin:1.8rem 0; filter:brightness(1.03); mix-blend-mode:multiply }
+.cifras { list-style:none; margin:1.8rem 0 0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem } .cifras li { background:#fafafa; border:1px solid var(--line); border-radius:8px; padding:.9rem .5rem; text-align:center; font-size:.8rem; color:var(--ink2) } .cifras b { display:block; font-size:1.8rem; font-weight:300; color:var(--ink); line-height:1.2 } .cifras li:last-child b { color:#b93a39 }
+.datos { margin:0 } .datos dt { font-weight:600; margin-top:1.1rem } .datos dd { margin:0 }
+.lista { margin:0 0 1.33rem; padding-left:1.3rem } .lista li { margin-bottom:.6rem }
+.art blockquote { margin:1.8rem 0 0; padding:.2rem 0 .2rem 1.1rem; border-left:3px solid #e1ae9e; font-size:1.2rem; line-height:1.4 }
+.pasos { list-style:none; margin:1.6rem 0 0; padding:0 } .pasos li { display:grid; grid-template-columns:2.6rem minmax(0,1fr); gap:.9rem; padding-bottom:1.3rem; position:relative } .pasos li:not(:last-child)::before { content:""; position:absolute; left:1.25rem; top:2.7rem; bottom:.1rem; width:1px; background:var(--line) }
+.num { width:2.6rem; height:2.6rem; border-radius:50%; display:grid; place-items:center; color:#fff; font-weight:600; text-shadow:rgba(0,0,0,.5) 0 -1px 0 }
+.pasos li:nth-child(6n+1) .num { background:linear-gradient(#b0dbd6,#5fb2a8) } .pasos li:nth-child(6n+2) .num { background:linear-gradient(#f4dcd6,#e1ae9e) } .pasos li:nth-child(6n+3) .num { background:linear-gradient(#efc563,#dfae36) } .pasos li:nth-child(6n+4) .num { background:linear-gradient(#dcba83,#bc8e5b) } .pasos li:nth-child(6n+5) .num { background:linear-gradient(#da6d6c,#ca4544) } .pasos li:nth-child(6n) .num { background:linear-gradient(#555,#222) }
+.pasos h3 { margin:.1rem 0 .15rem } .pasos p { margin:0 }
+.pilas { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1.4rem } .pila-c { background:#fafafa; border:1px solid var(--line); border-radius:8px; padding:1rem } .pila-c:first-child { grid-column:1/-1 } .pila-c h3 { margin:0 } .pila-c p { margin:0 0 .7rem; font-size:.85rem; color:var(--ink2) }
+.fichas { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.4rem } .fichas li { background:#fff; border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; font-size:.85rem }
+.art section.fin { padding-bottom:0 } .art section.fin p { margin:0 }
+@media (max-width:760px){ #f-contacto { grid-template-columns:minmax(0,1fr) } .forma { padding-block:3rem } .fila { grid-template-columns:minmax(0,1fr); gap:1.2rem; padding-block:2rem } .fila:nth-child(even) img { order:0 } .d-bot { justify-content:flex-start } .d-tam { display:none } .demo { padding-block:2.6rem } .art section.vision { padding:1.5rem 1.2rem 1.2rem } .v-f { font-size:1.3rem } .vision ul { grid-template-columns:minmax(0,1fr) } .flujo { flex-direction:column } .flujo div { flex:none } .flujo div:not(:last-child)::after { content:"↓"; right:50%; top:auto; bottom:-1.05rem; transform:none } .gal { grid-template-columns:minmax(0,1fr) } .estado li { grid-template-columns:5.2rem minmax(0,1fr) } .tarj { grid-template-columns:minmax(0,1fr); padding-block:3rem; gap:1.2rem } .cifras { grid-template-columns:repeat(2,minmax(0,1fr)) } .pilas { grid-template-columns:minmax(0,1fr) } .hist { grid-template-columns:minmax(0,1fr); gap:1.5rem; padding-block:3rem 4rem; text-align:center } .hist .proy-t { order:-1; padding-top:0 } .art h1 { font-size:2.4rem } .art { padding-top:2.2rem } .proy { grid-template-columns:minmax(0,1fr); text-align:center; gap:1.5rem; padding-block:3rem 0 } .proy-t { padding-top:0 } .skills { padding-top:3rem } .barras { --h:20rem; grid-template-columns:2.7rem repeat(5,minmax(0,1fr)); column-gap:.3rem } .niv span { font-size:.72rem } .pc { font-size:1.5rem } .pc small { font-size:.8rem; padding-left:1px } .sk { font-size:.72rem; line-height:1.1 } .b { gap:.35rem; padding:0 1px .7rem } .hechos-g { grid-template-columns:minmax(0,1fr); text-align:center; gap:2rem; padding-top:3rem } .facts { order:2 } .hero,.dos { grid-template-columns:minmax(0,1fr) } .cinco { grid-template-columns:repeat(2,minmax(0,1fr)) } .thumbs { grid-template-columns:repeat(2,minmax(0,1fr)) } .dos { gap:24px; padding-block:44px } .hero { gap:1rem } .hero > div:first-child { padding-top:0 } .pedido2 { order:2 } }
+@media (prefers-reduced-motion:no-preference) {
+  :root { --ease:cubic-bezier(.2,.7,.1,1) }
+  @keyframes subir { from { opacity:0; transform:translateY(26px) } } @keyframes barIn { from { transform:translateY(-100%) } }
+  #header { animation:barIn .7s var(--ease) both }
+  .hero > div { animation:subir .9s var(--ease) .1s both } .hero > div:last-child { animation-delay:.25s }
+  .thumbs .th { animation:subir .8s var(--ease) .35s both } .thumbs .th:nth-child(2) { animation-delay:.43s } .thumbs .th:nth-child(3) { animation-delay:.51s } .thumbs .th:nth-child(4) { animation-delay:.59s } .thumbs .th:nth-child(5) { animation-delay:.67s } .thumbs .th:nth-child(6) { animation-delay:.75s }
+  .rise { opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease),transform .9s var(--ease) } .rise.ya { opacity:1; transform:none }
+  .tarj .rise:nth-child(3n+2) { transition-delay:.08s } .tarj .rise:nth-child(3n) { transition-delay:.16s }
+  .cinco > .rise:nth-child(2),.cifras .rise:nth-child(2),.pilas .rise:nth-child(2) { transition-delay:.08s } .cinco > .rise:nth-child(3),.cifras .rise:nth-child(3),.pilas .rise:nth-child(3) { transition-delay:.16s } .cinco > .rise:nth-child(4),.cifras .rise:nth-child(4) { transition-delay:.24s } .cinco > .rise:nth-child(5) { transition-delay:.32s }
+  .barras .b { transform-origin:bottom; transition:clip-path 1.4s var(--ease) var(--d,0s),transform .3s var(--ease) } .barras .b:hover { transform:scaleY(1.03) }
+  .barras .b:nth-child(3) { --d:.12s } .barras .b:nth-child(4) { --d:.24s } .barras .b:nth-child(5) { --d:.36s } .barras .b:nth-child(6) { --d:.48s }
+  .barras.mueve .b { clip-path:inset(100% 0 0 0) } .barras.mueve.ya .b { clip-path:inset(-2px) }
+  .pie.mueve path { transform-box:view-box; transform-origin:380px 244px; transition:transform 1s var(--ease) var(--d,0s),opacity .5s var(--ease) var(--d,0s); transform:scale(.2) rotate(-70deg); opacity:0 } .pie.mueve.ya path { transform:none; opacity:1 }
+  .pie path:nth-child(2) { --d:.1s } .pie path:nth-child(3) { --d:.2s } .pie path:nth-child(4) { --d:.3s } .pie path:nth-child(5) { --d:.4s }
+  .pie.mueve polyline { stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset .8s var(--ease) var(--d,0s) } .pie.mueve.ya polyline { stroke-dashoffset:0 }
+  .pie.mueve circle,.pie.mueve text { opacity:0; transition:opacity .6s var(--ease) var(--d,0s) } .pie.mueve text { transition-delay:calc(var(--d,0s) + .4s) } .pie.mueve.ya circle,.pie.mueve.ya text { opacity:1 }
+  @keyframes flota { 50% { transform:translateY(-5px) } } .pie.mueve.ya text { animation:flota 4s ease-in-out calc(var(--d,0s) + 1.6s) infinite }
+  @keyframes golpe { 25% { transform:rotate(-7deg) } 75% { transform:rotate(7deg) } } .barras.mueve.ya .neg .pc { animation:golpe .45s ease-in-out 1.9s 2 }
+}
+@media print { .rise,.barras.mueve .b,.pie.mueve path,.pie.mueve circle,.pie.mueve text,.pie.mueve polyline { opacity:1!important; transform:none!important; clip-path:none!important; stroke-dashoffset:0!important; animation:none!important } }
+/* Inicio */
+.foto-t.perso { background:#fff } .foto-t.perso img { object-fit:contain; object-position:center }
+.face { position: relative; max-width: 1040px; margin: 0 auto; aspect-ratio: 1040 / 600; overflow: hidden; --x: 50%; cursor: ew-resize; user-select: none }
+.face img { position: absolute; inset: 0; width: 100%; height: 100% }
+.face.codigo .code-sil { animation: codigo 2.2s cubic-bezier(.5, 0, .2, 1) both }
+@keyframes codigo { 0% { opacity: 1; clip-path: inset(100% 0 0 0) } 35% { opacity: 1; clip-path: inset(0 0 0 0) } 62% { opacity: 1 } 100% { opacity: 0; clip-path: inset(0 0 0 0) } }
+.face { --tono: #1d1b19; cursor: ew-resize }
+@media (hover: none) { .face { cursor: default } }
+.face .side h1 { color: #333 }
+.face .seam { position: absolute; top: 0; bottom: 0; left: var(--x); width: 1px; background: rgba(51, 51, 51, .25); pointer-events: none }
+.face .side { position: absolute; top: 30%; width: 30%; z-index: 2 }
+.face .side a { text-decoration: none; color: var(--ink2) }
+.face .side h1 { font-size: clamp(16px, 4.3vw, 66px); letter-spacing: -.04em; transition: color .4s; white-space: nowrap }
+.face .side p { display: none; font-size: 16px; line-height: 1.4; color: var(--ink2) }
+.face .ops { left: 0 } .face .auto { right: 0; text-align: right }
+.face .auto h1 i { font-style: normal; color: var(--ink2) }
+.face[data-lado="auto"] .auto h1 { color: #111 } .face[data-lado="ops"] .ops h1 { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 10px }
+.face .side { width: 36% }
+@media (min-width: 768px) { .face .side p { display: block; max-width: 26ch } .face .auto p { margin-left: auto } }
+.in-face { padding-inline:max(20px,env(safe-area-inset-left,0px)) max(20px,env(safe-area-inset-right,0px)) }
+.ultimo { display:flex; align-items:center; gap:1.2rem; padding-top:4rem } .ultimo::before,.ultimo::after { content:""; flex:1; border-top:1px solid var(--line) } .ultimo h3 { margin:0; font-size:.78rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--ink2) } .ultimo + .tarj { padding-top:2rem }
+.face { --y:50%; --tono:#1d1b19; cursor:crosshair }
+.face .code-sil { position:absolute; inset:0; z-index:1; pointer-events:none; background:var(--tono); color:rgba(255,255,255,.82); font:500 10.5px/1.32 ui-monospace,"Cascadia Code",Consolas,monospace; white-space:pre; overflow:hidden; -webkit-mask:url(img/v2/972b07c62cae.png) center / 100% 100% no-repeat; mask:url(img/v2/972b07c62cae.png) center / 100% 100% no-repeat; clip-path:circle(30% at var(--x) var(--y)) }
+.face .code-sil .flujo { display:block; animation:fluye 40s linear infinite } @keyframes fluye { to { transform:translateY(-50%) } } @media (prefers-reduced-motion:reduce) { .face .code-sil .flujo { animation:none } }
+.face .side { top:auto; bottom:auto; left:auto; right:auto; width:auto } .face .c-tl { top:7%; left:0 } .face .c-tr { top:7%; right:0 } .face .c-bl { bottom:7%; left:0 } .face .c-br { bottom:7%; right:0 }
+.face .side h1 { color:#a9a9a9 } .face .side h1 i { color:inherit; font-style:normal } .face[data-lado="tl"] .c-tl h1,.face[data-lado="tr"] .c-tr h1,.face[data-lado="bl"] .c-bl h1,.face[data-lado="br"] .c-br h1 { color:#222 }
+</style>
 </head>
 <body>
+
+
 <header id="header">
   <div class="row">
-    <a class="logo" href="index.html" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
+    <a class="logo" href="#" data-ver="inicio" aria-label="Cristian Sánchez Benavides, home"><svg viewBox="0 0 64 64" aria-hidden="true"><text x="4" y="42" font-weight="700" font-size="26" letter-spacing="-1.5" fill="#fff">csb</text><circle cx="47" cy="39" r="3.6" fill="#d64a3c"/></svg></a>
     <button class="icon-nav" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-    <div id="menu"><div><ul id="nav"><li><a href="about.html">about</a></li><li><a href="learn.html">learn</a></li><li><a href="portfolio.html">portfolio</a></li><li><a href="contact.html">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li></ul></li></ul></div></div>
+    <div id="menu"><div><ul id="nav"><li><a href="#" data-ver="about">about</a></li><li><a href="#" data-ver="learn">learn</a></li><li><a href="#" data-ver="portfolio">portfolio</a></li><li><a href="#" data-ver="contact">contact</a></li><li><ul class="social"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li><li><a href="https://www.instagram.com/cristianb.sanchez/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3"/></svg></a></li></ul></li></ul></div></div>
   </div>
 </header>
-<div class="content">
 
-<section class="light nopad-t nopad-b">
-  <div class="face" data-lado="">
-    <img class="foto-img" src="img/cara-foto.jpg" alt="Portrait of Cristian Sánchez (AI-generated from my photo)" width="1040" height="600">
+<main id="inicio">
+  <div class="in-face"><div class="face" data-lado="">
+    <img class="foto-img" src="img/v2/cd198b700620.webp" alt="Portrait of Cristian Sánchez" width="1040" height="600">
     <div class="code-sil" aria-hidden="true"><span class="flujo"></span></div>
-    <span class="seam" aria-hidden="true"></span>
-    <div class="side ops"><a href="about.html"><h1>sales</h1><p>I find qualified buyers and follow up until they say yes or no.</p></a></div>
-    <div class="side auto"><a href="portfolio.html"><h1><i>&lt;</i>automation<i>&gt;</i></h1><p>I build the tools myself, with AI agents I set up and keep in check.</p></a></div>
+    <div class="side c-tl"><a href="#portfolio" data-ver="portfolio"><h1><i>&lt;</i>programmer<i>&gt;</i></h1></a></div>
+    <div class="side c-tr"><a href="#about" data-ver="about"><h1>sales</h1></a></div>
+    <div class="side c-bl"><a href="#learn" data-ver="learn"><h1>AI</h1></a></div>
+    <div class="side c-br"><a href="#portfolio" data-ver="portfolio"><h1>designer</h1></a></div>
+  </div></div>
+  <div class="band"><div class="in"><div class="ultimo"><h3>Take a look around</h3></div><ul class="tarj">
+      <li><a href="#about" data-ver="about"><span class="foto-t perso"><img src="img/v2/be73b74e316d.webp" alt="Cartoon Cristian with a laptop on a golf cart" width="1200" height="800" loading="lazy"></span><h4>About me</h4><p>Who I am and how I got here</p></a></li>
+      <li><a href="#portfolio" data-ver="portfolio"><span class="foto-t perso"><img src="img/v2/724be3b8775a.webp" alt="Cartoon Cristian directing robots that build a store page" width="1200" height="800" loading="lazy"></span><h4>Portfolio</h4><p>Seven projects you can try right there</p></a></li>
+      <li><a href="#learn" data-ver="learn"><span class="foto-t perso"><img src="img/v2/1b6a1219233f.webp" alt="Cartoon Cristian at a computer with headphones" width="1200" height="800" loading="lazy"></span><h4>Learn</h4><p>How each project is built</p></a></li>
+  </ul></div></div>
+</main>
+
+<main id="about" hidden>
+  <div class="in">
+    <div class="hero">
+      <div><img class="m-titulo" src="img/v2/107cde2ae8ee.webp" alt=""><h1>about.</h1>
+        <p class="sub">I'm a programmer, passionate about artificial intelligence and sales.</p>
+        <p class="txt">Since 2016, when I programmed for the first time, I discovered that my passion is making things easier, and solving and finding problems. Life is better when you solve everything with one click.</p><img class="m-texto" src="img/v2/431b5e513dc7.webp" alt=""></div>
+      <div class="head">
+        
+        <img src="img/v2/d656c714faa7.webp" alt="Cartoon Cristian with glasses" width="1180" height="880"></div>
+    </div>
+    <hr class="fin">
+    <div class="thumbs">
+      <div class="th"><img src="img/v2/782856e50153.webp" alt="Cristian putting on the green"></div>
+      <div class="th"><img src="img/v2/60e6f172cdee.webp" alt="Cristian sitting on a bench"></div>
+      <div class="th"><img src="img/v2/d5652b09c5f3.webp" alt="Cristian looking to the side on a bench"></div>
+      <div class="th"><img src="img/v2/8568b0419fe1.webp" alt="Cristian standing on the course"></div>
+      <div class="th"><img src="img/v2/85a2fc1849c5.webp" alt="Cristian holding a golf ball"></div>
+      <div class="th"><img src="img/v2/83e2d7486cfe.webp" alt="Cristian carrying his golf bag"></div>
+    </div>
   </div>
-</section>
-<section class="dark">
-  <div class="header-center"><h3>Some of my latest work</h3></div>
-  <ul class="thumbs three rise"><li><a href="work/crm.html"><div class="shot"><img src="img/shots/crm-pc.png" alt="" loading="lazy"></div><div class="description"><span class="arrow" aria-hidden="true"></span><h4>Credit-repair CRM</h4><p>Next.js, Prisma, the law built into the flow</p></div></a></li><li><a href="work/thawtide.html"><div class="shot"><img src="img/shots/thawtide-pc.png" alt="" loading="lazy"></div><div class="description"><span class="arrow" aria-hidden="true"></span><h4>Thawtide store</h4><p>A Shopify theme I designed and built</p></div></a></li><li><a href="work/hub.html"><div class="shot"><img src="img/shots/hub-pc.png" alt="" loading="lazy"></div><div class="description"><span class="arrow" aria-hidden="true"></span><h4>My AI agent hub</h4><p>How I run every project with Claude Code</p></div></a></li></ul>
-</section>
-</div>
+
+  <section class="band"><div class="in partes">
+    <svg class="pie" viewBox="0 0 740 500" role="img" aria-label="Pie chart: Programmer 40%, Sales 20%, AI 15%, Designer 13%, Hobbies 12%"><g style="filter:drop-shadow(0 6px 16px rgba(0,0,0,.14))"><path d="M380 244L380.00 72.00A172 172 0 0 1 481.10 383.15Z" fill="#222222"/><path d="M380 244L481.10 383.15A172 172 0 0 1 278.90 383.15Z" fill="#474747"/><path d="M380 244L278.90 383.15A172 172 0 0 1 208.00 244.00Z" fill="#6d6d6d"/><path d="M380 244L208.00 244.00A172 172 0 0 1 262.26 118.62Z" fill="#a3a3a3"/><path d="M380 244L262.26 118.62A172 172 0 0 1 380.00 72.00Z" fill="#d0d0d0"/></g><g font-family="Figtree,Arial,sans-serif"><polyline points="507.6,202.5 640,96 700,96" fill="none" stroke="#9a9a9a" stroke-width="1.4"/><circle cx="507.6" cy="202.5" r="4.5" fill="#fff" stroke="#333" stroke-width="1.4"/><text x="700" y="86" text-anchor="end" font-size="24" font-weight="700" fill="#333">Programmer</text><text x="700" y="124" text-anchor="end" font-size="24" font-weight="300" fill="#757575">40%</text><polyline points="380.0,378.2 510,454 640,454" fill="none" stroke="#9a9a9a" stroke-width="1.4"/><circle cx="380.0" cy="378.2" r="4.5" fill="#fff" stroke="#333" stroke-width="1.4"/><text x="640" y="444" text-anchor="end" font-size="24" font-weight="700" fill="#333">Sales</text><text x="640" y="482" text-anchor="end" font-size="24" font-weight="300" fill="#757575">20%</text><polyline points="260.5,304.9 150,408 60,408" fill="none" stroke="#9a9a9a" stroke-width="1.4"/><circle cx="260.5" cy="304.9" r="4.5" fill="#fff" stroke="#333" stroke-width="1.4"/><text x="60" y="398" text-anchor="start" font-size="24" font-weight="700" fill="#333">AI</text><text x="60" y="436" text-anchor="start" font-size="24" font-weight="300" fill="#757575">15%</text><polyline points="256.9,190.7 118,196 40,196" fill="none" stroke="#9a9a9a" stroke-width="1.4"/><circle cx="256.9" cy="190.7" r="4.5" fill="#fff" stroke="#333" stroke-width="1.4"/><text x="40" y="186" text-anchor="start" font-size="24" font-weight="700" fill="#333">Designer</text><text x="40" y="224" text-anchor="start" font-size="24" font-weight="300" fill="#757575">13%</text><polyline points="330.6,119.3 250,52 160,52" fill="none" stroke="#9a9a9a" stroke-width="1.4"/><circle cx="330.6" cy="119.3" r="4.5" fill="#222" stroke="#333" stroke-width="1.4"/><text x="160" y="42" text-anchor="start" font-size="24" font-weight="700" fill="#333">Hobbies</text><text x="160" y="80" text-anchor="start" font-size="24" font-weight="300" fill="#757575">12%</text></g></svg>
+    <div class="cinco">
+      <div><p class="k"><i style="background:#222222"></i>40%</p><h2>Programmer</h2><ul class="l"><li>JavaScript</li><li>TypeScript</li><li>HTML / CSS</li><li>Next.js</li><li>Python</li></ul></div>
+      <div><p class="k"><i style="background:#474747"></i>20%</p><h2>Sales</h2><ul class="l"><li>Finding buyers</li><li>Follow-up calls</li><li>Lead qualification</li><li>Objection handling</li><li>HubSpot</li></ul></div>
+      <div><p class="k"><i style="background:#6d6d6d"></i>15%</p><h2>AI</h2><ul class="l"><li>Fixing AI-written code</li><li>AI agent orchestration</li><li>Context engineering</li><li>AI evals</li><li>AI guardrails</li><li>AI automations</li></ul></div>
+      <div><p class="k"><i style="background:#a3a3a3"></i>13%</p><h2>Designer</h2><ul class="l"><li>UI design</li><li>UX design</li><li>Design Systems</li><li>Interaction design</li><li>Making things easier</li></ul></div>
+      <div><p class="k"><i style="background:#d0d0d0"></i>12%</p><h2>Hobbies</h2><ul class="l"><li>Boxing</li><li>Business</li><li>Running</li><li>Gym</li><li>Events</li></ul></div>
+    </div>
+  </div></section>
+  <section class="hechos"><div class="in hechos-g">
+    <video class="facts" src="facts-volando.mp4" poster="img/v2/b321dd1aade0.webp" autoplay muted loop playsinline aria-label="Cartoon Cristian with glasses flying out of a computer screen with a sword"></video>
+    <div><h2>Random facts</h2><ul class="l">
+      <li>I'm on social media, I love random videos</li><li>I drink a lot of coffee</li><li>I want to live on an island alone</li>
+      <li>Kinda a clean freak, not extreme</li><li>I love to cook (but not to eat much)</li><li>I like designing my space</li>
+      <li>I enjoy creating things</li><li>I'm passionate about how things were created</li><li>I like anime</li>
+    </ul></div>
+  </div></section>
+  <section class="band"><div class="in skills"><h2>My skills</h2>
+    <ul class="barras">
+      <li class="niv"><span>Champ</span><span>Contender</span><span>Amateur</span><span>Rookie</span></li>
+      <li class="b aqua" style="height:calc(95% + 2px)"><span class="pc">95<small>%</small></span><span class="sk">Coffee drinking</span></li>
+      <li class="b pink" style="height:calc(90% + 2px)"><span class="pc">90<small>%</small></span><span class="sk">JavaScript</span></li>
+      <li class="b yellow" style="height:calc(95% + 2px)"><span class="pc">95<small>%</small></span><span class="sk">Fixing AI-written code</span></li>
+      <li class="b brown" style="height:calc(75% + 2px)"><span class="pc">75<small>%</small></span><span class="sk">Cooking</span></li>
+      <li class="b red neg"><span class="pc">-5<small>%</small></span><span class="sk">Boxing (improving)</span></li>
+    </ul>
+  </div></section>
+  <section class="in proy">
+    <div class="proy-t"><h2>My designs</h2>
+      <p>Seven projects, each with a demo you can actually click through. Every project page has the problem, the decisions I made, the plan and where it stands today.</p>
+      <p><a href="#portfolio" data-ver="portfolio">View portfolio</a></p></div>
+    <a href="#portfolio" data-ver="portfolio"><img class="proy-i" src="img/v2/fda5c9013a9f.webp" alt="Screens from my projects: credit-repair site, barbershop booking, Thawtide store, creator links page and AI sales desk" width="1180" height="908"></a>
+  </section>
+  <div class="lin"><section class="in hist">
+    <a class="marco" href="#story" data-ver="story" aria-label="Read the whole thing"><span class="foto"><img src="img/v2/a14e1ad98fa2.webp" alt="Cristian playing golf at sunset"></span><span class="circ"><img src="img/v2/99c63e1b0e3b.webp" alt="Cristian in New York"></span></a>
+    <div class="proy-t"><h2>My story</h2>
+      <p>From a 9th grader in the Bronx to a golf course to building apps with AI.</p>
+      <p><a href="#story" data-ver="story">Read the whole thing</a></p></div>
+  </section></div>
+</main>
+
+<main id="story" hidden><div class="art">
+  <h1>My story</h1>
+  <p class="fecha"><span class="av"><img src="img/v2/99001c7badbe.webp" alt="Cristian"></span>Last updated 1 November 2026</p>
+  <div class="coll"><i class="iz"><img src="img/v2/60e6f172cdee.webp" alt="Cristian sitting on a bench"></i><i class="iz"><img src="img/v2/d5652b09c5f3.webp" alt="Cristian looking to the side"></i><i class="iz"><img src="img/v2/85a2fc1849c5.webp" alt="Cristian holding a golf ball"></i><i class="iz"><img src="img/v2/83e2d7486cfe.webp" alt="Cristian carrying his golf bag"></i><i class="alto"><img src="img/v2/99c63e1b0e3b.webp" alt="Cristian in New York"></i><i class="ancho"><img src="img/v2/a14e1ad98fa2.webp" alt="Cristian playing golf at sunset"></i><i class="medio"><img src="img/v2/782856e50153.webp" alt="Cristian putting on the green"></i><i class="medio"><img src="img/v2/8568b0419fe1.webp" alt="Cristian standing on the course"></i></div>
+  <p class="ent">People ask how a guy from a golf course ends up building apps with AI. This is the long answer.</p>
+  <p>What's in here:</p>
+  <ul class="toc"><li><a href="#h-nutshell">The short version</a></li><li><a href="#h-facts">The basics</a></li><li><a href="#h-llegue">How I got here</a></li><li><a href="#h-ia">How I started building with AI</a></li><li><a href="#h-como">How an app gets made</a></li><li><a href="#h-pila">What I build with</a></li><li><a href="#h-lecc">What I've learned the hard way</a></li></ul>
+  <section id="h-nutshell"><h2>The short version</h2>
+    <p>I'm a programmer, passionate about artificial intelligence and sales.</p>
+    <p>Since 2016, when I programmed for the first time, I discovered that my passion is making things easier, and solving and finding problems. Life is better when you solve everything with one click.</p>
+    <ul class="cifras"><li><b>2016</b>first program</li><li><b>7</b>projects so far</li><li><b>95%</b>coffee drinking</li><li><b>-5%</b>boxing (improving)</li></ul>
+  </section>
+  <section id="h-facts"><h2>The basics</h2><dl class="datos">
+    <dt>Based in</dt><dd>The Bronx, by way of the Dominican Republic</dd>
+    <dt>First program</dt><dd>2016</dd>
+    <dt>School</dt><dd>Crotona International High School, then computer information systems and computer science in college</dd>
+    <dt>Good at</dt><dd>Artificial intelligence and sales</dd>
+    <dt>Off the clock</dt><dd>Boxing, running, the gym, cooking, business and events</dd>
+    <dt>When I'm not building</dt><dd>Random videos, anime and finding out how things were created</dd>
+    <dt>Plan B</dt><dd>I'd be living on an island, alone</dd>
+  </dl></section>
+  <section id="h-llegue"><h2>How I got here</h2>
+    <p>I'm Dominican. I landed in the United States in 2015, a 9th grader in a new country.</p>
+    <p>The Bronx put me in Crotona International High School, and that's where I learned about design. I walked in knowing nothing about it. Four years later I could cut a video, build a music track and draw something that almost looked like what I had in my head. I joined student groups, collected diplomas, all that stuff.</p>
+    <img class="esc" src="img/v2/1b6a1219233f.webp" alt="Cartoon Cristian with headphones editing a video at a school computer" width="1200" height="800" loading="lazy">
+    <p>College came next. I picked one, it wasn't what I wanted, so I switched. Then I left that too.</p>
+    <p>Nobody in a classroom tells you the next stop might be a golf course. Mine was. Grass, early mornings and a lot of time to think.</p>
+    <img class="esc" src="img/v2/be73b74e316d.webp" alt="Cartoon Cristian with a laptop and coffee on a golf cart at sunrise" width="1200" height="800" loading="lazy">
+  </section>
+  <section id="h-ia"><h2>How I started building with AI</h2>
+    <p>A golf job ends every fall, and I had too many ideas to wait around. So I started building on my own time. AI does the work. I decide.</p>
+    <p>The first big one was a <a href="#d-crm" data-ver="d-crm">CRM for credit repair</a> in New York, with sample data. I built it before I really knew what a CRM needs, and it showed. So I studied the tools that industry uses and started over, with the law deciding the order of every step.</p>
+    <p>Then the agents started lying to me. Not on purpose. They'd say "done" without proof, change their own rules and wander into folders that weren't theirs. So I built <a href="#d-hub" data-ver="d-hub">a hub</a>: locks in the code, a reviewer that can't fix anything, and mistakes that turn into rules.</p>
+    <img class="esc" src="img/v2/7c88c2c3623d.webp" alt="Cartoon Cristian conducting small robots that assemble an app" width="1200" height="800" loading="lazy">
+    <p>After that things moved fast:</p>
+    <ul class="lista">
+      <li><a href="#d-thawtide" data-ver="d-thawtide">Thawtide</a>: a store for one peanut-shaped hand warmer, designed one section at a time. It isn't open yet.</li>
+      <li><a href="#d-research" data-ver="d-research">AI sales desk</a>: two personal demos where every claim needs the exact line it came from, or it doesn't count.</li>
+      <li><a href="#d-barber" data-ver="d-barber">Barbershop booking</a>: still in planning. My bet is a shop should be live the day it signs up.</li>
+      <li><a href="#d-links" data-ver="d-links">Links page</a>: a demo with simulated products. One link for creators, with no ads from other brands.</li>
+    </ul>
+    <blockquote>Life is better when you solve everything with one click. I'm still working on that click.</blockquote>
+  </section>
+  <section id="h-como"><h2>How an app gets made</h2>
+    <p>This is how I work now. The AI just types faster than I do.</p>
+    <ol class="pasos">
+      <li><span class="num">1</span><div><h3>Look at the best one first</h3><p>Before I touch anything, I go read what already works.</p></div></li>
+      <li><span class="num">2</span><div><h3>Write the plan</h3><p>One page: what it does, what it doesn't, and how I'll know it works.</p></div></li>
+      <li><span class="num">3</span><div><h3>Let the agents build</h3><p>They write the code. I decide.</p></div></li>
+      <li><span class="num">4</span><div><h3>Try to break it</h3><p>A separate agent tests it like a customer. It can't fix anything, so it can't cheat.</p></div></li>
+      <li><span class="num">5</span><div><h3>Fix it and write it down</h3><p>Every mistake turns into a rule.</p></div></li>
+      <li><span class="num">6</span><div><h3>Ship it</h3><p>A demo you can click, on a computer and on a phone.</p></div></li>
+    </ol>
+  </section>
+  <section id="h-pila"><h2>What I build with</h2>
+    <p>The CRM uses React and Next.js. Thawtide is a Shopify theme. The smaller tools are plain HTML, CSS and JavaScript.</p>
+    <div class="pilas">
+      <div class="pila-c"><h3>Frontend</h3><p>What you see and touch.</p><ul class="fichas"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>HTML / CSS</li><li>JavaScript</li><li>three.js</li></ul></div>
+      <div class="pila-c"><h3>Backend</h3><p>What runs behind it.</p><ul class="fichas"><li>Node.js</li><li>Prisma</li><li>SQLite</li><li>Zod</li><li>Resend</li><li>Python</li></ul></div>
+      <div class="pila-c"><h3>AI</h3><p>What does the heavy lifting.</p><ul class="fichas"><li>Claude Code</li><li>Gemini API</li><li>AI agents</li><li>Context engineering</li><li>AI evals</li><li>AI guardrails</li></ul></div>
+      <div class="pila-c"><h3>Testing</h3><p>What catches me lying.</p><ul class="fichas"><li>Playwright</li><li>Vitest</li><li>A reviewer agent</li></ul></div>
+      <div class="pila-c"><h3>Going live</h3><p>Where it ends up.</p><ul class="fichas"><li>Shopify</li><li>Liquid</li><li>GitHub Pages</li></ul></div>
+    </div>
+  </section>
+  <section id="h-lecc"><h2>What I've learned the hard way</h2>
+    <p>Most of these cost me a whole day.</p>
+    <img class="esc" src="img/v2/dd801617fb0c.webp" alt="Cartoon Cristian with a sword and a coffee fighting a giant computer bug" width="1200" height="800" loading="lazy">
+    <h3>Done means proof</h3><p>An agent saying "done" means nothing. A test passing means something.</p>
+    <h3>Whoever builds it doesn't grade it</h3><p>Works for people and works for AI.</p>
+    <h3>Look before you make</h3><p>Most of my bad ideas died the moment I looked at the reference properly.</p>
+    <h3>Make it easier</h3><p>If it takes ten clicks, it's not finished. That's been the whole idea since 2016.</p>
+    <h3>Say what isn't ready</h3><p>A page that says PENDING beats a page that lies.</p>
+  </section>
+  <section class="fin"><p>That's the story so far. Want to talk? Go to my <a href="#" data-ver="contact">contact page</a>, or find me on <a href="https://www.instagram.com/cristianb.sanchez/" target="_blank" rel="noopener">Instagram</a> or <a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener">LinkedIn</a>.</p></section>
+</div></main>
+
+<main id="learn" hidden>
+  <div class="in">
+    <div class="hero">
+      <div><h1 class="con-ojo">learn. <span>AI agents</span></h1>
+        <p class="sub">A few pieces of how I build with AI agents, and how the work gets checked.</p>
+        <p class="txt">What I've learned building software with AI.</p></div>
+      <div class="head"><img class="esc-l" src="img/v2/724be3b8775a.webp" alt="Cartoon Cristian directing small robots that build the Thawtide store page piece by piece" width="1200" height="800"></div>
+    </div>
+  </div>
+  <div class="band"><div class="in"><ul class="tarj">
+      <li><a href="#p-crm" data-ver="p-crm"><span class="foto-t"><img src="img/v2/595e132bf9c1.webp" alt="Credit-repair CRM" width="720" height="450" loading="lazy"></span><h4>Credit-repair CRM</h4><p>Next.js, Prisma, the law built into the flow</p></a></li>
+      <li><a href="#p-thawtide" data-ver="p-thawtide"><span class="foto-t"><img src="img/v2/49febc869a53.webp" alt="Thawtide store" width="720" height="450" loading="lazy"></span><h4>Thawtide store</h4><p>A Shopify theme I designed and built</p></a></li>
+      <li><a href="#p-hub" data-ver="p-hub"><span class="foto-t"><img src="img/v2/678be2a1ae9f.webp" alt="My AI agent hub" width="720" height="450" loading="lazy"></span><h4>My AI agent hub</h4><p>How I run every project with Claude Code</p></a></li>
+      <li><a href="#p-barber" data-ver="p-barber"><span class="foto-t"><img src="img/v2/27a342b7062b.webp" alt="Barbershop booking" width="720" height="450" loading="lazy"></span><h4>Barbershop booking</h4><p>Researched, sketched and prototyped</p></a></li>
+      <li><a href="#p-ventas" data-ver="p-ventas"><span class="foto-t"><img src="img/v2/fdd59820ff53.webp" alt="AI sales desk" width="720" height="450" loading="lazy"></span><h4>AI sales desk</h4><p>Prospect research and call notes, with sources</p></a></li>
+      <li><a href="#p-links" data-ver="p-links"><span class="foto-t"><img src="img/v2/82b46b3df835.webp" alt="Creator links page" width="720" height="450" loading="lazy"></span><h4>Creator links page</h4><p>One page for everything a creator recommends</p></a></li>
+  </ul></div></div>
+</main>
+
+<main id="portfolio" hidden>
+  <div class="in">
+    <div class="hero">
+      <div><h1>portfolio.</h1>
+        <p class="sub">Check out some of my latest projects.</p>
+        <p class="txt">I've worked as a freelancer building websites, stores and tools. These are the projects I build with AI.</p></div>
+      <div class="head"><img class="esc-l" src="img/v2/9d92b4ecc21a.webp" alt="Pieces of my projects: a client card, a booking card, a prospect list, a product page and a links page" width="1180" height="880"></div>
+    </div>
+  </div>
+  <div class="band"><div class="in"><ul class="tarj">
+      <li><a href="#d-crm" data-ver="d-crm"><span class="foto-t"><img src="img/v2/595e132bf9c1.webp" alt="Credit-repair CRM" width="720" height="450" loading="lazy"></span><h4>Credit-repair CRM</h4><p>Services · CRM</p></a></li>
+      <li><a href="#d-thawtide" data-ver="d-thawtide"><span class="foto-t"><img src="img/v2/49febc869a53.webp" alt="Thawtide store" width="720" height="450" loading="lazy"></span><h4>Thawtide store</h4><p>E-commerce · Shopify</p></a></li>
+      <li><a href="#d-hub" data-ver="d-hub"><span class="foto-t"><img src="img/v2/678be2a1ae9f.webp" alt="My AI agent hub" width="720" height="450" loading="lazy"></span><h4>My AI agent hub</h4><p>How I work · Claude Code</p></a></li>
+      <li><a href="#d-barber" data-ver="d-barber"><span class="foto-t"><img src="img/v2/27a342b7062b.webp" alt="Barbershop booking" width="720" height="450" loading="lazy"></span><h4>Barbershop booking</h4><p>Product in planning</p></a></li>
+      <li><a href="#d-research" data-ver="d-research"><span class="foto-t"><img src="img/v2/fdd59820ff53.webp" alt="Prospect researcher" width="720" height="450" loading="lazy"></span><h4>Prospect researcher</h4><p>Personal project · sales demo</p></a></li>
+      <li><a href="#d-call" data-ver="d-call"><span class="foto-t"><img src="img/v2/c0cc11ae4519.webp" alt="Call to CRM" width="720" height="450" loading="lazy"></span><h4>Call to CRM</h4><p>Personal project · sales demo</p></a></li>
+      <li><a href="#d-links" data-ver="d-links"><span class="foto-t"><img src="img/v2/82b46b3df835.webp" alt="Creator links page" width="720" height="450" loading="lazy"></span><h4>Creator links page</h4><p>Personal project · links page</p></a></li>
+  </ul></div></div>
+</main>
+
+<main id="d-crm" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>Services · CRM</span>Credit-repair CRM</h1>
+    <p class="ent">A booking page and a CRM of its own for a credit-repair business in New York.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/33b5f5f2bf29.webp" alt="I started over" loading="lazy"><div><span class="num">1</span><h2>I started over</h2><p>My first CRM was built before I really knew what a CRM needs. So I studied the tools this industry uses and drew three routes. This is the one I picked.</p></div></div>
+    <div class="fila"><img src="img/v2/26869097875d.webp" alt="One app for everything" loading="lazy"><div><span class="num">2</span><h2>One app for everything</h2><p>The public page, the client portal and the team's CRM all live in one Next.js app. One codebase, one place to fix things.</p></div></div>
+    <div class="fila"><img src="img/v2/d02e1ff18875.webp" alt="The law sets the order" loading="lazy"><div><span class="num">3</span><h2>The law sets the order</h2><p>Notices, contract, three business days to cancel. I built that order into the app, so work stays locked until every step is done.</p></div></div>
+    <div class="fila"><img src="img/v2/87b925397625.webp" alt="No AI writes the letters" loading="lazy"><div><span class="num">4</span><h2>No AI writes the letters</h2><p>Letters only come from templates a lawyer approves. The plan is to print them and send them on paper by certified mail.</p></div></div>
+    <div class="fila"><img src="img/v2/ba7701942397.webp" alt="What the client sees" loading="lazy"><div><span class="num">5</span><h2>What the client sees</h2><p>Notices, contract and documents, all from a phone. I never store anyone's third-party passwords.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. A clickable mockup with sample data. The real app is not online yet, and there are no clients.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="crm-team.html" data-abre="https://crishud.github.io/crm-team.html" class="on">The team CRM</button><button type="button" data-src="crm.html" data-abre="https://crishud.github.io/crm.html" class="">The client side</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/crm-team.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="crm-team.html" title="Credit-repair CRM demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-crm" data-ver="p-crm">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-thawtide" data-ver="d-thawtide">Thawtide store</a></p></div>
+</main>
+
+<main id="d-thawtide" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>E-commerce · Shopify</span>Thawtide store</h1>
+    <p class="ent">A store for one rechargeable hand warmer, under its own brand, for the US.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/06a5e667a2ac.webp" alt="One product, one world" loading="lazy"><div><span class="num">1</span><h2>One product, one world</h2><p>I picked a hand warmer and built everything around it: the shape, the name and the identity.</p></div></div>
+    <div class="fila"><img src="img/v2/95a93759e35d.webp" alt="It turns in 3D" loading="lazy"><div><span class="num">2</span><h2>It turns in 3D</h2><p>I used three.js so the warmer turns right on the product page. Its thickness is an estimate until the sample arrives.</p></div></div>
+    <div class="fila"><img src="img/v2/f6da0c9dce82.webp" alt="One section at a time" loading="lazy"><div><span class="num">3</span><h2>One section at a time</h2><p>Three options, I pick one, it gets built, a reviewer checks it, and only then it goes into the theme.</p></div></div>
+    <div class="fila"><img src="img/v2/0e7cd9c3e17f.webp" alt="Shipped as a zip" loading="lazy"><div><span class="num">4</span><h2>Shipped as a zip</h2><p>The store is never edited by hand. A new zip replaces the old theme.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. The design mockup. It isn't open and hasn't sold anything.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="thawtide/prototipo-hero.html" data-abre="https://crishud.github.io/thawtide/prototipo-hero.html" class="on">The store</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/thawtide/prototipo-hero.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="thawtide/prototipo-hero.html" title="Thawtide store demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-thawtide" data-ver="p-thawtide">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-hub" data-ver="d-hub">My AI agent hub</a></p></div>
+</main>
+
+<main id="d-hub" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>How I work · Claude Code</span>My AI agent hub</h1>
+    <p class="ent">The setup I use to run every project with AI agents without losing control.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/4913c3f12cec.webp" alt="A plan before the code" loading="lazy"><div><span class="num">1</span><h2>A plan before the code</h2><p>Big work starts written down, tests first. Nothing gets built until I say yes.</p></div></div>
+    <div class="fila"><img src="img/v2/abfa127c83fc.webp" alt="Locks in code" loading="lazy"><div><span class="num">2</span><h2>Locks in code</h2><p>A hook reads every command before it runs: denied, asks me, or runs. Not a prompt asking nicely.</p></div></div>
+    <div class="fila"><img src="img/v2/d1576d414d7c.webp" alt="The builder never approves itself" loading="lazy"><div><span class="num">3</span><h2>The builder never approves itself</h2><p>A separate reviewer tests it like a customer and can't fix anything.</p></div></div>
+    <div class="fila"><img src="img/v2/1753a600d7d5.webp" alt="Mistakes become rules" loading="lazy"><div><span class="num">4</span><h2>Mistakes become rules</h2><p>The same cause twice moves the fix up a level: rule, then tool, then lock.</p></div></div>
+    <div class="fila"><img src="img/v2/04dc87bef9a5.webp" alt="One page for everything" loading="lazy"><div><span class="num">5</span><h2>One page for everything</h2><p>One script reads every project and writes the status page. Nobody updates it by hand.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. Real data from Oct 27, 2026.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="hub.html" data-abre="https://crishud.github.io/hub.html" class="on">The hub</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/hub.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="hub.html" title="My AI agent hub demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-hub" data-ver="p-hub">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-barber" data-ver="d-barber">Barbershop booking</a></p></div>
+</main>
+
+<main id="d-barber" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>Product in planning</span>Barbershop booking</h1>
+    <p class="ent">A booking product for US barbershops, still in planning.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/e0e76849e808.webp" alt="Competitors first" loading="lazy"><div><span class="num">1</span><h2>Competitors first</h2><p>Before deciding anything I went through the main booking apps screen by screen and read what owners and clients complain about. Fees came up the most.</p></div></div>
+    <div class="fila"><img src="img/v2/ce139a8fd840.webp" alt="The owner's day" loading="lazy"><div><span class="num">2</span><h2>The owner's day</h2><p>I sketched the owner app from that research, then made it clickable: the next client, and a button to call or text.</p></div></div>
+    <div class="fila"><img src="img/v2/42c50ffd5810.webp" alt="Big buttons" loading="lazy"><div><span class="num">3</span><h2>Big buttons</h2><p>48px minimum, 56px for Book.</p></div></div>
+    <div class="fila"><img src="img/v2/9ac45437214c.webp" alt="Book without an account" loading="lazy"><div><span class="num">4</span><h2>Book without an account</h2><p>Name and phone. The phone is the key.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. A clickable prototype with test data. There's no real code yet.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="barber.html" data-abre="https://crishud.github.io/barber.html" class="on">The prototype</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/barber.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="barber.html" title="Barbershop booking demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-barber" data-ver="p-barber">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-research" data-ver="d-research">Prospect researcher</a></p></div>
+</main>
+
+<main id="d-research" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>Personal project · sales demo</span>Prospect researcher</h1>
+    <p class="ent">An AI tool that finds stores worth calling, and shows where every reason came from.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/b96767d6f45e.webp" alt="The ideal customer comes first" loading="lazy"><div><span class="num">1</span><h2>The ideal customer comes first</h2><p>I wrote down who I want to sell to. Every store gets scored against that profile.</p></div></div>
+    <div class="fila"><img src="img/v2/ff5f0df42777.webp" alt="It reads the real store" loading="lazy"><div><span class="num">2</span><h2>It reads the real store</h2><p>My Node.js scripts read each store's public website and call Gemini. The browser never talks to the AI, so no key reaches it.</p></div></div>
+    <div class="fila"><img src="img/v2/cfe357681e18.webp" alt="Every reason has a source" loading="lazy"><div><span class="num">3</span><h2>Every reason has a source</h2><p>If the AI says something, the exact line has to be on the page. If it isn't there, the claim gets dropped.</p></div></div>
+    <div class="fila"><img src="img/v2/9031ef40610d.webp" alt="The email stays a draft" loading="lazy"><div><span class="num">4</span><h2>The email stays a draft</h2><p>There's a Copy button and no Send button. Nothing here sends anything.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. A demo. The stores were only read and never contacted.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="ventas/app/index.html" data-abre="https://crishud.github.io/ventas/app/index.html" class="on">Prospects</button><button type="button" data-src="ventas/app/perfil.html" data-abre="https://crishud.github.io/ventas/app/perfil.html" class="">Ideal customer</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/ventas/app/index.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="ventas/app/index.html" title="Prospect researcher demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-ventas" data-ver="p-ventas">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-call" data-ver="d-call">Call to CRM</a></p></div>
+</main>
+
+<main id="d-call" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>Personal project · sales demo</span>Call to CRM</h1>
+    <p class="ent">An AI tool that turns a sales call into CRM notes, with the line each one came from.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/87330b83ff34.webp" alt="Transcribe first" loading="lazy"><div><span class="num">1</span><h2>Transcribe first</h2><p>I record the call, then transcribe it with timestamps, then pull out the fields. Asking for both at once made the model loop.</p></div></div>
+    <div class="fila"><img src="img/v2/6f7170b0d6a9.webp" alt="Every field points at a line" loading="lazy"><div><span class="num">2</span><h2>Every field points at a line</h2><p>Pain, budget, who decides, timing. Each one has to quote the transcript, or it isn't saved.</p></div></div>
+    <div class="fila"><img src="img/v2/612c3265ed10.webp" alt="The deal moves with the reason" loading="lazy"><div><span class="num">3</span><h2>The deal moves with the reason</h2><p>A deal only gets a dollar value when the buyer says a budget on a call.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. Both calls are role-plays of the same test script: one with AI voices, one read by me.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="ventas/app/llamada.html" data-abre="https://crishud.github.io/ventas/app/llamada.html" class="on">The call</button><button type="button" data-src="ventas/app/pipeline.html" data-abre="https://crishud.github.io/ventas/app/pipeline.html" class="">The board</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/ventas/app/llamada.html" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="ventas/app/llamada.html" title="Call to CRM demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-ventas" data-ver="p-ventas">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-links" data-ver="d-links">Creator links page</a></p></div>
+</main>
+
+<main id="d-links" hidden>
+  <div class="in cab">
+    <p class="vuelta2"><a href="#" data-ver="portfolio">← Portfolio</a></p>
+    <h1 class="con-ojo2"><span>Personal project · links page</span>Creator links page</h1>
+    <p class="ent">A one-page shop where a creator lists the products they use and sends people to Amazon.</p>
+  </div>
+  <div class="in filas">
+    <div class="fila"><img src="img/v2/5e0cea0022a0.webp" alt="One link, from a phone" loading="lazy"><div><span class="num">1</span><h2>One link, from a phone</h2><p>A creator gets asked the same thing over and over. I wanted one link that answers it, and that they can change from a phone without calling anyone.</p></div></div>
+    <div class="fila"><img src="img/v2/ab017e848986.webp" alt="Big photos, little text" loading="lazy"><div><span class="num">2</span><h2>Big photos, little text</h2><p>Titles go under the photo, because you can't guarantee contrast on photos someone else uploads.</p></div></div>
+  </div>
+  <div class="band"><div class="in demo"><h2>Try it here</h2><p>Click, scroll and type inside it. Every product and photo is simulated. Press Editar, make up any key and try the edit mode.</p>
+    <div class="d-bot"><span class="d-g"><button type="button" data-src="https://crishud.github.io/las-cosas-que-uso/" data-abre="https://crishud.github.io/las-cosas-que-uso/" class="on">The page</button></span><span class="d-g d-tam"><button type="button" class="on" data-tam="pc">Computer</button><button type="button" data-tam="m">Phone</button></span></div>
+    <div class="d-marco"><div class="d-barra"><i></i><i></i><i></i><a class="d-abre" href="https://crishud.github.io/las-cosas-que-uso/" target="_blank" rel="noopener">Open full screen ↗</a></div><iframe data-src="https://crishud.github.io/las-cosas-que-uso/" title="Creator links page demo"></iframe></div>
+  </div></div>
+  <div class="in mas"><div><h2>Want to know more?</h2><p>The tech, the decisions and where it stands today.</p></div><a class="btn" href="#p-links" data-ver="p-links">See it in Learn →</a></div>
+  <div class="in sig"><p>Next project: <a href="#d-crm" data-ver="d-crm">Credit-repair CRM</a></p></div>
+</main>
+
+<main id="contact" hidden>
+  <div class="in">
+    <div class="hero">
+      <div><h1>contact.</h1>
+        <p class="sub">Find me on LinkedIn or Instagram, or write to me here.</p>
+        <ul class="discos"><li><a href="https://www.linkedin.com/in/cristian-sanchez-benavides" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a></li><li><a href="https://www.instagram.com/cristianb.sanchez/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3"/></svg></a></li></ul></div>
+      <div class="head"><img class="esc-l" src="img/v2/64f9cadbe6ae.webp" alt="Cartoon Cristian waving with a phone while envelopes fly out of it" width="1168" height="880"></div>
+    </div>
+  </div>
+  <div class="band"><div class="in forma">
+    <h2>Write to me</h2>
+    <form id="f-contacto" novalidate>
+      <div><label for="c-nombre">Name</label><input id="c-nombre" type="text" autocomplete="name" required>
+        <label for="c-correo">Email</label><input id="c-correo" type="email" autocomplete="email" required></div>
+      <div><label for="c-msg">Message</label><textarea id="c-msg" required></textarea></div>
+      <div class="f-pie"><p id="c-aviso" role="status">Or write to me at <b>cristian.scbv@gmail.com</b></p><button type="submit">Send email</button></div>
+    </form>
+  </div></div>
+</main>
+
+<main id="p-crm" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>Services · CRM</span>Credit-repair CRM</h1>
+  <p class="ent">A booking page and a CRM of its own for a credit-repair business in New York.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/bf770a35a79c.webp" alt="Credit-repair CRM on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/74bac8086f05.webp" alt="Credit-repair CRM on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-crm" data-ver="d-crm">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">The rules of a legal process can live inside the software, so nobody has to remember them.</p><ul><li>Any business with a legal process could use this idea</li><li>Clients could follow every step of their file</li><li>A team could spend less time on paperwork</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>One app for the public page and the CRM</li><li>Personal credit in New York only</li><li>Notices before booking and a written contract</li><li>Three business days to cancel</li><li>No work until each step is done</li></ul></section>
+  <section><h2>How it works</h2><div class="flujo"><div><b>Client portal</b><span>notices, contract, documents</span></div><div><b>Next.js app</b><span>React + TypeScript</span></div><div><b>Database</b><span>Prisma over SQLite (libSQL)</span></div><div><b>Team CRM</b><span>leads, files, letters</span></div></div></section>
+  <section><h2>The work lock</h2><p>The law sets the order, so the app does too. Work stays locked until every earlier step is done.</p><ol class="pasos"><li><span class="num">1</span><div><h3>Lead</h3></div></li><li><span class="num">2</span><div><h3>Notices signed</h3></div></li><li><span class="num">3</span><div><h3>Contract signed</h3></div></li><li><span class="num">4</span><div><h3>Cancel period passes</h3><p>three business days</p></div></li><li><span class="num">5</span><div><h3>Work unlocks</h3></div></li><li><span class="num">6</span><div><h3>Letters</h3><p>from approved templates</p></div></li><li><span class="num">7</span><div><h3>Certified mail</h3><p>printed, on paper</p></div></li></ol></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Next.js, React and TypeScript</h3><p>One codebase for the public site, the client portal and the team's CRM.</p></div><div class="pila-c"><h3>Prisma with SQLite (libSQL)</h3><p>Typed database access, so a wrong field name fails before it ships.</p></div><div class="pila-c"><h3>Zod</h3><p>Validation for the data clients and the team send in.</p></div><div class="pila-c"><h3>Steps that gate the work</h3><p>Notices, contract and cancel period come first. A client file can't skip ahead.</p></div><div class="pila-c"><h3>Vitest and Playwright</h3><p>Unit tests for the rules, browser tests for the flows.</p></div><div class="pila-c"><h3>Render</h3><p>Picked because the app needs its own server and a disk.</p></div></div>
+    <ul class="fichas pie-f"><li>Next.js</li><li>React</li><li>TypeScript</li><li>Prisma</li><li>SQLite (libSQL)</li><li>Tailwind CSS</li><li>Zod</li><li>Resend</li><li>Vitest</li><li>Playwright</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>No AI writes the dispute letters. Only templates the lawyer approves.</li><li>Clients upload their report as a PDF. I never store anyone's third-party passwords.</li><li>Letters go out on paper, by certified mail, in English.</li><li>A saved letter is never edited by hand. If it changes, it's archived and redone.</li></ul></section>
+  <section><h2>Screens</h2><div class="gal"><figure><img src="img/v2/a00b7452ba41.webp" alt="A client file with its steps and lock" loading="lazy"><figcaption>A client file with its steps and lock</figcaption></figure><figure><img src="img/v2/f007628fc129.webp" alt="Letters waiting to print" loading="lazy"><figcaption>Letters waiting to print (Spanish)</figcaption></figure><figure><img src="img/v2/a48b081dbae5.webp" alt="The public page" loading="lazy"><figcaption>The public page</figcaption></figure><figure><img src="img/v2/ba7701942397.webp" alt="The client portal on a phone" loading="lazy"><figcaption>The client portal on a phone (Spanish)</figcaption></figure></div></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Mockups, the database, leads and the client file.</li><li><span class="b-ok">Done</span>Notices, contract, client portal and the work lock.</li><li><span class="b-va">In progress</span>Credit report, disputed items, letters and printing.</li><li><span class="b-no">Pending</span>Results, billing, roles, tasks and reminders.</li><li><span class="b-no">Pending</span>Legal texts: waiting on the lawyer. Nothing goes to real clients before that.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>No clients, no results and no promises yet. The legal texts are still with the lawyer, and every screen here uses test data.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-thawtide" data-ver="p-thawtide">Thawtide store</a></p></section>
+</div></main>
+
+<main id="p-thawtide" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>E-commerce · Shopify</span>Thawtide store</h1>
+  <p class="ent">A store for one rechargeable hand warmer, under its own brand, for the US.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/4979ba9b3661.webp" alt="Thawtide store on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/767e53f01669.webp" alt="Thawtide store on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-thawtide" data-ver="d-thawtide">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">I wanted one product with a whole world around it: the name, the character, the 3D.</p><ul><li>A brand people could remember for its character</li><li>The same loop could launch the next product</li><li>The theme could be reused for new products</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>Sell one product well, with a page made for it</li><li>The warmer turns in 3D on the product page</li><li>Anything that depends on supplier data says PENDING</li><li>Product images are AI-made, and the page says so</li></ul></section>
+  <section><h2>How it works</h2><div class="flujo"><div><b>Mockup</b><span>HTML, CSS, JS</span></div><div><b>Liquid theme</b><span>sections rebuilt from the mockup</span></div><div><b>Zip</b><span>ready to upload, not published</span></div><div><b>Shopify store</b><span>closed until the sample</span></div></div></section>
+  <section><h2>One section at a time</h2><p>Every section of the page went through the same loop before the next one started.</p><ol class="pasos"><li><span class="num">1</span><div><h3>Three options</h3></div></li><li><span class="num">2</span><div><h3>I pick one</h3></div></li><li><span class="num">3</span><div><h3>Build it</h3></div></li><li><span class="num">4</span><div><h3>Reviewer checks it</h3></div></li><li><span class="num">5</span><div><h3>Into the theme</h3></div></li></ol></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Shopify and Liquid</h3><p>The theme is built as Liquid sections.</p></div><div class="pila-c"><h3>three.js</h3><p>The warmer turns in 3D right on the product page. Its thickness is an estimate until the sample arrives.</p></div><div class="pila-c"><h3>Plain HTML, CSS and JavaScript</h3><p>The mockup runs without a framework, so every section can be judged on its own.</p></div><div class="pila-c"><h3>Shipped as a zip</h3><p>The live store is never edited by hand. A new zip replaces the old theme.</p></div><div class="pila-c"><h3>PENDING markers</h3><p>Anything that depends on supplier data is marked on the page until it's confirmed.</p></div><div class="pila-c"><h3>AI images, labelled</h3><p>Product images are AI-made for now, and the page says so.</p></div></div>
+    <ul class="fichas pie-f"><li>Shopify</li><li>Liquid</li><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li><li>three.js</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>A hand warmer for the cold, picked over my first product idea.</li><li>The peanut shape, not the rectangle.</li><li>The name Thawtide, with three identity routes drawn for it.</li><li>No warmer gets sold without a battery-cell and circuit report.</li><li>$29.99 is provisional until the sample arrives.</li></ul></section>
+  <section><h2>Screens</h2><div class="gal"><figure><img src="img/v2/147b603635c3.webp" alt="The product page" loading="lazy"><figcaption>The product page</figcaption></figure><figure><img src="img/v2/60aa304108bb.webp" alt="The product page on a phone" loading="lazy"><figcaption>The product page on a phone</figcaption></figure></div></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Identity: three routes, logos and the name.</li><li><span class="b-ok">Done</span>Home page mockup, one section at a time.</li><li><span class="b-ok">Done</span>Product page with the warmer in 3D.</li><li><span class="b-va">In progress</span>The Shopify theme, reviewed and waiting to be uploaded.</li><li><span class="b-no">Pending</span>Store setup: address, payments, free shipping and domain.</li><li><span class="b-no">Pending</span>A physical sample and the battery report.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>It isn't open and hasn't sold anything. No warmth times and no safety certificate until the sample and the report are in.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-hub" data-ver="p-hub">My AI agent hub</a></p></section>
+</div></main>
+
+<main id="p-hub" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>How I work · Claude Code</span>My AI agent hub</h1>
+  <p class="ent">The setup I use to run every project with AI agents without losing control.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/e159e25f44df.webp" alt="My AI agent hub on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/b3bb8d974f94.webp" alt="My AI agent hub on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-hub" data-ver="d-hub">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">AI agents are going to write a huge part of the world's software. I care about making them trustworthy.</p><ul><li>One person could run a whole portfolio of projects</li><li>Every mistake makes the system smarter</li><li>Control stays with the human</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>One owner decides, the agents do the work</li><li>Risky actions get blocked by code</li><li>Nothing is finished until someone other than the builder has tested it</li><li>One status page for every project</li></ul></section>
+  <section><h2>How it works</h2><div class="flujo"><div><b>Me</b><span>I ask and approve</span></div><div><b>Claude Code agent</b><span>plans and builds</span></div><div><b>guard.mjs hook</b><span>reads every command</span></div><div><b>Project files</b><span>one repo per project</span></div></div></section>
+  <section><h2>When the same mistake happens twice</h2><p>A lesson starts as a written rule. If it happens again, it becomes a tool, and then a lock in code.</p><ol class="pasos"><li><span class="num">1</span><div><h3>Mistake</h3><p>logged with its cause</p></div></li><li><span class="num">2</span><div><h3>Rule</h3><p>written down</p></div></li><li><span class="num">3</span><div><h3>Tool</h3><p>a script that checks it</p></div></li><li><span class="num">4</span><div><h3>Lock</h3><p>enforced by the hook</p></div></li></ol></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Claude Code hooks</h3><p>A hook (guard.mjs) checks every command and file edit before it runs: denied, asks me, or runs.</p></div><div class="pila-c"><h3>Subagents</h3><p>A reviewer and a researcher, each starting with a clean context.</p></div><div class="pila-c"><h3>Git, with main as production</h3><p>Work happens on a dev branch. Pushing to main needs my click.</p></div><div class="pila-c"><h3>Plans in Markdown</h3><p>Each project keeps its plans and a progress file, so any session can pick up where the last one stopped.</p></div><div class="pila-c"><h3>A generated status page</h3><p>One script reads every project and writes the status page.</p></div><div class="pila-c"><h3>Attack tests for the locks</h3><p>Before a lock change goes in, the reviewer tries to get around it.</p></div></div>
+    <ul class="fichas pie-f"><li>Claude Code</li><li>Node.js</li><li>JSON</li><li>Git</li><li>PowerShell</li><li>Bash</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>Locks in code, not in the prompt.</li><li>The builder never approves itself.</li><li>Big work starts with a written plan, tests first, and my yes before any code.</li><li>Each project only sees itself.</li><li>Nothing gets deleted. Old work moves to an archive folder.</li></ul></section>
+  <section><h2>Screens</h2><div class="gal"><figure><img src="img/v2/d6f82d155a9f.webp" alt="How a request moves" loading="lazy"><figcaption>How a request moves</figcaption></figure><figure><img src="img/v2/80719a187c0b.webp" alt="What the locks block" loading="lazy"><figcaption>What the locks block</figcaption></figure><figure><img src="img/v2/707200602fbb.webp" alt="The reviewer" loading="lazy"><figcaption>The reviewer</figcaption></figure><figure><img src="img/v2/b41c90f57e47.webp" alt="My mistakes log" loading="lazy"><figcaption>My mistakes log</figcaption></figure></div></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Global rules, locks, reviewer and researcher agents, a project template and one status page.</li><li><span class="b-ok">Done</span>Locks that ask instead of only blocking: money is never allowed.</li><li><span class="b-ok">Done</span>Read-only access to a live site, tested against attack cases.</li><li><span class="b-va">In progress</span>Fewer false alarms, and saving every reviewer verdict automatically.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>On Windows there's no sandbox: the locks read what the agent writes, not what a program does inside. The real defence is not keeping real keys on the machine.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-barber" data-ver="p-barber">Barbershop booking</a></p></section>
+</div></main>
+
+<main id="p-barber" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>Product in planning</span>Barbershop booking</h1>
+  <p class="ent">A booking product for US barbershops, still in planning.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/e1d943c0920c.webp" alt="Barbershop booking on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/51e9186a56aa.webp" alt="Barbershop booking on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-barber" data-ver="d-barber">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">Any barbershop should be able to look professional without a tech person.</p><ul><li>A shop could go live the day it signs up</li><li>Clients would stay with their shop</li><li>The same idea could work for salons</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>A shop signs up and takes its first booking the same day (the goal)</li><li>The client books with a name and a phone number, no account</li><li>A full price list, visible, with no hidden fees</li></ul></section>
+  <section><h2>How it works</h2><div class="flujo"><div><b>Owner's app</b><span>set up, day, clients</span></div><div><b>Booking page</b><span>one link per shop</span></div><div><b>Client's phone</b><span>name + phone, no account</span></div></div></section>
+  <section><h2>The bet</h2><p>Booking apps are easy to use. The hard part is filling them, so the shop should be ready on day one.</p><ol class="pasos"><li><span class="num">1</span><div><h3>Shop signs up</h3></div></li><li><span class="num">2</span><div><h3>Price list</h3><p>already written for that type of shop</p></div></li><li><span class="num">3</span><div><h3>Shares its link</h3></div></li><li><span class="num">4</span><div><h3>Client books</h3><p>name and phone</p></div></li><li><span class="num">5</span><div><h3>First booking same day</h3><p>the goal, not a result</p></div></li></ol></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Competitor research</h3><p>I went through the main booking apps screen by screen before deciding anything.</p></div><div class="pila-c"><h3>Reviews as data</h3><p>Fees and commissions came up the most.</p></div><div class="pila-c"><h3>Sketches first</h3><p>The owner app was sketched screen by screen before any code.</p></div><div class="pila-c"><h3>A clickable prototype</h3><p>Plain HTML and JavaScript, to test the flows with test data.</p></div></div>
+    <ul class="fichas pie-f"><li>Competitor research</li><li>Screen-by-screen sketches</li><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>The app never recommends another shop to someone who didn't ask.</li><li>Big buttons: 48px minimum, 56px for "Book".</li><li>Review requests go to every client, never only to the happy ones.</li><li>Self-service: nobody sets a shop up by hand.</li></ul></section>
+  <section><h2>Screens</h2><div class="gal"><figure><img src="img/v2/9ed925590c0e.webp" alt="The owner sets up the shop" loading="lazy"><figcaption>The owner sets up the shop</figcaption></figure><figure><img src="img/v2/9ac45437214c.webp" alt="The prototype on a phone" loading="lazy"><figcaption>The prototype on a phone</figcaption></figure></div></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Competitor research: flows, settings and reviews.</li><li><span class="b-ok">Done</span>The owner app sketched, and a clickable prototype of it.</li><li><span class="b-no">Pending</span>The build plan, then the first real code.</li><li><span class="b-no">Pending</span>Name, price, payments and no-show rules.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>No launch date, no price and no final name. "Live the same day" is the goal, not a result. There's no real code yet.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-ventas" data-ver="p-ventas">AI sales desk</a></p></section>
+</div></main>
+
+<main id="p-ventas" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>Personal project · sales demo</span>AI sales desk</h1>
+  <p class="ent">Two small AI tools for selling: one researches prospects, the other turns a sales call into CRM notes.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/02c542081074.webp" alt="AI sales desk on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/6bd859b36a3b.webp" alt="AI sales desk on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-research" data-ver="d-research">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">Selling runs on trust, and AI only earns it when it shows where every claim came from.</p><ul><li>A seller could start the day with a list worth calling</li><li>What a buyer says on a call could go straight to the board</li><li>AI does the reading, the human does the talking</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>Finds stores that fit</li><li>Writes a first email as a draft: nothing here sends anything</li><li>Keeps what was said on a call</li><li>Every claim comes with the exact line it was taken from</li></ul></section>
+  <section><h2>How it works</h2><div class="flujo"><div><b>Store list</b><span>public websites only</span></div><div><b>Node.js scripts</b><span>read pages, call Gemini</span></div><div><b>Checks</b><span>quotes and fixed rules</span></div><div><b>JSON files</b><span>one per run</span></div><div><b>Static pages</b><span>table, file, board, call</span></div></div></section>
+  <section><h2>From a call to the board</h2><p>Every field has to point at the line of the transcript it came from, or it isn't saved.</p><ol class="pasos"><li><span class="num">1</span><div><h3>Recording</h3></div></li><li><span class="num">2</span><div><h3>Transcript</h3><p>with timestamps</p></div></li><li><span class="num">3</span><div><h3>Deal fields</h3><p>pain, budget, who decides, timing</p></div></li><li><span class="num">4</span><div><h3>Each field checked</h3><p>its quote must be in the transcript</p></div></li><li><span class="num">5</span><div><h3>Deal moves</h3><p>with the reason</p></div></li></ol></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Gemini API</h3><p>Reads the pages, scores the fit, drafts the email and transcribes the call. It runs from Node.js scripts, so no key ever reaches the browser.</p></div><div class="pila-c"><h3>Quote checking</h3><p>A claim only counts if its quote appears word for word.</p></div><div class="pila-c"><h3>Plain rules where AI isn't needed</h3><p>Same answer every time, at no cost.</p></div><div class="pila-c"><h3>Static pages</h3><p>Runs are saved as JSON and shown with plain HTML and JavaScript.</p></div><div class="pila-c"><h3>Tests and screenshots</h3><p>Playwright opens every page at computer and phone size and fails on anything cut off.</p></div><div class="pila-c"><h3>Two steps for audio</h3><p>Transcribe first, then pull out the fields.</p></div></div>
+    <ul class="fichas pie-f"><li>Node.js</li><li>Gemini API</li><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li><li>Playwright</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>Every AI claim needs a quote, checked word for word.</li><li>Emails stay drafts. There's a Copy button, no Send button.</li><li>A deal only gets a dollar value when the buyer says a budget on a call.</li><li>The test calls are role-plays and say so.</li></ul></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Prospect research on 10 real public stores.</li><li><span class="b-ok">Done</span>Call to CRM, tested with a synthetic call and with my own recording.</li><li><span class="b-no">Pending</span>An unscripted call, with me as the seller.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>No meetings booked and no deals closed with this. It's a demo. The emails were never sent and the stores were never contacted.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-links" data-ver="p-links">Creator links page</a></p></section>
+</div></main>
+
+<main id="p-links" hidden><div class="art ancha">
+  <p class="vuelta"><a href="#" data-ver="learn">← Learn</a></p>
+  <h1 class="con-ojo2"><span>Personal project · links page</span>Creator links page</h1>
+  <p class="ent">A one-page shop where a creator lists the products they use and sends people to Amazon.</p>
+  <div class="disp"><img class="d-pc" src="img/v2/b7cc5028cdb6.webp" alt="Creator links page on a computer" width="1100" height="688" loading="lazy"><img class="d-m" src="img/v2/012f19789486.webp" alt="Creator links page on a phone" width="320" height="692" loading="lazy"></div>
+  <p class="acc"><a class="btn" href="#d-links" data-ver="d-links">Try the demo</a></p>
+  <section class="vision"><p class="v-ojo">The bigger picture</p><p class="v-f">Creators built the audience. I think the page should be theirs too.</p><ul><li>One page for everything a creator recommends</li><li>With a server, edits could reach every visitor</li><li>A page that belongs to the creator</li></ul></section>
+  <section><h2>What I set out to do</h2><ul class="lista"><li>One link that answers "what is that, and where did you get it?"</li><li>Collections and a kit view grouped by step</li><li>A button that sends the whole kit to the cart</li><li>An edit mode the creator can use from a phone</li></ul></section>
+  <section><h2>Under the hood</h2><div class="pilas"><div class="pila-c"><h3>Amazon's rules first</h3><p>The disclosure sits under the tagline and in the footer, every link carries #ad, there are no prices.</p></div><div class="pila-c"><h3>Big photos, little text</h3><p>Titles go under the photo, because you can't guarantee contrast on photos someone else uploads.</p></div><div class="pila-c"><h3>No ads from other brands</h3><p>That's the reason to have your own page.</p></div></div>
+    <ul class="fichas pie-f"><li>HTML</li><li>CSS</li><li>Vanilla JavaScript</li><li>Python build script</li><li>Service worker</li><li>GitHub Pages</li></ul></section>
+  <section><h2>Decisions I made</h2><ul class="lista"><li>I measured real creator pages on Amazon, LTK and Linktree first.</li><li>It's in Spanish, and every product and photo here is simulated.</li></ul></section>
+  <section><h2>Where it stands</h2><ul class="estado"><li><span class="b-ok">Done</span>Measured 4 real pages: two Amazon storefronts, one LTK profile and one Linktree.</li><li><span class="b-ok">Done</span>Collections, a kit view, a button for the whole kit and an edit mode.</li><li><span class="b-no">Pending</span>A server, so edits reach every visitor.</li><li><span class="b-no">Pending</span>Real affiliate links.</li></ul></section>
+  <section><div class="aviso"><h3>What I can't claim yet</h3><p>It has never earned a commission and no real creator is using it. The products, photos and links are samples.</p></div></section>
+  <section class="fin"><p>Next project: <a href="#p-crm" data-ver="p-crm">Credit-repair CRM</a></p></section>
+</div></main>
+
 <footer id="footer">
-  <a class="top" href="#header" aria-label="Back to top">↑</a>
-  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="about.html">about</a><a href="learn.html">learn</a><a href="portfolio.html">portfolio</a><a href="contact.html">contact</a></nav></div>
+  <a class="top" href="#header" aria-label="Back to top"></a>
+  <div class="row"><span>© 2026 Cristian Sánchez Benavides</span><nav id="nav-footer" aria-label="Footer"><a href="#" data-ver="about">about</a><a href="#" data-ver="learn">learn</a><a href="#" data-ver="portfolio">portfolio</a><a href="#" data-ver="contact">contact</a></nav></div>
 </footer>
-<script src="app.js"></script>
+
+<script>
+const b=document.querySelector('.icon-nav'),hd=document.getElementById('header');
+b.addEventListener('click',()=>{const o=hd.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+// Inicio: el codigo viaja por las cuatro esquinas, y sigue al raton cuando esta encima
+(function () {
+  var face = document.querySelector('.face'), flujo = face && face.querySelector('.code-sil .flujo');
+  if (!flujo) return;
+  var src = ['lock.check("git push origin main")  // asks first', 'const verdict = await judge.review(task)', 'if (verdict !== "pass") return retry(task)', 'booking.hold(slot, { minutes: 15 })', 'lessons.add({ cause, rule })', 'plan.approve({ by: "cristian" })', 'archive.move(file)  // nothing gets deleted', 'client.portal.show(steps)'];
+  var txt = ''; for (var r = 0; r < 70; r++) { var l = src[r % src.length]; txt += (l + '   ' + l + '   ' + l).slice((r * 7) % 23) + '\n'; }
+  flujo.textContent = txt + txt;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var puntos = [[30, 22], [70, 22], [70, 82], [30, 82]], n = 0, tx = 50, ty = 50, x = 50, y = 50, raf = 0, ciclo = 0;
+  function paint() {
+    x += (tx - x) * 0.07; y += (ty - y) * 0.07;
+    face.style.setProperty('--x', x.toFixed(2) + '%'); face.style.setProperty('--y', y.toFixed(2) + '%');
+    face.dataset.lado = (y < 50 ? 't' : 'b') + (x < 50 ? 'l' : 'r');
+    raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.08 ? requestAnimationFrame(paint) : 0;
+  }
+  function go(a, b) { tx = a; ty = b; if (!raf) raf = requestAnimationFrame(paint); }
+  function sigue() { go(puntos[n][0], puntos[n][1]); n = (n + 1) % 4; }
+  function arranca() { if (reduce || ciclo) return; sigue(); ciclo = setInterval(sigue, 2400); }
+  function para() { clearInterval(ciclo); ciclo = 0; }
+  face.addEventListener('pointermove', function (e) { para(); var r = face.getBoundingClientRect(); go((e.clientX - r.left) / r.width * 100, (e.clientY - r.top) / r.height * 100); });
+  face.addEventListener('pointerleave', arranca);
+  arranca();
+})();
+
+// Los bloques suben al entrar en pantalla
+const sube=document.querySelectorAll('.tarj li,.fila,.d-marco,.vision,.disp,.flujo,.gal figure,.estado li,.aviso,.art section:not(.vision) > ul:not(.cifras),.cinco > div,.facts,.hechos h2,.hechos ul,.skills h2,.proy-t,.proy > a,.hist > *,.art h1,.fecha,.coll,.art > p,.art > ul,.art section > h2,.art section > h3,.art section:not(.vision) > p,.art section > img,.art section > dl,.art section > .lista,.art blockquote,.cifras li,.pasos li,.pila-c');
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('ya');io.unobserve(e.target)}}),{threshold:0});sube.forEach(e=>{e.classList.add('rise');io.observe(e)})}
+// Secciones 2 y 4: se mueven y los numeros cuentan cada vez que entran en pantalla
+const anima=(el,nodos)=>{
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let on=false,id;
+  const datos=nodos.map(n=>({n,fin:parseInt(n.nodeValue),suf:n.nodeValue.replace(/^-?\d+/,'')}));
+  const pon=k=>datos.forEach(d=>d.n.nodeValue=Math.round(d.fin*k)+d.suf);
+  const cuenta=()=>{const t0=performance.now();cancelAnimationFrame(id);(function paso(t){const k=Math.min((t-t0)/1500,1);pon(1-Math.pow(1-k,3));if(k<1)id=requestAnimationFrame(paso)})(t0)};
+  el.classList.add('mueve');pon(0);
+  addEventListener('beforeprint',()=>{cancelAnimationFrame(id);pon(1)});
+  addEventListener('afterprint',()=>{if(!on)pon(0)});
+  new IntersectionObserver(es=>es.forEach(e=>{if(e.intersectionRatio>=.45&&!on){on=true;el.classList.add('ya');cuenta()}else if(!e.intersectionRatio&&on){on=false;cancelAnimationFrame(id);el.classList.remove('ya');pon(0)}}),{threshold:[0,.45]}).observe(el);
+};
+const pie=document.querySelector('.pie');
+[...pie.lastElementChild.children].forEach((e,i)=>{e.style.setProperty('--d',(.5+(i>>2)*.14)+'s');if(e.tagName==='polyline')e.setAttribute('pathLength',1)});
+anima(pie,[...pie.querySelectorAll('text[font-weight="300"]')].map(t=>t.firstChild));
+anima(document.querySelector('.barras'),[...document.querySelectorAll('.barras .pc')].map(p=>p.firstChild));
+let lista='learn';
+const ver=id=>{hd.classList.remove('open');b.setAttribute('aria-expanded',false);if(id==='learn'||id==='portfolio')lista=id;else if(id.startsWith('p-'))lista='learn';document.querySelectorAll('main').forEach(m=>m.hidden=m.id!==id);document.querySelectorAll('.vuelta a').forEach(x=>{x.dataset.ver=lista;x.textContent=lista==='learn'?'← Learn':'← Portfolio'});const act=id==='story'?'about':id.startsWith('p-')?lista:id.startsWith('d-')?'portfolio':id;document.querySelectorAll('main:not([hidden]) iframe[data-src]:not([src])').forEach(f=>f.src=f.dataset.src);document.querySelectorAll('#nav a[data-ver]').forEach(x=>x.dataset.ver===act?x.setAttribute('aria-current','page'):x.removeAttribute('aria-current'));scrollTo(0,0);if(location.hash.slice(1)!==id&&!(id==='inicio'&&!location.hash))history.pushState(null,'','#'+id)};
+document.querySelectorAll('[data-ver]').forEach(x=>x.addEventListener('click',e=>{e.preventDefault();ver(x.dataset.ver)}));
+// Contacto: no hay servidor, asi que abre el correo de quien escribe con el mensaje ya puesto
+document.getElementById('f-contacto').addEventListener('submit',e=>{e.preventDefault();const v=i=>document.getElementById(i).value.trim(),av=document.getElementById('c-aviso');
+  if(!v('c-nombre')||!/.+@.+\..+/.test(v('c-correo'))||!v('c-msg')){av.textContent='Please fill in your name, a valid email and your message.';return}
+  location.href='mailto:cristian.scbv@gmail.com?subject='+encodeURIComponent('Message from '+v('c-nombre'))+'&body='+encodeURIComponent(v('c-msg')+'\n\n'+v('c-nombre')+' · '+v('c-correo'));
+  av.innerHTML='If your email app did not open, write to me at <b>cristian.scbv@gmail.com</b>'});
+// Demos: cambiar de pantalla y de tamano
+document.querySelectorAll('.demo').forEach(d=>{const f=d.querySelector('iframe'),ab=d.querySelector('.d-abre'),m=d.querySelector('.d-marco');
+  d.querySelectorAll('[data-src]:not(iframe)').forEach(b=>b.addEventListener('click',()=>{d.querySelectorAll('.d-g:not(.d-tam) button').forEach(x=>x.classList.toggle('on',x===b));f.src=b.dataset.src;ab.href=b.dataset.abre}));
+  d.querySelectorAll('[data-tam]').forEach(b=>b.addEventListener('click',()=>{d.querySelectorAll('.d-tam button').forEach(x=>x.classList.toggle('on',x===b));m.classList.toggle('movil',b.dataset.tam==='m')}))});
+addEventListener('load',()=>{const h=location.hash.slice(1),m=h&&document.getElementById(h);if(m&&m.tagName==='MAIN')ver(h)});addEventListener('hashchange',()=>{const h=location.hash.slice(1)||'inicio',m=document.getElementById(h);if(m&&m.tagName==='MAIN')ver(h)});
+</script>
+
 </body>
 </html>
